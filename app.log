@@ -1,0 +1,761 @@
+2025-01-25T09:31:47.117+07:00  INFO 13196 --- [restartedMain] o.n.backend.BackendApplication           : Starting BackendApplication using Java 17.0.12 with PID 13196 (E:\DuAn\medial_project\Backend\target\classes started by ninhn in E:\DuAn\medial_project\Backend)
+2025-01-25T09:31:47.132+07:00  INFO 13196 --- [restartedMain] o.n.backend.BackendApplication           : No active profile set, falling back to 1 default profile: "default"
+2025-01-25T09:31:47.243+07:00  INFO 13196 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-impl\4.0.1\jaxb-impl-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/jaxb-core.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/angus-activation.jar
+2025-01-25T09:31:47.245+07:00  INFO 13196 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-core\4.0.1\jaxb-core-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.activation-api.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.xml.bind-api.jar
+2025-01-25T09:31:47.245+07:00  INFO 13196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-25T09:31:47.245+07:00  INFO 13196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-25T09:31:50.181+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T09:31:50.182+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T09:31:50.437+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 246 ms. Found 27 JPA repository interfaces.
+2025-01-25T09:31:50.800+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T09:31:50.802+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-01-25T09:31:50.839+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.CommentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.841+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.EmailActiveRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.841+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.FriendsRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.842+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupMemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.843+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostImageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.843+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.843+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostVideoRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.844+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.845+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.845+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LikeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.845+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LoginSessionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.846+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.846+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.847+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.847+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.NotificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.848+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PasswordResetRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.849+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.849+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.849+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.849+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ProfileRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.850+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.850+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.851+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TagRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.851+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TokensRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.851+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.852+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserSettingRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.852+07:00  INFO 13196 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.VideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T09:31:50.853+07:00  INFO 13196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 0 Redis repository interfaces.
+2025-01-25T09:31:51.370+07:00  INFO 13196 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-01-25T09:31:51.441+07:00  INFO 13196 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2025-01-25T09:31:52.093+07:00  INFO 13196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-01-25T09:31:52.106+07:00  INFO 13196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-25T09:31:52.107+07:00  INFO 13196 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2025-01-25T09:31:52.232+07:00  INFO 13196 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-25T09:31:52.232+07:00  INFO 13196 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4986 ms
+2025-01-25T09:31:52.475+07:00  INFO 13196 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T09:31:52.558+07:00  INFO 13196 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.5.Final
+2025-01-25T09:31:52.781+07:00  WARN 13196 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2025-01-25T09:31:53.037+07:00  INFO 13196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T09:31:54.085+07:00  INFO 13196 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@698917c0
+2025-01-25T09:31:54.089+07:00  INFO 13196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T09:31:54.363+07:00  INFO 13196 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2025-01-25T09:31:58.616+07:00  INFO 13196 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-01-25T09:31:58.678+07:00  INFO 13196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T09:32:01.514+07:00  INFO 13196 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final long org.ninhngoctuan.backend.securityConfig.JwtAuthenticationEntryPoint.serialVersionUID
+2025-01-25T09:32:01.649+07:00  WARN 13196 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25T09:32:02.026+07:00  INFO 13196 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3e7330a1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25ed38cb, org.springframework.security.web.context.SecurityContextHolderFilter@2d436979, org.springframework.security.web.header.HeaderWriterFilter@49dd92e9, org.springframework.security.web.authentication.logout.LogoutFilter@56fcee26, org.ninhngoctuan.backend.securityConfig.JwtRequestFilter@61de4e4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@313c03d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5036a770, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@43c94760, org.springframework.security.web.session.SessionManagementFilter@7177d4e6, org.springframework.security.web.access.ExceptionTranslationFilter@1c9a5ac3, org.springframework.security.web.access.intercept.AuthorizationFilter@3c54fa2e]
+2025-01-25T09:32:03.014+07:00  INFO 13196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-25T09:32:03.061+07:00  INFO 13196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-01-25T09:32:03.075+07:00  INFO 13196 --- [restartedMain] o.n.backend.BackendApplication           : Started BackendApplication in 16.493 seconds (process running for 19.646)
+2025-01-25T09:33:18.820+07:00  INFO 13196 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-25T09:33:18.821+07:00  INFO 13196 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-25T09:33:18.824+07:00  INFO 13196 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-01-25T09:53:25.120+07:00  INFO 13196 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T09:53:25.127+07:00  INFO 13196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-25T09:53:25.151+07:00  INFO 13196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-25T10:06:15.285+07:00  INFO 27172 --- [restartedMain] o.n.backend.BackendApplication           : Starting BackendApplication using Java 17.0.12 with PID 27172 (E:\DuAn\medial_project\Backend\target\classes started by ninhn in E:\DuAn\medial_project\Backend)
+2025-01-25T10:06:15.289+07:00  INFO 27172 --- [restartedMain] o.n.backend.BackendApplication           : No active profile set, falling back to 1 default profile: "default"
+2025-01-25T10:06:15.382+07:00  INFO 27172 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-impl\4.0.1\jaxb-impl-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/jaxb-core.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/angus-activation.jar
+2025-01-25T10:06:15.383+07:00  INFO 27172 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-core\4.0.1\jaxb-core-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.activation-api.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.xml.bind-api.jar
+2025-01-25T10:06:15.384+07:00  INFO 27172 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-25T10:06:15.385+07:00  INFO 27172 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-25T10:06:16.466+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T10:06:16.466+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T10:06:16.775+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 301 ms. Found 27 JPA repository interfaces.
+2025-01-25T10:06:17.066+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T10:06:17.067+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-01-25T10:06:17.103+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.CommentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.103+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.EmailActiveRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.104+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.FriendsRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.104+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupMemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.105+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostImageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.105+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.106+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostVideoRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.106+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.106+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.107+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LikeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.107+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LoginSessionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.107+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.107+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.108+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.108+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.NotificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.109+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PasswordResetRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.110+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.110+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.111+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.111+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ProfileRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.112+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.112+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.113+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TagRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.113+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TokensRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.114+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.114+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserSettingRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.114+07:00  INFO 27172 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.VideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T10:06:17.115+07:00  INFO 27172 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 0 Redis repository interfaces.
+2025-01-25T10:06:17.990+07:00  INFO 27172 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-01-25T10:06:18.107+07:00  INFO 27172 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2025-01-25T10:06:18.672+07:00  INFO 27172 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-01-25T10:06:18.687+07:00  INFO 27172 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-25T10:06:18.687+07:00  INFO 27172 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2025-01-25T10:06:18.808+07:00  INFO 27172 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-25T10:06:18.809+07:00  INFO 27172 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3422 ms
+2025-01-25T10:06:19.067+07:00  INFO 27172 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T10:06:19.165+07:00  INFO 27172 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.5.Final
+2025-01-25T10:06:19.483+07:00  WARN 27172 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2025-01-25T10:06:19.745+07:00  INFO 27172 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T10:06:20.091+07:00  INFO 27172 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7acc02a7
+2025-01-25T10:06:20.093+07:00  INFO 27172 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T10:06:20.151+07:00  INFO 27172 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2025-01-25T10:06:22.356+07:00  INFO 27172 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-01-25T10:06:22.403+07:00  INFO 27172 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T10:06:25.190+07:00  INFO 27172 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final long org.ninhngoctuan.backend.securityConfig.JwtAuthenticationEntryPoint.serialVersionUID
+2025-01-25T10:06:25.302+07:00  WARN 27172 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25T10:06:25.784+07:00  INFO 27172 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1f6e5f7c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@319840d7, org.springframework.security.web.context.SecurityContextHolderFilter@31a47271, org.springframework.security.web.header.HeaderWriterFilter@258b9b17, org.springframework.security.web.authentication.logout.LogoutFilter@a65a0db, org.ninhngoctuan.backend.securityConfig.JwtRequestFilter@3e1ba3c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c23f43, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@193b3d02, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a5f222b, org.springframework.security.web.session.SessionManagementFilter@1d9c807d, org.springframework.security.web.access.ExceptionTranslationFilter@500f151c, org.springframework.security.web.access.intercept.AuthorizationFilter@6cf85402]
+2025-01-25T10:06:27.126+07:00  INFO 27172 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-25T10:06:27.229+07:00  INFO 27172 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-01-25T10:06:27.246+07:00  INFO 27172 --- [restartedMain] o.n.backend.BackendApplication           : Started BackendApplication in 12.86 seconds (process running for 14.447)
+2025-01-25T10:06:47.333+07:00  INFO 27172 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-25T10:06:47.333+07:00  INFO 27172 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-25T10:06:47.335+07:00  INFO 27172 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-01-25T10:26:55.002+07:00  WARN 27172 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:26:55.002+07:00  WARN 27172 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:26:55.002+07:00  WARN 27172 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:26:55.066+07:00  WARN 27172 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:26:55.066+07:00  WARN 27172 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:26:55.066+07:00  WARN 27172 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:27:18.987+07:00  WARN 27172 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:27:18.987+07:00  WARN 27172 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:27:32.019+07:00  WARN 27172 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:27:32.019+07:00  WARN 27172 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:40.983+07:00  WARN 27172 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:40.985+07:00  WARN 27172 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:45.992+07:00  WARN 27172 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:45.992+07:00  WARN 27172 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:51.979+07:00  WARN 27172 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:51.988+07:00  WARN 27172 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:54.505+07:00  WARN 27172 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:29:54.551+07:00  WARN 27172 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:06.983+07:00  WARN 27172 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:06.983+07:00  WARN 27172 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:20.525+07:00  WARN 27172 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:20.526+07:00  WARN 27172 --- [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:23.996+07:00  WARN 27172 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:23.996+07:00  WARN 27172 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:25.996+07:00  WARN 27172 --- [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:25.996+07:00  WARN 27172 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:28.605+07:00  WARN 27172 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T10:30:28.605+07:00  WARN 27172 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: ":id"]
+2025-01-25T11:14:52.979+07:00  WARN 27172 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "{id}"]
+2025-01-25T11:15:02.006+07:00  WARN 27172 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "{id}"]
+2025-01-25T11:39:03.996+07:00  WARN 27172 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m42s667ms313µs).
+2025-01-25T15:35:43.884+07:00  INFO 27172 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T15:35:43.900+07:00  INFO 27172 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-25T15:35:43.915+07:00  INFO 27172 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-25T18:56:47.156+07:00  INFO 6928 --- [restartedMain] o.n.backend.BackendApplication           : Starting BackendApplication using Java 17.0.12 with PID 6928 (E:\DuAn\medial_project\Backend\target\classes started by ninhn in E:\DuAn\medial_project\Backend)
+2025-01-25T18:56:47.162+07:00  INFO 6928 --- [restartedMain] o.n.backend.BackendApplication           : No active profile set, falling back to 1 default profile: "default"
+2025-01-25T18:56:47.268+07:00  INFO 6928 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-impl\4.0.1\jaxb-impl-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/jaxb-core.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.1/angus-activation.jar
+2025-01-25T18:56:47.268+07:00  INFO 6928 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ninhn\.m2\repository\com\sun\xml\bind\jaxb-core\4.0.1\jaxb-core-4.0.1.jar referenced one or more files that do not exist: file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.activation-api.jar,file:/C:/Users/ninhn/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.1/jakarta.xml.bind-api.jar
+2025-01-25T18:56:47.269+07:00  INFO 6928 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-25T18:56:47.269+07:00  INFO 6928 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-25T18:56:48.356+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T18:56:48.358+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T18:56:48.737+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 368 ms. Found 27 JPA repository interfaces.
+2025-01-25T18:56:49.098+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-25T18:56:49.099+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-01-25T18:56:49.149+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.CommentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.151+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.EmailActiveRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.152+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.FriendsRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.152+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupMemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.153+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostImageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.154+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.154+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupPostVideoRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.155+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.GroupRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.155+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.156+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LikeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.159+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.LoginSessionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.160+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.160+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.161+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.MessageVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.161+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.NotificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.163+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PasswordResetRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.164+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostImagesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.165+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.166+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.PostVideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.166+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.ProfileRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.167+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.167+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.RoomRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.168+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TagRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.168+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.TokensRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.169+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.169+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.UserSettingRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.170+07:00  INFO 6928 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.ninhngoctuan.backend.repository.VideosRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-01-25T18:56:49.170+07:00  INFO 6928 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 0 Redis repository interfaces.
+2025-01-25T18:56:49.948+07:00  INFO 6928 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-01-25T18:56:50.056+07:00  INFO 6928 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2025-01-25T18:56:50.697+07:00  INFO 6928 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-01-25T18:56:50.718+07:00  INFO 6928 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-25T18:56:50.718+07:00  INFO 6928 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2025-01-25T18:56:50.848+07:00  INFO 6928 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-25T18:56:50.849+07:00  INFO 6928 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3579 ms
+2025-01-25T18:56:51.115+07:00  INFO 6928 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T18:56:51.214+07:00  INFO 6928 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.5.Final
+2025-01-25T18:56:51.469+07:00  WARN 6928 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2025-01-25T18:56:51.629+07:00  INFO 6928 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T18:56:51.927+07:00  INFO 6928 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18dc2e9f
+2025-01-25T18:56:51.929+07:00  INFO 6928 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T18:56:51.979+07:00  INFO 6928 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2025-01-25T18:56:54.569+07:00  INFO 6928 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-01-25T18:56:54.612+07:00  INFO 6928 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T18:56:57.830+07:00  INFO 6928 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final long org.ninhngoctuan.backend.securityConfig.JwtAuthenticationEntryPoint.serialVersionUID
+2025-01-25T18:56:57.957+07:00  WARN 6928 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25T18:56:58.580+07:00  INFO 6928 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e83f565, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ad7e7f0, org.springframework.security.web.context.SecurityContextHolderFilter@4c07a120, org.springframework.security.web.header.HeaderWriterFilter@47e11c1d, org.springframework.security.web.authentication.logout.LogoutFilter@3deafa54, org.ninhngoctuan.backend.securityConfig.JwtRequestFilter@78deb4d8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@101ff909, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b45c25f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62a7251c, org.springframework.security.web.session.SessionManagementFilter@47ba7b67, org.springframework.security.web.access.ExceptionTranslationFilter@6a496cb7, org.springframework.security.web.access.intercept.AuthorizationFilter@102a8752]
+2025-01-25T18:57:00.054+07:00  INFO 6928 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-25T18:57:00.134+07:00  INFO 6928 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-01-25T18:57:00.158+07:00  INFO 6928 --- [restartedMain] o.n.backend.BackendApplication           : Started BackendApplication in 14.083 seconds (process running for 16.235)
+2025-01-25T18:58:58.540+07:00  INFO 6928 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-25T18:58:58.541+07:00  INFO 6928 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-25T18:58:58.543+07:00  INFO 6928 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-01-25T18:58:59.020+07:00 ERROR 6928 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 20359018 milliseconds ago at 2025-01-25T06:19:40.000Z. Current time: 2025-01-25T11:58:59.018Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T18:58:59.020+07:00 ERROR 6928 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 20359018 milliseconds ago at 2025-01-25T06:19:40.000Z. Current time: 2025-01-25T11:58:59.018Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T18:58:59.134+07:00 ERROR 6928 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 20359134 milliseconds ago at 2025-01-25T06:19:40.000Z. Current time: 2025-01-25T11:58:59.134Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T18:58:59.134+07:00 ERROR 6928 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 20359134 milliseconds ago at 2025-01-25T06:19:40.000Z. Current time: 2025-01-25T11:58:59.134Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T20:19:03.414+07:00  WARN 6928 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m10s319ms856µs500ns).
+2025-01-25T20:50:26.493+07:00 ERROR 6928 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 27027492 milliseconds ago at 2025-01-25T06:19:59.000Z. Current time: 2025-01-25T13:50:26.492Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T20:50:26.493+07:00 ERROR 6928 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 27027492 milliseconds ago at 2025-01-25T06:19:59.000Z. Current time: 2025-01-25T13:50:26.492Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T20:50:26.498+07:00 ERROR 6928 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 27027498 milliseconds ago at 2025-01-25T06:19:59.000Z. Current time: 2025-01-25T13:50:26.498Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T20:50:26.498+07:00 ERROR 6928 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.RuntimeException: JWT Token has expired
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:136) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:70) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilterInternal(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.0.0.jar:6.0.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.0.2.jar:6.0.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1739) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.1.jar:10.1.1]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.jsonwebtoken.ExpiredJwtException: JWT expired 27027498 milliseconds ago at 2025-01-25T06:19:59.000Z. Current time: 2025-01-25T13:50:26.498Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:691) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:806) ~[jjwt-impl-0.12.6.jar:0.12.6]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:43) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:35) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:29) ~[classes/:na]
+	at org.ninhngoctuan.backend.securityConfig.JwtRequestFilter.extractUsername(JwtRequestFilter.java:132) ~[classes/:na]
+	... 48 common frames omitted
+
+2025-01-25T21:24:44.215+07:00  INFO 6928 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T21:24:44.221+07:00  INFO 6928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-25T21:24:44.225+07:00  INFO 6928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
