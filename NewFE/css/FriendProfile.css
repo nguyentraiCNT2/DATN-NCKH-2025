@@ -1,0 +1,59 @@
+.profile-options{
+    position: absolute;
+    top: 72%;
+    right: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    gap: 2rem;
+}
+.follow-friend-action{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    background: #ddd;
+    padding: 0px 10px;
+    color: #000;
+    border-radius: 30px;
+    font-weight: bold;
+}
+.follow-friend-action:hover{
+    background: #c1c1c1;
+}
+.chat-friend-action{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    background: #00c8ff;
+    padding: 0px 10px;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    
+}
+.chat-friend-action:hover{
+    background: #01abda;
+}
+.filter-post{
+    width: 95%;
+    display: flex;
+    gap: 75%;
+    background: #fff;
+    box-shadow: 0 2px 5px #ddd;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.filter-post-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd;
+    padding: 0px 5px;
+    border-radius: 10px;
+    gap: 1rem;
+}

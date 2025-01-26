@@ -1,0 +1,465 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+.login-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-login-container{
+    display: none;
+}
+.login-bg {
+    position: relative;
+    width: 50%;
+    height: 97vh; /* Chiều cao toàn bộ màn hình */
+    overflow: hidden;
+}
+
+.login-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị vỡ, nhưng có thể cắt bỏ một phần ảnh nếu cần thiết */
+    object-position: center; /* Đảm bảo ảnh được căn giữa */
+}
+.login-from-group{
+    width: 50%;
+    padding: 10px;
+}
+.logo-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-size: 30px;
+
+}
+
+/* Container for the login form */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Style for the login form inputs */
+.form-login {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for the input fields */
+.login-form-input {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.input-control {
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border 0.3s;
+    height: 50px;
+}
+
+.input-control:focus {
+    border-color: #007BFF;
+}
+
+/* Style for the submit button */
+.submit-control {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    background-color: #6bebc6;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 50px;   
+
+}
+
+.submit-control:hover {
+    background-color: #55b499;
+}
+
+/* Style for the divider */
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Style for the register link section */
+.title-register {
+    text-align: center;
+    font-size: 14px;
+}
+
+.title-register p {
+    margin: 0;
+}
+
+.register-action {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.register-action:hover {
+    color: #6bebc6;
+}
+.title-p{
+    font-size: 18px;
+}
+.fogotpassword{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.fogotpassword-action{
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+.fogotpassword-action:hover{
+    color: #6bebc6;
+}
+    /* Mờ nền */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+  
+      /* Form xác thực */
+      .verification-form {
+        background: white;
+        border-radius: 8px;
+        padding: 20px 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: center;
+      }
+  
+      .form-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+  .verification-input-group{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+      .verification-input {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 16px;
+        height: 50px;
+      }
+      .verification-input:focus{
+        outline:  none;
+        border: 1px solid #00f2ff;
+      }
+
+      .verification-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: #000;
+        background: #0ef4be;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+  
+      .verification-button:hover {
+        background: #0eb991;
+      }
+  
+      .resend-button {
+        width: 20%;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        color: #007bff;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+  
+      .resend-button:hover {
+        color: #0056b3;
+      }
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 600px) {
+    .container {
+        display: none;
+    }
+    body{
+        background: linear-gradient(to right, #ffffff, #e5fffd);
+    }
+    .mobile-login-container {
+        width: 100%;
+        height: 100vh; /* Chiều cao toàn màn hình */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Căn giữa theo chiều dọc */
+        padding: 20px;
+        box-sizing: border-box;
+    
+    }
+
+    .mobile-logo-title {
+        display: flex;
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        margin-bottom: 20px;
+    }
+
+    .mobile-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .mobile-login-form {
+        width: 100%;
+        max-width: 400px; /* Giới hạn chiều rộng */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa theo chiều ngang */
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .mobile-form-login {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa các input */
+        gap: 15px; /* Khoảng cách giữa các phần tử */
+    }
+
+    .mobile-input-control {
+        width: 90%;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        outline: none;
+        transition: border-color 0.3s;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .mobile-input-control:focus {
+        border-color: #007BFF;
+    }
+
+    .mobile-submit-control {
+        width: 104%;
+        padding: 10px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        background-color: #38b6ff;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .mobile-submit-control:hover {
+        background-color: #2684ba;
+    }
+
+    .mobile-fogotpassword {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .mobile-fogotpassword-action {
+        color: #000;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+        font-weight: bold;
+    }
+
+    .mobile-fogotpassword-action:hover {
+        text-decoration: underline;
+    }
+
+    .mobile-title-register {
+        width: 86%;
+        margin-top: 15px;
+        text-align: center;
+        padding: 10px 20px ;
+        border: 2px solid #007BFF;
+        border-radius: 20px;
+    }
+    .mobile-title-register:hover{
+        background: #007BFF;
+    }
+    .mobile-title-register:hover   .mobile-register-action{
+        background: #007BFF;
+        color: #000;
+    }
+    .mobile-register-action {
+        color: #007BFF;
+        font-weight: bold;
+        background: none;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+}
+@media screen and (max-width: 480px) {
+    .container {
+        display: none;
+    }
+    body{
+        background: linear-gradient(to right, #ffffff, #e5fffd);
+    }
+    .mobile-login-container{
+        width: 100%;
+        height: 100vh; /* Chiều cao toàn màn hình */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Căn giữa theo chiều dọc */
+        padding: 20px;
+        box-sizing: border-box;
+    
+    }
+
+    .mobile-logo-title {
+        display: flex;
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        margin-bottom: 20px;
+    }
+
+    .mobile-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .mobile-login-form {
+        width: 100%;
+        max-width: 400px; /* Giới hạn chiều rộng */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa theo chiều ngang */
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .mobile-form-login {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa các input */
+        gap: 15px; /* Khoảng cách giữa các phần tử */
+    }
+
+    .mobile-input-control {
+        width: 90%;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        outline: none;
+        transition: border-color 0.3s;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .mobile-input-control:focus {
+        border-color: #007BFF;
+    }
+
+    .mobile-submit-control {
+        width: 104%;
+        padding: 10px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        background-color: #38b6ff;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .mobile-submit-control:hover {
+        background-color: #2684ba;
+    }
+
+    .mobile-fogotpassword {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .mobile-fogotpassword-action {
+        color: #000;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+        font-weight: bold;
+    }
+
+    .mobile-fogotpassword-action:hover {
+        text-decoration: underline;
+    }
+
+    .mobile-title-register {
+        width: 86%;
+        margin-top: 15px;
+        text-align: center;
+        padding: 10px 20px ;
+        border: 2px solid #007BFF;
+        border-radius: 20px;
+    }
+    .mobile-title-register:hover{
+        background: #007BFF;
+    }
+    .mobile-title-register:hover   .mobile-register-action{
+        background: #007BFF;
+        color: #000;
+    }
+    .mobile-register-action {
+        color: #007BFF;
+        font-weight: bold;
+        background: none;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+
+}

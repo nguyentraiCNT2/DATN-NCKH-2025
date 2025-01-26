@@ -1,0 +1,152 @@
+body {
+    background: #fbfbfb;
+    font-family: Arial, sans-serif;
+  }
+.group-container{
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+.group-list{
+    width: 30%;
+    background: #fff;
+    height: 85vh;
+    padding: 10px 20px;
+}
+.group-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    
+}
+.create-group-button{
+    text-decoration: none;
+    background: #38b6ff;
+    color: #000;
+    width: 40%;
+    padding: 10px 80px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+.create-new-group-button{
+    text-decoration: none;
+    background: #38b6ff;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.group-list-item{
+    margin-top: 30px;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+.group-item{
+    width: 90%;
+    display: flex;
+    margin-top: 10px;
+    gap: 1rem;
+    padding: 4px 6px;
+    border-radius: 10px;
+    align-items: center;
+
+}
+.group-item:hover{
+    background: #ddd;
+
+}
+.group-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+/* Namespace cụ thể cho phần group-post */
+.group-post-wrapper {
+    max-height: 88vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.group-post-wrapper .group-post {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20%;
+}
+
+.group-post-wrapper .group-post-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #919191;
+}
+
+.group-post-wrapper .group-post-list {
+    width: 90%;
+
+}
+
+
+.create-group-form{
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Căn theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    width: 40%;
+    height: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 30px;
+
+    
+}
+.close-create-group-form{
+position: absolute;
+top: 3%;
+right: 5%;
+padding: 2px 5px;
+border-radius: 50%;
+background: #ddd;
+}
+.create-group-title{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+.create-group-div{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+.create-group-input{
+    width: 100%;
+    height: 50px;
+    padding: 0px 10px;
+    border: none;
+    font-size: 16px;
+}
+.create-group-input:focus{
+outline: none;
+}
+.create-group-form-button{
+    width: 30%;
+    padding: 10px;
+    border: none;
+    background: #38b6ff;
+    border-radius: 30px;
+    font-weight: bold;
+}
+.group-content{
+    width: 100%;
+    max-width: 600px; /* Chiều rộng giới hạn như feed Facebook */
+    padding: 10px;
+    max-height: 90vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}

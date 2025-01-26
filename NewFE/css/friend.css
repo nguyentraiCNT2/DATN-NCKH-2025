@@ -1,0 +1,105 @@
+body{
+    background: #fbfbfb;
+    font-family: Arial, sans-serif;
+}
+.friend-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.friend-menu{
+    background: #ffff;
+    width: 20%;
+    height: 90vh;
+    padding: 20px 20px;
+}
+.friend-actions{
+    width: 90%;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 10px;
+}
+.friend-action{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.friend-actions:hover{
+    background: #ddd;
+}
+.friend-icon{
+    background: #ddd;
+    padding: 10px 12px;
+    border-radius: 50%;
+}
+.friend-box{
+    width: 90%;
+    max-height: 90vh;
+    padding: 10px 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+}
+.friend-list{
+    width: 100%;
+    height: 90vh;
+    max-width: 90%;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    
+}
+.friend-item{
+    width: 20%;
+    border: 1px solid #ddd;
+    height: 45vh;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.friend-item:hover{
+    box-shadow: 0 3px 5px #ddd;
+}
+.friend-imgs{
+    width: 100%;
+}
+.friend-avatar{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.follow-actions {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo hàng dọc */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    padding: 10px 15px;
+}
+
+.follow-action {
+    display: inline-block; /* Để liên kết hoạt động như nút */
+    padding: 10px 20px; /* Thêm khoảng cách trong nút */
+    background-color: #007bff; /* Màu nền của nút */
+    color: white; /* Màu chữ */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    text-align: center; /* Căn giữa văn bản */
+    border-radius: 5px; /* Bo góc nút */
+    font-size: 16px; /* Cỡ chữ */
+    transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.follow-action:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+.block-user{
+    background: #ddd;
+    color: #000;
+}
+.block-user:hover{
+    background: #c1c0c0;
+    color: #000;
+}

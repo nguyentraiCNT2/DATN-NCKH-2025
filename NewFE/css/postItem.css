@@ -1,0 +1,117 @@
+
+/* Bài đăng */
+.post {
+    background: #fff;
+    padding: 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post .info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10px;
+    position: relative;
+    padding-top: 20px;
+}
+.info-user {
+    display: flex;
+    flex-direction: column; /* Hiển thị theo chiều dọc */
+    align-items: flex-start; /* Căn trái nội dung */
+    gap: 5px; /* Khoảng cách giữa các phần tử */
+}
+
+.post .info strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.post .info small {
+    font-size: 12px;
+    color: #65676b; /* Màu chữ nhạt */
+}
+
+.content-text{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #050505;
+}
+
+.post-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.post .actions {
+    display: flex;
+    justify-content: space-between;
+        border-top: 1px solid #ddd;
+    padding-top: 10px;
+    color: #65676b;
+}
+
+.post .actions span {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.post .actions span:hover {
+    background-color: #e4e6eb;
+    color: #1877f2; /* Màu xanh hover */
+}
+.action-item{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.like-comment{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+.list-post{
+    height: auto;
+    
+}
+
+
+.group-info{
+    width: 100%;
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.info-group{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.group-avatar-img{
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.info-member-group{
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    display: flex;
+    gap: 1rem;
+}
+.member-avatar-img{
+    width: 20px;
+    height: 20px;  
+    border-radius: 50%;
+}
+.member-name{
+    font-weight: bold;
+}

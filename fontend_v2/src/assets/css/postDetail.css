@@ -1,0 +1,154 @@
+body {
+    background: #fbfbfb;
+    font-family: Arial, sans-serif;
+  }
+  .post-detail-content{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+  }
+  .post-detail-img{
+
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.337); /* Màu đen với 50% độ trong suốt */
+  }
+  .main-post{
+    width: 80%;
+    padding: 20px;
+    height: 82vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .list-second-post{
+    width: 15%;
+    height: 79vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+
+    border-left:1px solid #fff ;
+  }
+  .main-post-img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    
+  }
+  .second-post-img{
+    width: 100%;
+    border-radius: 8px;
+  }
+  .main-post-video{
+    width: 100%;
+  }
+  .second-post-video{
+    width: 100%;
+    border-radius: 8px;
+  }
+.detail-info{
+  display: flex;
+  gap: 1rem;
+}
+.post-detail-info{
+  width: 30%;
+  padding: 10px 10px;
+}
+.detail-info-user{
+
+ width: 50%;
+  
+}
+.detail-avatar-img{
+  border-radius: 50%;
+  height: 40px;
+  object-fit: cover;
+}
+.detail-content-text{
+  width: 90%;
+  height: auto;
+  max-height: 30vh;
+  padding: 10px 10px;
+}
+.post-detail-like-comment{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+.post-detail-actions{
+  width: 100%;
+  display: flex;
+  height: 40px;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.detail-action-item{
+  padding: 5px 10px;
+display: flex;
+gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.detail-list-comment{
+  padding: 10px 20px;
+  width: 90%;
+  max-height: 50vh;
+  overflow-y: scroll;
+  scrollbar-width: auto;
+
+}
+.comment-info{
+  width: 100%;
+  padding: 10px 10px;
+}
+.comment-info-user{
+  display: flex;
+  gap: 1rem;
+}
+.comment-content{
+  width: 80%;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background: #ddd;
+  max-width: 90%;
+  font-size: 14px;
+  word-wrap: break-word; /* Hỗ trợ xuống dòng khi từ quá dài */
+}
+.comment-time{
+  width: 90%;
+  padding-left: 15%;
+  padding-top: 10px;
+}
+.create-comment-group{
+  width: 90%;
+  display: flex;
+  gap: 1rem;
+  padding: 20px 10px;
+  align-items: center;
+  justify-content: center;
+}
+.comment-input{
+  width: 70%;
+  height: 40px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ddd;
+}
+.comment-input:focus{
+  outline: none;
+}
+.comment-send-button{
+  border: none;
+  background: none;
+}
