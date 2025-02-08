@@ -211,14 +211,9 @@
             }
         }
         @GetMapping("/getbyfullname/{fullname}")
-        public ResponseEntity<?> getByFullName ( @PathVariable String fullname ,@RequestParam("page") int page, @RequestParam("limit") int limit){
+        public ResponseEntity<?> getByFullName ( @PathVariable String fullname ){
             try {
-                UserOutPut result = new UserOutPut();
-                result.setPage(page);
-                Pageable pageable =  PageRequest.of(page - 1, limit);
-                result.setListResult(userService.getByName(fullname,pageable));
-
-                result.setTotalPage((int) Math.ceil((double) (userService.totalItem()) / limit));
+                List<UserDTO> result =  userService.getByName(fullname);
                 return ResponseEntity.status(HttpStatus.OK).body(result);
             }catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

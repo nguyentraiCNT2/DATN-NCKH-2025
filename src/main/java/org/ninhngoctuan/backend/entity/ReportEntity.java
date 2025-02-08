@@ -2,9 +2,16 @@ package org.ninhngoctuan.backend.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Reports")
 public class ReportEntity {
@@ -17,8 +24,8 @@ public class ReportEntity {
     private UserEntity reportedBy;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false)
-    private PostEntity post;
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     @Column(columnDefinition = "TEXT")
     private String reason;

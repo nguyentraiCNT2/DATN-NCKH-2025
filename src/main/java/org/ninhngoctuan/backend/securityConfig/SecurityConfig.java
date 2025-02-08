@@ -54,7 +54,7 @@ public class SecurityConfig {
                                 "/tag/getall","/tag/create","/tag/delete/","/tag/update/",
                                 "/home/**").hasRole("USER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-
+                        .requestMatchers("/superadmin/**").hasRole("SUPER_ADMIN")
                         .anyRequest().authenticated()
                 );
 

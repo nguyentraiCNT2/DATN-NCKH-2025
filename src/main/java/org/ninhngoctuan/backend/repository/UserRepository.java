@@ -33,5 +33,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             Pageable pageable
     );
 
-    List<UserEntity> findByFullNameLike(String fullName, Pageable pageable);
+    List<UserEntity> findByFullNameLike(String fullName);
 }

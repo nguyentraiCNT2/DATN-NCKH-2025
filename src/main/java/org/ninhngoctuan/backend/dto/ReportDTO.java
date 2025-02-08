@@ -1,14 +1,22 @@
 package org.ninhngoctuan.backend.dto;
 
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.Date;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReportDTO {
     private Long reportId;
 
     private UserDTO reportedBy;
 
-    private PostDTO post;
+    private UserDTO user;
 
     private String reason;
 

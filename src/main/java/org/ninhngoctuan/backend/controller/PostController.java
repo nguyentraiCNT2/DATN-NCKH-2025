@@ -59,7 +59,7 @@ public class PostController {
             return ResponseEntity.ok(post);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Có lỗi không mong muốn: " + e.getMessage()));
+                    .body(Map.of("error",  e.getMessage()));
         }
     }
 
@@ -99,6 +99,15 @@ public class PostController {
         }
     }
 
+    @DeleteMapping("/show/{postId}")
+    public ResponseEntity<?> showPost(@PathVariable Long postId) {
+        try {
+            postService.showPost(postId);
+            return ResponseEntity.ok().body("hiển thị thành công");
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body( e.getMessage());
+        }
+    }
 
 
 

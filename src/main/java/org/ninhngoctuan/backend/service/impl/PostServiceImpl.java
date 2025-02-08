@@ -62,6 +62,21 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<PostDTO> getAllPostADMIN() {
+        try {
+            List<PostDTO> list = new ArrayList<>();
+            List<PostEntity> postEntities = postRepository.findAll();
+            postEntities.forEach(postEntity -> {
+                PostDTO postDTO = modelMapper.map(postEntity, PostDTO.class);
+                list.add(postDTO);
+            });
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
     public PostDTO createPost(PostDTO postDTO, List<MultipartFile> images, List<MultipartFile> videos) {
         try {
             PostEntity post = modelMapper.map(postDTO, PostEntity.class);
@@ -162,7 +177,7 @@ public class PostServiceImpl implements PostService {
             return modelMapper.map(savedPost, PostDTO.class);
 
         } catch (Exception e) {
-            throw new RuntimeException("An error occurred while creating the post: " + e.getMessage(), e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -294,6 +309,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public PostDTO showPost(Long id) {
+        PostEntity post = postRepository.findByPostId(id).orElseThrow(() -> new RuntimeException("Không tim thấy bài viết"));
+        post.setDeleted(false);
+        PostEntity savepost = postRepository.save(post);
+        return modelMapper.map(savepost, PostDTO.class);
+    }
+
+    @Override
     public Path getByFilename(String filename) {
         return  Paths.get(imagesDir).resolve(filename);
     }
@@ -354,6 +377,7 @@ public class PostServiceImpl implements PostService {
 
         // Lọc danh sách bài viết dựa trên điều kiện
         return allPosts.stream()
+                .filter(postEntity -> postEntity.getGroupId().isDeleted() != true)
                 .filter(post -> {
                     UserEntity postOwner = post.getUser();
 
@@ -402,6 +426,7 @@ public class PostServiceImpl implements PostService {
 
         // Lọc danh sách bài viết dựa trên điều kiện
         return allPosts.stream()
+                .filter(postEntity -> postEntity.getGroupId().isDeleted() != true)
                 .filter(post -> {
                     UserEntity postOwner = post.getUser();
 
@@ -430,12 +455,14 @@ public class PostServiceImpl implements PostService {
         UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
         List<PostEntity> postEntities = postRepository.findByUserOrderByCreatedAtDesc(user);
         List<PostDTO> list = new ArrayList<>();
-        for (PostEntity post: postEntities){
-            if (!post.isDeleted()){
-                PostDTO postDTO = modelMapper.map(post, PostDTO.class);
-                list.add(postDTO);
-            }
-        }
+        postEntities.stream()
+                .filter(postEntity -> postEntity.getGroupId().isDeleted() != true)
+                .filter(postEntity -> !postEntity.isDeleted())
+                .forEach(postEntity -> {
+                    PostDTO postDTO = modelMapper.map(postEntity, PostDTO.class);
+                    list.add(postDTO);
+                });
+
         return list;
     }
 
@@ -466,7 +493,7 @@ public class PostServiceImpl implements PostService {
 
                     // Chỉ lấy bài viết nếu không bị block
                     if (isNotBlocked) {
-                        postRepository.findByUserOrderByCreatedAtDesc(friend)
+                        postRepository.findByUserOrderByCreatedAtDesc(friend).stream()
                                 .forEach(postEntity -> {
                                     if (!postEntity.isDeleted()) {
                                         postList.add(modelMapper.map(postEntity, PostDTO.class)); // Thêm dấu ngoặc đơn ở đây

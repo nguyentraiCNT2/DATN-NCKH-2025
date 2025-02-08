@@ -31,6 +31,8 @@ public class DataInitializer {
             RoleEntity userRole = new RoleEntity();
             userRole.setName("USER");
             roleRepository.save(userRole);
+
+
         }
         if (userRepository.count() == 0) {
             RoleEntity userRole = roleRepository.findById(1L).get();

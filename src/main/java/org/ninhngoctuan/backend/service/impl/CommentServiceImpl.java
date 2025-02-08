@@ -49,6 +49,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public List<CommentDTO> getALL() {
+        List<CommentEntity> comments = commentRepository.findAll();
+        List<CommentDTO> commentDTOS = new ArrayList<>();
+        comments.stream().forEach(comment -> commentDTOS.add(modelMapper.map(comment, CommentDTO.class)));
+        return commentDTOS;
+    }
+
+    @Override
     public CommentDTO createCommend(CommentDTO comment) {
         try {
             String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();

@@ -35,7 +35,7 @@ public class PostEntity {
     @JoinColumn(name = "groupId")
     private GroupEntity groupId;
     private Long totalLike = 0L;
-    private Boolean isDeleted = Boolean.FALSE;
+    private boolean isDeleted = false;
 
     public Long getPostId() {
         return postId;
@@ -109,11 +109,11 @@ public class PostEntity {
         this.totalLike = totalLike;
     }
 
-    public Boolean isDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 

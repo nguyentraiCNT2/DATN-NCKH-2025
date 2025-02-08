@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.ninhngoctuan.backend.context.RequestContext;
 import org.ninhngoctuan.backend.dto.GroupDTO;
+import org.ninhngoctuan.backend.dto.GroupMemberDTO;
 import org.ninhngoctuan.backend.dto.GroupPostDTO;
 import org.ninhngoctuan.backend.dto.UserDTO;
 import org.ninhngoctuan.backend.entity.GroupEntity;
@@ -53,20 +54,52 @@ public class GroupServiceImpl implements GroupService {
             UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
             List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByUser(user);
             List<GroupDTO> dtos = new ArrayList<>();
+            groupMemberEntities.stream()
+                    .filter(groupMemberEntity -> groupMemberEntity.getGroup().isDeleted() != true)
+                    .forEach(groupMemberEntity -> {
+                        dtos.add(modelMapper.map(groupMemberEntity.getGroup(), GroupDTO.class));
+                    });
             for (GroupMemberEntity groupMemberEntity : groupMemberEntities) {
                 dtos.add(modelMapper.map(groupMemberEntity.getGroup(), GroupDTO.class));
             }
             return dtos;
-        }catch (Exception e){
-            throw  new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
+    }
+
+    @Override
+    public List<GroupDTO> getAdminAllGroup() {
+        try {
+          List<GroupDTO> dtos = new ArrayList<>();
+          List<GroupEntity> groupEntities = groupRepository.findAll();
+          groupEntities.stream()
+                  .forEach(groupEntity -> dtos.add(modelMapper.map(groupEntity, GroupDTO.class)));
+          return dtos;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     @Override
     public GroupDTO getById(long id) {
         try {
             GroupEntity groupEntity = groupRepository.findByGroupId(id).orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
-            return  modelMapper.map(groupEntity, GroupDTO.class);
+            return modelMapper.map(groupEntity, GroupDTO.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public GroupMemberDTO getMemberById(Long id) {
+        try {
+            String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+            UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng"));
+            GroupMemberEntity groupMember = groupMemberRepository.findByGroupIdAndUserId(id, user.getUserId());
+            return modelMapper.map(groupMember, GroupMemberDTO.class);
+
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -74,7 +107,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupPostDTO> getPostsByGroupId(Long groupId) {
-        try{
+        try {
             List<GroupPostDTO> list = new ArrayList<>();
             List<GroupPostEntity> groupPostEntities = groupPostRepository.findByGroupId(groupId);
             groupPostEntities.stream()
@@ -90,7 +123,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupPostDTO> getAllPostsByGroup() {
-        try{
+        try {
             List<GroupEntity> groupEntities = new ArrayList<>();
             String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
             UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
@@ -117,7 +150,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupPostDTO> getPostsByGroupIdNotApproved(Long groupId) {
-        try{
+        try {
             List<GroupPostDTO> list = new ArrayList<>();
             List<GroupPostEntity> groupPostEntities = groupPostRepository.findByGroupId(groupId);
             groupPostEntities.stream()
@@ -134,17 +167,35 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public List<UserDTO> getAllMembers(Long groupId) {
         try {
+
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId).orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
             List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
             List<UserDTO> dtos = new ArrayList<>();
-            for (GroupMemberEntity groupMember: groupMemberEntities){
-                if (groupMember.isActive() == true){
+            for (GroupMemberEntity groupMember : groupMemberEntities) {
+                if (groupMember.isActive() == true) {
                     dtos.add(modelMapper.map(groupMember.getUser(), UserDTO.class));
                 }
             }
             return dtos;
-        }catch (Exception e){
-            throw  new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<UserDTO> getAllMembersNotActive(Long groupId) {
+        try {
+            GroupEntity groupEntity = groupRepository.findByGroupId(groupId).orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
+            List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
+            List<UserDTO> dtos = new ArrayList<>();
+            for (GroupMemberEntity groupMember : groupMemberEntities) {
+                if (groupMember.isActive() == false) {
+                    dtos.add(modelMapper.map(groupMember.getUser(), UserDTO.class));
+                }
+            }
+            return dtos;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -161,6 +212,7 @@ public class GroupServiceImpl implements GroupService {
             GroupEntity groupEntity = modelMapper.map(group, GroupEntity.class);
             groupEntity.setCreatedAt(new Date());
             groupEntity.setUpdatedAt(new Date());
+            groupEntity.setDeleted(false);
 
             // Lưu nhóm vào cơ sở dữ liệu
             GroupEntity saveGroup = groupRepository.save(groupEntity);
@@ -197,8 +249,8 @@ public class GroupServiceImpl implements GroupService {
                     groupEntity.setDescription(group.getDescription());
                     groupRepository.save(groupEntity);
                     return true;
-                }else{
-                    throw  new RuntimeException("Bạn không có quyền hạn để chỉnh sửa nhóm");
+                } else {
+                    throw new RuntimeException("Bạn không có quyền hạn để chỉnh sửa nhóm");
                 }
 
             }
@@ -210,7 +262,27 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public boolean deleteGroup(Long groupId) {
-        return false;
+        try {
+            GroupEntity groupEntity = groupRepository.findByGroupId(groupId).orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
+            groupEntity.setDeleted(true);
+            groupRepository.save(groupEntity);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean restoredGroup(Long groupId) {
+        try {
+            GroupEntity groupEntity = groupRepository.findByGroupId(groupId).orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
+            groupEntity.setDeleted(false);
+            groupRepository.save(groupEntity);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     @Override
@@ -223,10 +295,10 @@ public class GroupServiceImpl implements GroupService {
             List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
             for (GroupMemberEntity groupMemberEntity : groupMemberEntities) {
                 if (groupMemberEntity.getGroupRole().equals("GROUP_ADMIN") && groupMemberEntity.getUser().getUserId() == userAuth.getUserId()) {
-                  if (groupMemberEntity.getUser().getUserId() == user.getUserId()) {
-                      throw new RuntimeException("Người này đã có trong nhóm");
-                  }
-                    GroupMemberEntity  groupMember = new GroupMemberEntity();
+                    if (groupMemberEntity.getUser().getUserId() == user.getUserId()) {
+                        throw new RuntimeException("Người này đã có trong nhóm");
+                    }
+                    GroupMemberEntity groupMember = new GroupMemberEntity();
                     groupMember.setJoinedAt(new Date());
                     groupMember.setGroupRole("GROUP_MEMBER");
                     groupMember.setUser(user);
@@ -234,11 +306,11 @@ public class GroupServiceImpl implements GroupService {
                     groupMemberEntity.setActive(true);
                     groupMemberRepository.save(groupMember);
                     return true;
-                }else{
+                } else {
                     if (groupMemberEntity.getUser().getUserId() == user.getUserId()) {
                         throw new RuntimeException("Người này đã có trong nhóm");
                     }
-                    GroupMemberEntity  groupMember = new GroupMemberEntity();
+                    GroupMemberEntity groupMember = new GroupMemberEntity();
                     groupMember.setJoinedAt(new Date());
                     groupMember.setGroupRole("GROUP_MEMBER");
                     groupMember.setUser(user);
@@ -250,8 +322,8 @@ public class GroupServiceImpl implements GroupService {
 
             }
 
-        }catch (Exception e){
-        throw new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
         return false;
     }
@@ -265,45 +337,114 @@ public class GroupServiceImpl implements GroupService {
             UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
             List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
             for (GroupMemberEntity groupMemberEntity : groupMemberEntities) {
-                if (groupMemberEntity.getUser().getUserId() == user.getUserId()) {
+                if (groupMemberEntity.getUser().getUserId().equals(user.getUserId())) {
                     throw new RuntimeException("Bạn đã có trong nhóm");
-                }
-                    GroupMemberEntity  groupMember = new GroupMemberEntity();
+                }else {
+                    GroupMemberEntity groupMember = new GroupMemberEntity();
                     groupMember.setJoinedAt(new Date());
                     groupMember.setGroupRole("GROUP_MEMBER");
                     groupMember.setUser(user);
                     groupMember.setGroup(groupEntity);
-                    groupMemberEntity.setActive(false);
+                    groupMember.setActive(false);
                     groupMemberRepository.save(groupMember);
                     return true;
+                }
+
 
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
         return false;
     }
 
     @Override
+    public boolean activeMember(Long groupId, Long memberId) {
+        // Lấy email của người dùng hiện tại từ SecurityContext
+        String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        // Tìm người dùng hiện tại
+        UserEntity user = userRepository.findByEmail(authEmail)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
+
+        // Tìm nhóm theo groupId
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
+
+        // Kiểm tra quyền ADMIN của người dùng
+        validateAdminRole(groupEntity, user);
+
+        // Tìm thành viên trong nhóm và kích hoạt
+        GroupMemberEntity groupMemberEntity = groupMemberRepository.findByGroupIdAndUserId(groupEntity.getGroupId(), memberId);
+
+        groupMemberEntity.setActive(true);
+        groupMemberRepository.save(groupMemberEntity);
+
+        return true;
+    }
+
+    private void validateAdminRole(GroupEntity groupEntity, UserEntity user) {
+        List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
+
+        // Kiểm tra xem người dùng có vai trò ADMIN trong nhóm không
+        boolean isAdmin = groupMemberEntities.stream()
+                .anyMatch(member -> member.getUser().getUserId().equals(user.getUserId())
+                        && "GROUP_ADMIN".equals(member.getGroupRole()));
+
+        if (!isAdmin) {
+            throw new RuntimeException("Bạn không có quyền hạn để thực hiện chức năng");
+        }
+    }
+    @Override
     public boolean quitMember(Long groupId, Long memberId) {
+        // Lấy email của người dùng hiện tại từ SecurityContext
+        String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        // Tìm người dùng hiện tại
+        UserEntity user = userRepository.findByEmail(authEmail)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
+
+        // Tìm nhóm theo groupId
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy nhóm"));
+
+        // Kiểm tra xem người dùng có phải là thành viên của nhóm không
+        GroupMemberEntity groupMemberEntity = groupMemberRepository.findByGroupIdAndUserId(groupEntity.getGroupId(),memberId);
+        GroupMemberEntity groupAdminEntity = groupMemberRepository.findByGroupIdAndUserId(groupEntity.getGroupId(),user.getUserId());
+
+        // Kiểm tra quyền ADMIN hoặc xác nhận người dùng tự xóa chính mình
+        validateQuitPermission(groupAdminEntity, user.getUserId(), memberId);
+
+        // Xóa thành viên khỏi nhóm
+        groupMemberRepository.delete(groupMemberEntity);
+
+        return true;
+    }
+
+    private void validateQuitPermission(GroupMemberEntity groupMemberEntity, Long currentUserId, Long targetMemberId) {
+        // Kiểm tra xem người dùng có quyền ADMIN hoặc đang tự xóa chính mình không
+        if (!currentUserId.equals(targetMemberId) && !"GROUP_ADMIN".equals(groupMemberEntity.getGroupRole())) {
+            throw new RuntimeException("Bạn không có quyền hạn để thực hiện chức năng");
+        }
+    }
+
+    @Override
+    public boolean outGroup(Long groupId) {
         try {
             String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
             UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng"));
-            List<GroupMemberEntity> groupMemberEntities = groupMemberRepository.findByGroup(groupEntity);
-            for (GroupMemberEntity groupMemberEntity : groupMemberEntities) {
-                if (groupMemberEntity.getUser().getUserId() != user.getUserId())
-                    throw new RuntimeException("Id đăng nhập không chính xác");
-                if (groupMemberEntity.getGroupRole() != "GROUP_ADMIN")
-                    throw new RuntimeException("Bạn không có quyền hạn để thực hiện chức năng");
-                if (groupMemberEntity.getUser().getUserId() == memberId){
-                    groupMemberEntity.setActive(false);
-                    groupMemberRepository.save(groupMemberEntity);
-                }
+            GroupMemberEntity groupMemberEntities = groupMemberRepository.findByGroupIdAndUserId(groupEntity.getGroupId(), user.getUserId());
+            if (groupMemberEntities.getUser().getUserId() != user.getUserId())
+                throw new RuntimeException("Id đăng nhập không chính xác");
+            if (groupMemberEntities.getGroupRole().equals("GROUP_ADMIN")) {
+                throw new RuntimeException("Bạn là chủ nhóm nên không thể rời nhóm");
+            } else {
+                groupMemberRepository.delete(groupMemberEntities);
+                return true;
             }
-            return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -362,13 +503,13 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public boolean deletePost(Long postId) {
-       try {
-           GroupPostEntity groupPostEntity = groupPostRepository.findById(postId).orElseThrow(() -> new RuntimeException("Không tìm thấy bài viết"));
-           groupPostRepository.delete(groupPostEntity);
-           return true;
-       }catch (Exception e){
-           throw new RuntimeException(e.getMessage());
-       }
+        try {
+            GroupPostEntity groupPostEntity = groupPostRepository.findById(postId).orElseThrow(() -> new RuntimeException("Không tìm thấy bài viết"));
+            groupPostRepository.delete(groupPostEntity);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
@@ -378,7 +519,7 @@ public class GroupServiceImpl implements GroupService {
             groupPostEntity.setActive(true);
             groupPostRepository.save(groupPostEntity);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
@@ -386,11 +527,11 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public boolean changeRoleMember(Long groupId, Long memberId, String roleId) {
         try {
-            GroupMemberEntity groupMember = groupMemberRepository.findByGroupIdAndUserId(groupId,memberId);
+            GroupMemberEntity groupMember = groupMemberRepository.findByGroupIdAndUserId(groupId, memberId);
             groupMember.setGroupRole(roleId);
             groupMemberRepository.save(groupMember);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }

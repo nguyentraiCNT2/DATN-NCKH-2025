@@ -24,6 +24,16 @@ public class CommentController {
 
         }
     }
+    @GetMapping("/get-all")
+    public ResponseEntity<?> getAll() {
+        try {
+            List<CommentDTO> commentDTOList = commentService.getALL();
+            return ResponseEntity.ok(commentDTOList);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+
+        }
+    }
     @PostMapping("/create")
     public ResponseEntity<?> createComment(@RequestBody CommentDTO commentDTO) {
         try {

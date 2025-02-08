@@ -13,7 +13,9 @@ public interface PostService {
     PostDTO createPost(PostDTO  postDTO, List<MultipartFile> images, List<MultipartFile> videos);
     PostDTO updatePost(PostDTO  postDTO, List<MultipartFile> images, List<MultipartFile> videos);
     PostDTO deletePost(Long id);
+    PostDTO showPost(Long id);
     Path getByFilename(String filename);
+    List<PostDTO> getAllPostADMIN();
     List<PostDTO> getAllPostDesc();
     List<PostDTO> getAllPostByGroupId(Long groupId);
     List<PostDTO> getAllPostByGroups();

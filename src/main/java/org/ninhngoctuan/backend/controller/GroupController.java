@@ -1,12 +1,14 @@
 package org.ninhngoctuan.backend.controller;
 
 import org.ninhngoctuan.backend.dto.GroupDTO;
+import org.ninhngoctuan.backend.dto.GroupMemberDTO;
 import org.ninhngoctuan.backend.dto.GroupPostDTO;
 import org.ninhngoctuan.backend.dto.UserDTO;
 import org.ninhngoctuan.backend.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +50,16 @@ public class GroupController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+    @GetMapping("/role/{id}")
+    public ResponseEntity<?> getGroupMember(@PathVariable Long id) {
+        try {
+            GroupMemberDTO memberDTO = groupService.getMemberById(id);
+            return ResponseEntity.ok(memberDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 
     // Lấy bài viết đã được duyệt theo groupId
     @GetMapping("/{groupId}/posts/approved")
@@ -74,6 +86,15 @@ public class GroupController {
     public ResponseEntity<?> getAllMembers(@PathVariable Long groupId) {
         try {
             return ResponseEntity.ok(groupService.getAllMembers(groupId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+    // Lấy danh sách thành viên nhóm
+    @GetMapping("/{groupId}/members/not-active")
+    public ResponseEntity<?> getAllMemberNotActives(@PathVariable Long groupId) {
+        try {
+            return ResponseEntity.ok(groupService.getAllMembersNotActive(groupId));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -110,6 +131,17 @@ public class GroupController {
         }
 
     }
+    // Xóa nhóm
+    @DeleteMapping("/restore/{groupId}")
+    public ResponseEntity<?> restoreGroup(@PathVariable Long groupId) {
+        try {
+            return ResponseEntity.ok(groupService.restoredGroup(groupId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
+
 
     // Thêm thành viên vào nhóm
     @PostMapping("/{groupId}/members/{memberId}")
@@ -134,7 +166,7 @@ public class GroupController {
     }
 
     // Xóa thành viên khỏi nhóm
-    @DeleteMapping("/{groupId}/members/{memberId}")
+    @DeleteMapping("/{groupId}/delete/members/{memberId}")
     public ResponseEntity<?> quitMember(@PathVariable Long groupId, @PathVariable Long memberId) {
         try {
             return ResponseEntity.ok(groupService.quitMember(groupId, memberId));
@@ -143,6 +175,27 @@ public class GroupController {
         }
 
     }
+    // Xóa thành viên khỏi nhóm
+    @DeleteMapping("/out/{groupId}")
+    public ResponseEntity<?> quitMember(@PathVariable Long groupId) {
+        try {
+            return ResponseEntity.ok(groupService.outGroup(groupId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
+    // Xóa thành viên khỏi nhóm
+    @PostMapping("/{groupId}/member/active/{memberId}")
+    public ResponseEntity<?> activeMember(@PathVariable Long groupId, @PathVariable Long memberId) {
+        try {
+            return ResponseEntity.ok(groupService.activeMember(groupId,memberId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+    }
+
 
     // Thêm bài viết vào nhóm
     @PostMapping("/{groupId}/posts")

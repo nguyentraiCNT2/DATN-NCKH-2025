@@ -35,6 +35,7 @@ public class GroupEntity {
     @Column(columnDefinition = "TEXT")
     private String groupCoverImage;
 
+    private boolean deleted;
 
 }
 
