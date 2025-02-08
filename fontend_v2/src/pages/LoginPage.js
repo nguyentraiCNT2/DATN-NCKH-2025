@@ -27,8 +27,15 @@ const LoginPage = () => {
                 localStorage.setItem('userId', response.data.userId);
                 localStorage.setItem('role', response.data.role);
                 console.log('Logged in successfully', token);
-
-                window.location.href = '/';
+                if(response.data.role === 'ROLE_SUPER_ADMIN'){
+                    window.location.href = '/supper/admin';
+                }else if(response.data.role === 'ROLE_ADMIN'){
+                    window.location.href = '/supper/admin';
+                }
+                else{
+                    window.location.href = '/';
+                }
+            
 
             }
         } catch (error) {

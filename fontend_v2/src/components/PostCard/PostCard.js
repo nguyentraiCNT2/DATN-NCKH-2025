@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './PostCard.module.css';
+
 const PostCard = ({ post }) => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -9,14 +9,14 @@ const PostCard = ({ post }) => {
   // State để quản lý số lượng ảnh và video hiển thị
   const [showAllImages, setShowAllImages] = useState(false);
   const [showAllVideos, setShowAllVideos] = useState(false);
-
+  const userId = Number(localStorage.getItem('userId')); // Chuyển đổi userId từ chuỗi thành số
   // Hàm toggle để hiển thị hoặc ẩn các ảnh, video còn lại
   const toggleImages = () => setShowAllImages(!showAllImages);
   const toggleVideos = () => setShowAllVideos(!showAllVideos);
   const getToken = () => {
     return localStorage.getItem('token') || '';
   };
-
+  const [showDeleteAction, setShowDeleteAction] = useState(false);
   const fetchLikesList = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/likes/list/post/${post.postId}`, {
@@ -142,30 +142,70 @@ const PostCard = ({ post }) => {
     localStorage.setItem('typeMedia', type);
     window.location.href = url;
   };
+  const handleActionUserProfile = (id) => {
+    if (id === userId) {
+      window.location.href = `/profile`;
+    } else {
+      window.location.href = `/friend/${id}`;
+    }
+  }
+  const handleActionGroupProfile = (id) => {
+
+    window.location.href = `/group/${id}`;
+
+  }
+  const handleHidenPost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/post/delete/${id}`, {}, {
+        headers: {
+          'Authorization': `Bearer ${getToken()}`
+        }
+      });
+      alert("Xóa bỏ bài viết thành công!")
+      window.location.reload();
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  };
   return (
-    <div>
+    <div className='post-item-container'>
 
       <div class="post" >
         {post?.groupId?.groupId ? (
           <div class="group-info">
             <div class="info-group">
               <img src={post?.groupId?.groupImage || '/img/avatar.png'}
-              alt={post?.groupId?.name} class="group-avatar-img" width="40px" />
+                alt={post?.groupId?.name} class="group-avatar-img" width="40px" onClick={() => handleActionGroupProfile(post.groupId.groupId)} />
             </div>
             <div class="info-member-group">
               <img src={post.user.profilePicture || '/img/avatar.png'}
-              alt={post.user.fullName} class="member-avatar-img" width="40px" />
+                alt={post.user.fullName} class="member-avatar-img" width="40px" onClick={() => handleActionUserProfile(post.user.userId)} />
             </div>
             <div class="info-user">
               <div>
-                <strong>{post?.groupId?.name}</strong>
+                <strong onClick={() => handleActionGroupProfile(post.groupId.groupId)}>{post?.groupId?.name}</strong>
                 <br />
-                <small class="member-name">{post.user.fullName}</small>
+                <small class="member-name" onClick={() => handleActionUserProfile(post.user.userId)}>{post.user.fullName}</small>
                 <br />
                 <small>{formatTime(post.createdAt)}</small>
               </div>
 
             </div>
+
+            {post.user.userId === userId && (
+
+              <div className='post-action-list' onClick={() => setShowDeleteAction(!showDeleteAction)}>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            )}
+
+
+
+            {showDeleteAction && (
+              <div className='post-action-delete' >
+                <button className='post-action-delete-button' onClick={() => handleHidenPost(post?.postId)}>xóa bỏ</button>
+              </div>
+            )}
           </div>
 
         ) : (
@@ -173,11 +213,27 @@ const PostCard = ({ post }) => {
           <div class="info">
             <img src={post.user.profilePicture || '/img/avatar.png'}
               alt={post.user.fullName}
-              class="avatar-img" width="40px" />
+              class="avatar-img" width="40px" onClick={() => handleActionUserProfile(post.user.userId)}/>
             <div class="info-user">
-              <strong>{post.user.fullName}  {post?.tagId ? ` - Đang cảm thấy ${post.tagId.name}` : ""}</strong>
+              <strong onClick={() => handleActionUserProfile(post.user.userId)}>{post.user.fullName}  {post?.tagId ? ` - Đang cảm thấy ${post.tagId.name}` : ""}</strong>
               <small>{formatTime(post.createdAt)}</small>
             </div>
+
+            {post.user.userId === userId && (
+
+              <div className='post-action-list' onClick={() => setShowDeleteAction(!showDeleteAction)}>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            )}
+
+
+
+            {showDeleteAction && (
+              <div className='post-action-delete' >
+                <button className='post-action-delete-button' onClick={() => handleHidenPost(post?.postId)}>xóa bỏ</button>
+              </div>
+            )}
+
           </div>
         )}
         <p class="content-text">{post.content}</p>

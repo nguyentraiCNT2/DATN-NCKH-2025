@@ -40,8 +40,7 @@ const HomePage = () => {
     
     return (
         <div>
-
-            <div class="container">
+            <div class="home-container">
                 <div class="sidebar">
                     <div class="sidebar-profile" onClick={() => handleacion('/profile')}>
                         <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Avatar" class="avatar-img" width="40px" />

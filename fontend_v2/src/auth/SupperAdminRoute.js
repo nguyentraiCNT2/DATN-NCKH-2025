@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from './useAuth';
 
-const AdminRoute = () => {
+const SupperAdminRoute = () => {
   const { isAuthenticated, loading, userRole, error } = useAuth();
 
   useEffect(() => {
@@ -13,12 +13,12 @@ const AdminRoute = () => {
 
   if (loading) {
     console.log('PrivateRoute isAuthenticated:', isAuthenticated); // Ghi lại trạng thái xác thực
-    console.log('PrivateRoute userRole:', userRole); // Ghi lại vai trò người dùng
+    console.log('supper Route userRole:', userRole); // Ghi lại vai trò người dùng
 
     if (!isAuthenticated) {
       return <Navigate to="/login" />;
     }
-    if (userRole === '[ROLE_USER]') {
+    if (userRole !== '[ROLE_SUPER_ADMIN]') {
       return <Navigate to="/403" />;
     }
     return <Outlet />;
@@ -27,4 +27,4 @@ const AdminRoute = () => {
   return null; // Trả về null khi chưa tải xong
 };
 
-export default AdminRoute;
+export default SupperAdminRoute;

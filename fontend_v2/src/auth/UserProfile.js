@@ -16,7 +16,7 @@ export const UserProfileFuntions = () => {
             setUserData(response.data);
     
         } catch (err) {
-            console.error('Error fetching user data:', err);
+            console.error('Error fetching user data:', err.response.data);
         }
     };
         useEffect(() => {

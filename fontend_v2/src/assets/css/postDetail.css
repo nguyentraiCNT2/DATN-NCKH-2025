@@ -103,8 +103,7 @@ gap: 1rem;
   padding: 10px 20px;
   width: 90%;
   max-height: 50vh;
-  overflow-y: scroll;
-  scrollbar-width: auto;
+  overflow-y: auto;
 
 }
 .comment-info{

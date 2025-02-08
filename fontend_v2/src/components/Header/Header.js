@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import './Header.module.css';
 import { UserProfileFuntions } from '../../auth/UserProfile';
 const Header = () => {
-    const {userData } = UserProfileFuntions();
+    const { userData } = UserProfileFuntions();
+    const [ketWord, setKeyWord] = useState('');
     const handleacion = () => {
-        window.location.href ='/';
+        window.location.href = '/';
     }
     const token = localStorage.getItem('token');
     // Xử lý khi người dùng nhấn Đăng xuất
@@ -25,15 +26,18 @@ const Header = () => {
             console.error("Error logging out:", error);
         }
     };
-  
+    const handleSearch = () => {
+        window.location.href = `/search/${ketWord}`;
+    }
+
     return (
         <div>
             <header class="main-header">
                 <div class="logo">
-                    <img src="/img/snapedit_1726661445269.png" alt="Logo" style= {{width: '50px'}} onClick={() => handleacion()} />
+                    <img src="/img/snapedit_1726661445269.png" alt="Logo" style={{ width: '50px' }} onClick={() => handleacion()} />
                     <div class="search">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm bài viết" />
-                        <button class="search-button">
+                        <input type="text" class="search-input" placeholder="Tìm kiếm người dùng" value={ketWord} onChange={(e) => setKeyWord(e.target.value)} />
+                        <button class="search-button" onClick={() => handleSearch()}>
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                                 <path
                                     d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
@@ -85,7 +89,19 @@ const Header = () => {
                         <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} class="avatar-img" alt="" width="40px" />
                         <div class="avatar-option">
                             <a href="/profile" class="profile-link">Trang cá nhân</a>
-
+                            {userData?.user?.roleId?.name === "ADMIN" && (
+                                <>
+                                   <a href="/admin" class="profile-link">Admin Settings</a>
+                                </>
+                         
+                            )}
+                            {userData?.user?.roleId?.name === "SUPER_ADMIN" && (
+                                <>
+                                   <a href="/admin" class="profile-link">Admin Settings</a>
+                                   <a href="/supper/admin" class="profile-link">Super Admin Settings</a>
+                                </>
+                         
+                            )}
                             <a href="" onClick={() => handleLogOut()} class="profile-link">Đăng xuất</a>
                         </div>
                     </div>

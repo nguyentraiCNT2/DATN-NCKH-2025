@@ -8,6 +8,7 @@ const FriendProfilePage = () => {
     const [error, setError] = useState('');
     const [userData, setUserData] = useState({});
     const [postsData, setPostsData] = useState([]);
+    const [reason, setReason] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [showModalPassword, setShowModalPassword] = useState(false);
     const [errorPost, setErrorPost] = useState(''); // Lưu thông báo lỗi
@@ -113,27 +114,27 @@ const FriendProfilePage = () => {
             console.error(error);
         }
     };
-    
-  const fetchMessageFriend = async () => {
-    try {
-      const url = `http://localhost:8080/messages/getroomfriend/${id}`;
 
-      const response = await axios.get(
-        url,
-        {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          }
+    const fetchMessageFriend = async () => {
+        try {
+            const url = `http://localhost:8080/messages/getroomfriend/${id}`;
+
+            const response = await axios.get(
+                url,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    }
+                }
+            );
+            localStorage.setItem('roomId', response.data.id);
+            localStorage.setItem('receiverId', id);
+            localStorage.setItem('messageUser', response.data.member1?.userId !== userId ? response.data.member1?.fullName : response.data.member2?.fullName);
+            window.location.href = '/message';
+        } catch (err) {
+            setError(err.response.data.error); // Hiển thị lỗi nếu có
         }
-      );
-      localStorage.setItem('roomId',response.data.id);
-      localStorage.setItem('receiverId',id);
-      localStorage.setItem('messageUser',response.data.member1?.userId !== userId ? response.data.member1?.fullName : response.data.member2?.fullName);
-      window.location.href='/message';
-    } catch (err) {
-      setError(err.response.data.error); // Hiển thị lỗi nếu có
-    }
-  };
+    };
     useEffect(() => {
         fetchUserData();
         fetchPosts();
@@ -152,6 +153,36 @@ const FriendProfilePage = () => {
         const year = date.getFullYear(); // Lấy năm
         return `${day}/${month}/${year}`; // Định dạng ngày tháng năm
     };
+
+    // Hàm xử lý khi người dùng nhấn nút "Lưu"
+    const handleSaveReport = async () => {
+        try {
+            // Tạo đối tượng GroupDTO để gửi lên API
+            const reportDTO = {
+                reason: reason,
+                user: {
+                    userId: id,
+                },
+            };
+
+            // Gọi API để cập nhật thông tin nhóm
+            const response = await axios.post(
+                `http://localhost:8080/report/send`,
+                reportDTO, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            }
+            );
+
+            // Hiển thị thông báo thành công
+            alert("Báo cáo tài khoản thành công!");
+            window.location.reload();
+        } catch (error) {
+            // Hiển thị thông báo lỗi nếu có lỗi xảy ra
+            alert("Có lỗi xảy ra khi báo cáo tài khoản.");
+        }
+    };
     return (
         <div>
             <div class="profile-info-contaiter">
@@ -162,7 +193,6 @@ const FriendProfilePage = () => {
                     <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Profile Picture" />
                     <div class="profile-detail">
                         <h2 class="profile-name">{userData.user?.fullName}</h2>
-                        <p class="profile-follower">111 người theo dõi</p>
                     </div>
                 </div>
                 <div class="profile-options">
@@ -192,6 +222,7 @@ const FriendProfilePage = () => {
 
                 <button onClick={() => handleContactPostAction('list-post')}>Bài viết</button>
                 <button onClick={() => handleContactPostAction('list-contact')}>Giới thiệu</button>
+                <button onClick={() => handleContactPostAction('report')}>Báo cáo</button>
             </div>
 
 
@@ -215,10 +246,7 @@ const FriendProfilePage = () => {
                         <div class="profile-content">
                             <div class="filter-post">
                                 <p>Bài viết</p>
-                                <div class="filter-post-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-120v-240h80v80h320v80H520v80h-80Zm-320-80v-80h240v80H120Zm160-160v-80H120v-80h160v-80h80v240h-80Zm160-80v-80h400v80H440Zm160-160v-240h80v80h160v80H680v80h-80Zm-480-80v-80h400v80H120Z" /></svg>
-                                    <p>Lọc</p>
-                                </div>
+
                             </div>
                             <div class="list-post">
                                 {postsData.length > 0 ? (
@@ -307,6 +335,24 @@ const FriendProfilePage = () => {
                         </div>
                     </div>
                 )}
+
+                {actionModel === 'report' && (
+                    <div className='list-member'>
+                        <strong >Cài đặt nhóm</strong>
+                        <div className='group-setting-input-groups' >
+                            <label className='group-setting-label'>Lý do</label>
+                            <input type="text"
+                                placeholder="Nhập lý do"
+                                className="group-setting-input"
+                                value={reason}
+                                onChange={(e) => setReason(e.target.value)} />
+                        </div>
+                        <button className='friend-report-save-button' onClick={() => handleSaveReport()} >Báo Cáo</button>
+                    </div>
+
+                )}
+
+
             </div>
         </div>
     );

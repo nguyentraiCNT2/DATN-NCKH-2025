@@ -22,7 +22,9 @@ const GroupList = () => {
             setLoading(false)
         }
     };
-
+    const handleacion = (id) =>{
+        window.location.href = `/group/${id}`;
+    }
     useEffect(() => {
         fetchGroups();
     }, []);
@@ -51,8 +53,8 @@ const GroupList = () => {
             {groups.length > 0 ? (
                 <ul>
                     {groups.map((group) => (
-                        <li key={group.id} className="sidebar-li">
-                            <img src={group.groupImage || "img/GroupImg2.png"} alt="" className="group-img" />
+                        <li key={group.id} className="sidebar-li" onClick={() => handleacion(group?.groupId)}>
+                            <img src={group.groupImage || "/img/avatar.png"} alt="" className="group-img" />
                             <p className="group-main-name">{group.name}</p>
                         </li>
                     ))}

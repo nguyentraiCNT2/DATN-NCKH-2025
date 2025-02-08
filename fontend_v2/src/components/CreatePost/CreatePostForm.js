@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { UserProfileFuntions } from '../../auth/UserProfile';
 const CreatePostForm = () => {
     const { id } = useParams(); // Lấy giá trị id từ URL
@@ -231,7 +231,7 @@ const CreatePostForm = () => {
                         Tạo bài đăng
                     </button>
 
-                    <button className="mt-3 float-right clear-post-button" onClick={handleClear}>Hủy</button>
+                    <button type="button"  className="mt-3 float-right clear-post-button" onClick={() => handleClear()}>Hủy</button>
                 </div>
 
             </form>

@@ -9,6 +9,7 @@
 }
 
 .post .info {
+  position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -363,5 +364,34 @@
   object-fit: cover;
 }
 .member-name{
+  font-weight: bold;
+}
+.post-item-container{
+  width: 100%;
+}
+.post-action-list{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0px 10px;
+  border-radius: 8px;
+
+}
+.post-action-list:hover{
+  background: #ddd;
+}
+.post-action-delete{
+  position: absolute;
+  top: 20px;
+  right: -20px;
+
+
+}
+.post-action-delete-button{
+  padding: 4px 15px;
+  background: #ff0000;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
   font-weight: bold;
 }

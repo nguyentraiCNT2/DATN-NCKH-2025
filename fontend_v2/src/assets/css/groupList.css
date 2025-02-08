@@ -64,6 +64,7 @@ body {
 }
 /* Namespace cụ thể cho phần group-post */
 .group-post-wrapper {
+    width: 100%;
     max-height: 88vh;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -149,4 +150,96 @@ outline: none;
     max-height: 90vh;
     overflow-y: scroll;
     scrollbar-width: none;
+}
+.list-member{
+    width: 70%;
+    max-height: 90vh;
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.member-content{
+    width: 100%;
+    max-height: 90vh;
+    padding: 30px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-between ;
+}
+.member-item{
+    width: 40%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius:8px;
+}
+
+.member-info{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.member-item-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.group-member-action-button{
+    border: none;
+    background: none;
+    color: red;
+    font-size: 14px;
+}
+.group-member-action-button:hover{
+    text-decoration: underline;
+}
+.group-setting-input-groups{
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    margin-bottom: 20px;
+
+}
+.group-setting-label{
+    width: 20%;
+    font-weight: bold;
+    border-right:1px solid #ddd ;
+
+}
+.group-setting-input{
+    width: 60%;
+    height: 40px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background: #ddd;
+    border: none;
+}
+.group-setting-input:focus{
+outline: none;
+
+}
+.group-setting-save-button{
+    border: none;
+    background: #01abda;
+    color: #fff;
+    width: 20%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+}
+.group-setting-save-button:hover{
+    background: #007494;
 }

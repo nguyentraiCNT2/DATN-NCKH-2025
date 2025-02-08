@@ -122,7 +122,7 @@ return (
                     friends.map(friend => (
                 <div class="friend-item">
                     <div class="friend-imgs">
-                        <img src={friend?.profilePicture || '/img/avatar.png'} alt="" class="friend-avatar" onClick={() => handleacion(friend?.friend?.userId)}/>
+                        <img src={friend?.profilePicture || '/img/avatar.png'} alt="" class="friend-avatar" onClick={() => handleacion(friend?.userId)}/>
                         
                     </div>
 

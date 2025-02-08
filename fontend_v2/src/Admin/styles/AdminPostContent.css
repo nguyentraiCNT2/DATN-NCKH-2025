@@ -1,0 +1,165 @@
+.admin-content {
+    padding: 40px 30px;
+    margin-left: 250px;
+    background-color: #f8f9fb;
+  }
+  
+  .admin-content h3 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .posts-table th,
+  .posts-table td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #e1e4e8;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .posts-table th {
+    background-color: #f4f6f9;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .posts-table td {
+    background-color: #fff;
+    color: #666;
+    transition: background-color 0.2s ease;
+  }
+  
+  .posts-table tr:hover td {
+    background-color: #f7f9fc;
+  }
+  
+  .posts-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .hide-btn {
+    padding: 8px 15px;
+    background-color: #ff6b6b !important;
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .hide-btn:hover {
+    background-color: #e74c3c;
+    transform: translateY(-2px);
+  }
+  
+  .hide-btn:active {
+    transform: translateY(1px);
+  }
+  
+  .hide-btn:focus {
+    outline: none;
+  }
+  
+  /* Phân trang */
+  .pagination-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #e1e4e8;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #dcdfe2;
+  }
+  
+  .pagination-btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+  }
+  .filter-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .filter-container input,
+  .filter-container select {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    width: 20%;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-container input:focus,
+  .filter-container select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .filter-container input::placeholder,
+  .filter-container select {
+    color: #aaa;
+  }
+  
+  /* Các phần còn lại của CSS không thay đổi */
+  
+  @media (max-width: 768px) {
+    .admin-content {
+      padding: 30px 15px;
+    }
+  
+    .posts-table th,
+    .posts-table td {
+      font-size: 12px;
+      padding: 12px;
+    }
+  
+    .pagination-btn {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  }
+  

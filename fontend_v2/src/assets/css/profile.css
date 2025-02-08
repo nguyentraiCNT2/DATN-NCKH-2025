@@ -234,7 +234,7 @@ background: linear-gradient(to bottom, black, white);
     text-decoration: none;
     background: #00c8ff;
     padding: 8px 10px;
-    color: #fff;
+    color: #fff !important;
     border-radius: 30px;
     font-weight: bold;
     
