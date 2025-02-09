@@ -269,7 +269,7 @@ const PostDetailPage = () => {
         <p class="detail-content-text">{post?.content}</p>
         <div class="post-detail-like-comment">
           <span>{formatLikes(likes)} lượt thích</span>
-          <span>103 Bình luận</span>
+          <span>{formatLikes(post?.totalComment ? post?.totalComment : 0)} Bình luận</span>
         </div>
         <div class="post-detail-actions">
           {liked ? (
@@ -319,7 +319,7 @@ const PostDetailPage = () => {
           <input type="text" placeholder="Aa" class="comment-input"   
            value={newComment}
             onChange={(e) => setNewComment(e.target.value)} />
-          <button class="comment-send-button" onClick={handleCommentSubmit}><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+          <button class="comment-send-button" onClick={() => handleCommentSubmit()}><svg xmlns="http://www.w3.org/2000/svg" height="24px"
             viewBox="0 -960 960 960" width="24px" fill="#000000">
             <path
               d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />

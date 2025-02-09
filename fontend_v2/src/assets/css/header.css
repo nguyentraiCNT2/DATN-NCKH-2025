@@ -132,7 +132,77 @@ body {
 
 @media screen and (max-width: 1024px) {}
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 900px) {
+  .navbar{
+    gap: 2px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notification-form {
+    width: 100%;
+  }
+  .main-header {
+    display: none;
+  }
+  .mobile-main-header {
+    display: block;
+    background: #fff;
+  }
+  body {
+    background: #fbfbfb;
+    font-family: Arial, sans-serif;
+    padding: 0;
+  }
+  .mobile-main-header {
+    display: block;
+    background: #fff;
+  }
+
+  .mobile-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-logo-title {
+    display: flex;
+  }
+
+  .mobile-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .mobile-title {
+    color: #31798f;
+  }
+
+  .mobile-searchbar-chat {
+    display: flex;
+    gap: 1rem;
+  }
+  .mobile-search-button{
+    padding: 5px 8px;
+    background: #ddd;
+    border-radius: 50%;
+  }
+  .mobile-chat-button{
+    padding: 5px 8px;
+    background: #ddd;
+    border-radius: 50%;
+  }
+  .mobile-bottom-header{
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mobile-navbar-link{
+    text-decoration: none;
+  }
+  
+}
 
 @media screen and (max-width: 480px) {
   .main-header {

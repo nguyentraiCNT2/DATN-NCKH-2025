@@ -30,7 +30,7 @@ const LoginPage = () => {
                 if(response.data.role === 'ROLE_SUPER_ADMIN'){
                     window.location.href = '/supper/admin';
                 }else if(response.data.role === 'ROLE_ADMIN'){
-                    window.location.href = '/supper/admin';
+                    window.location.href = '/admin';
                 }
                 else{
                     window.location.href = '/';
@@ -39,7 +39,7 @@ const LoginPage = () => {
 
             }
         } catch (error) {
-            setErrorMessage(error.response.data.error);
+            alert(error.response.data.error)
             console.error('Login error:', error);
         }
     };

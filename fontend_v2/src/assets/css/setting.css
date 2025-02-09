@@ -111,3 +111,15 @@ font-weight: bold;
 .unblock-user-button:hover{
     background: #a5a5a5;
 }
+@media screen and (max-width: 900px) {
+    .title-menu{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    .setting-action-name{
+        display: none;
+    }
+
+}

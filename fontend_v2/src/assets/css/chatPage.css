@@ -53,6 +53,7 @@ body {
 
 .chat-list {
     width: 20%;
+    height: 100vh;
     padding: 10px;
     background-color: #fff;
     border-right: 1px solid #ccc;
@@ -86,6 +87,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    width: 60%;
+    height: 100vh;
 }
 
 .chat-header {
@@ -114,7 +117,7 @@ body {
 .chat-messages {
     flex: 1;
     padding: 10px;
-    max-height: 540px;
+    max-height: 100vh;
     overflow-y: auto;
     display: flex;
     flex-direction: column; /* Đảm bảo các tin nhắn hiển thị theo chiều dọc */
@@ -155,6 +158,7 @@ body {
 }
 
 .chat-input {
+    width: 100%;
     flex: 1;
     padding: 10px 20px;
     margin: 0 10px;
@@ -297,4 +301,23 @@ gap: 1rem;
     
     align-items: center;
 
+}
+@media screen and (max-width: 1024px) {
+    .room-chat-name{
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) {
+    .acton-options{
+        align-items: center;
+        gap: 3rem;
+    }
+    .chat-action-options-name{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    .user-options{
+        display: none;
+    }
 }

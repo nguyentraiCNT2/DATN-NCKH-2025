@@ -114,7 +114,7 @@ const ListGroupPage = () => {
             <div class="group-container">
                 <div class="group-list">
                     <p class="group-title">Nhóm</p>
-                    <button  class="create-new-group-button" onClick={() => setViewCreateGroupForm(true)}>Tạo nhóm mới</button>
+                    <button  class="create-new-group-button" onClick={() => setViewCreateGroupForm(true)}><i class="fa-solid fa-plus"></i> <p className="create-new-group-button-name"> Tạo nhóm</p></button>
                     {viewCreateGroupForm && (
                         <div class="overlay">
                             <form class="create-group-form" onSubmit={handleCreateGroup}>

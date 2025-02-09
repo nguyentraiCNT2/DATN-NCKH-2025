@@ -29,6 +29,10 @@ body {
     font-weight: bold;
 }
 .create-new-group-button{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     background: #38b6ff;
     width: 100%;
@@ -243,3 +247,24 @@ outline: none;
 .group-setting-save-button:hover{
     background: #007494;
 }
+@media screen and (max-width: 700px) {
+    .group-post-title{
+      width: 100%;
+    }
+    .group-post-list{
+      width: 100%;
+    }
+    .group-post-wrapper .group-post {
+        padding: 10px 5%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .group-name{
+        display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .create-new-group-button-name{
+        display: none;
+    }
+  }

@@ -219,7 +219,7 @@ hr {
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 600px) {
-    .container {
+.login-container {
         display: none;
     }
     body{
@@ -267,7 +267,7 @@ hr {
     }
 
     .mobile-input-control {
-        width: 90%;
+        width: 100%;
         padding: 10px 15px;
         font-size: 16px;
         border: 1px solid #ccc;
@@ -283,7 +283,7 @@ hr {
     }
 
     .mobile-submit-control {
-        width: 104%;
+        width: 100%;
         padding: 10px 25px;
         font-size: 18px;
         font-weight: bold;
@@ -317,7 +317,7 @@ hr {
     }
 
     .mobile-title-register {
-        width: 86%;
+        width: 100%;
         margin-top: 15px;
         text-align: center;
         padding: 10px 20px ;
@@ -389,7 +389,7 @@ hr {
     }
 
     .mobile-input-control {
-        width: 90%;
+        width: 100%;
         padding: 10px 15px;
         font-size: 16px;
         border: 1px solid #ccc;
@@ -405,7 +405,7 @@ hr {
     }
 
     .mobile-submit-control {
-        width: 104%;
+        width: 100%;
         padding: 10px 25px;
         font-size: 18px;
         font-weight: bold;
@@ -439,7 +439,7 @@ hr {
     }
 
     .mobile-title-register {
-        width: 86%;
+        width: 100%;
         margin-top: 15px;
         text-align: center;
         padding: 10px 20px ;

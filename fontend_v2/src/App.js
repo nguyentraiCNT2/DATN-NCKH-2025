@@ -62,13 +62,14 @@ function App() {
               <Route path="/list-group" element={<ListGroupPage />} />
               <Route path="/group/:id" element={<GroupProfilePage />} />
               <Route path="/list-friend" element={<ListFriendPage />} />
-              <Route path="/list-follow" element={<ListFollowPage />} />
+           
               <Route path="/list-follower" element={<ListFollowerPage />} />
               <Route path="/message" element={<ChatPage />} />
               <Route path="/setting" element={<SettingPage />} />
               <Route path="/notification" element={<NotificationPage />} />
               <Route path="/search/:keyword" element={<SearchUserPage />} />
             </Route>
+            <Route path="/list-follow" element={<ListFollowPage />} />
             <Route element={<AdminRoute />}>
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/post" element={<AdminPostList />} />
