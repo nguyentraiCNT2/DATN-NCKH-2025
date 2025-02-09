@@ -67,7 +67,8 @@ public class CommentServiceImpl implements CommentService {
             commentEntity.setUser(user);
             commentEntity.setPost(post);
             CommentEntity savedComment = commentRepository.save(commentEntity);
-
+            post.setTotalComment(post.getTotalComment() +1L);
+            postRepository.save(post);
             NotificationEntity notificationEntity = new NotificationEntity();
             String content = user.getFullName()+" đã bình luận trong bài viết "+post.getContent()+" của bạn";
             notificationEntity.setContent(content);

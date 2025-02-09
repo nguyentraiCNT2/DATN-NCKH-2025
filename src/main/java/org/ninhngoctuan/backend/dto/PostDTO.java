@@ -28,6 +28,8 @@ public class PostDTO {
     private String relationship;
     private String nickName;
     private String description;
+
+    private Long totalComment = 0L;
     public Long getPostId() {
         return postId;
     }
@@ -146,5 +148,13 @@ public class PostDTO {
 
     public void setGroupId(GroupDTO groupId) {
         this.groupId = groupId;
+    }
+
+    public Long getTotalComment() {
+        return totalComment;
+    }
+
+    public void setTotalComment(Long totalComment) {
+        this.totalComment = totalComment;
     }
 }

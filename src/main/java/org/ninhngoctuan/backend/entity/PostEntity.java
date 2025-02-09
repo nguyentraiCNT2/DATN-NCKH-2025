@@ -36,6 +36,7 @@ public class PostEntity {
     private GroupEntity groupId;
     private Long totalLike = 0L;
     private boolean isDeleted = false;
+    private Long totalComment = 0L;
 
     public Long getPostId() {
         return postId;
@@ -125,5 +126,11 @@ public class PostEntity {
         this.groupId = groupId;
     }
 
+    public Long getTotalComment() {
+        return totalComment;
+    }
 
+    public void setTotalComment(Long totalComment) {
+        this.totalComment = totalComment;
+    }
 }
