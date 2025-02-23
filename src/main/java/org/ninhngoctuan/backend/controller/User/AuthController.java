@@ -171,7 +171,7 @@ public ResponseEntity<?> ResendEmail (@RequestParam("email") String email){
 
     @PostMapping("/resetpassword")
     public ResponseEntity<?> resetPassword(@RequestParam("email") String email, @RequestParam("newPassword") String newPassword,
-                                           @RequestParam("String") String confirmPassword) {
+                                           @RequestParam("confirmPassword") String confirmPassword) {
         try {
             boolean reset = userService.resetPassword(email,newPassword,confirmPassword);
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("message", reset));
@@ -180,6 +180,28 @@ public ResponseEntity<?> ResendEmail (@RequestParam("email") String email){
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("error", e.getMessage()));
         }
     }
+
+    @PostMapping("/password/resendEmail")
+    public ResponseEntity<?> ResendEmailFotGetPassword(@RequestParam("email") String email){
+        try {
+            userService.reSendEmailForgetPassword(email);
+            return ResponseEntity.ok().body("Đã gửi lại mã xác thực");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+    @PostMapping("/active-email-for-get-password")
+    public ResponseEntity<?> ActiveEmailFotGetPassword(@RequestBody PasswordResetDTO passwordResetDTO){
+        try {
+            userService.activeEmailForgetPassword(passwordResetDTO);
+            return ResponseEntity.ok().body("Đã gửi lại mã xác thực");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+
 
     @PostMapping("/identify")
     public ResponseEntity<?> identifyPassword(@RequestBody PasswordResetDTO passwordResetDTO) {

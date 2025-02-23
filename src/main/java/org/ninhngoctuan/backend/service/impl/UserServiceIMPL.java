@@ -113,7 +113,7 @@ public class UserServiceIMPL implements UserService {
             String code  = RandomId.generateMKC2(6);
             String to = userDTO.getEmail();
             String subject = "Xác thực email đăng ký ";
-            String body = TemplateConfig.TEMPLATE_PASSWORD_FOR_GET.replace("{{otp_code}}", code);
+            String body = TemplateConfig.TEMPALTE_EMAIL_VARIFIED.replace("{{otp_code}}", code);
 
                 UserEntity userEntity  = modelMapper.map(userDTO, UserEntity.class);
                 EmailActiveEntity entity = new EmailActiveEntity();
@@ -136,10 +136,7 @@ public class UserServiceIMPL implements UserService {
             String code  = RandomId.generateMKC2(6);
             String to = user.getEmail();
             String subject = "Xác thực email đăng ký ";
-            String emailbody = "Tài khoản của bạn có email là: " + user.getEmail();
-            String core = "Đây là mã xác thực của bạn: " + code;
-            String bottom = "Xin cảm ơn!";
-            String body = emailbody + ". \n" + core + ". \n" + bottom;
+            String body = TemplateConfig.TEMPALTE_EMAIL_VARIFIED.replace("{{otp_code}}", code);
 
             EmailActiveEntity entity = new EmailActiveEntity();
             entity.setEmail(user.getEmail());
@@ -174,7 +171,6 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public UserDTO info(String username) {
-
         UserEntity userEntity = userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("Tài khoản không tồn tại"));
      UserDTO userDTO =  modelMapper.map(userEntity, UserDTO.class);
         userDTO.setPassword(null);
@@ -183,17 +179,12 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public UserDTO foGetPasword(String username) {
-        UserEntity userEntity;
-        if (username.contains("@")) {
-            userEntity = userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("Tài khoản không tồn tại"));
-        } else {
-            userEntity = userRepository.findByPhone(username);
-        }
-
+        UserEntity  userEntity = userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("Tài khoản không tồn tại"));
         if (userEntity == null) {
             throw new UsernameNotFoundException("Tài khoản không tồn tại");
         }
         UserDTO dto = modelMapper.map(userEntity,UserDTO.class);
+        sendEmailForgetPassword(dto);
         return dto;
     }
 
@@ -203,7 +194,7 @@ public class UserServiceIMPL implements UserService {
 
             if (newPassword == null || newPassword=="")
                 throw new RuntimeException("Mật khẩu không thể để trống");
-             if (confirmPassword == null || confirmPassword=="")
+             if (confirmPassword == null || confirmPassword == "")
                 throw new RuntimeException("Bạn chưa xác nhận mật khẩu");
             if (!newPassword.equals(confirmPassword))
                 throw new RuntimeException("Mật khẩu không trùng khớp");
@@ -215,21 +206,72 @@ public class UserServiceIMPL implements UserService {
                 throw  new RuntimeException("Mật khẩu phải chứa chữ hoa, chữ thường và số");
             if (newPassword.contains(" "))
                 throw new RuntimeException("Mật khẩu không thể chứa khoảng trắng");
-            String code  = RandomId.generateMKC2(6);
-            String subject = "Xác thực email đăng ký ";
-            String body = TemplateConfig.TEMPLATE_PASSWORD_FOR_GET.replace("{{otp_code}}", code);
-            Boolean test = SendCodeByEmail.sendEmail(email, subject, body);
-            if (test ==true){
-                String hashPassword =  BCrypt.hashpw(newPassword, BCrypt.gensalt());
-                PasswordResetEntity passwordReset = new PasswordResetEntity();
-                passwordReset.setEmail(email);
-                passwordReset.setPassword(hashPassword);
-                passwordResetRepository.save(passwordReset);
-                return true;
-            }
-          return false;
+            UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng"));
+            user.setPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt()));
+            userRepository.save(user);
+          return true;
 
         }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean sendEmailForgetPassword(UserDTO userDTO) {
+        try {
+            String code  = RandomId.generateMKC2(6);
+            String to = userDTO.getEmail();
+            String subject = "Xác thực email quên mật khẩu ";
+            String body = TemplateConfig.TEMPLATE_PASSWORD_FOR_GET.replace("{{otp_code}}", code);
+
+            UserEntity userEntity  = modelMapper.map(userDTO, UserEntity.class);
+            PasswordResetEntity entity = new PasswordResetEntity();
+            entity.setEmail(userDTO.getEmail());
+            entity.setOtp(code);
+            entity.setPassword(userEntity.getPassword());
+
+            passwordResetRepository.save(entity);
+
+            new Thread (() -> sendEmailAsync (to, subject, body, code)).start ();
+            return true;
+        }catch (Exception e){
+            throw new RuntimeException("Có lỗi sảy ra: "+e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean reSendEmailForgetPassword(String email) {
+        try {
+            UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Không tìm thấy tài khoản"));
+            String code  = RandomId.generateMKC2(6);
+            String to = user.getEmail();
+            String subject = "Xác thực email quên mật khẩu ";
+            String body = TemplateConfig.TEMPLATE_PASSWORD_FOR_GET.replace("{{otp_code}}", code);
+            PasswordResetEntity entity = new PasswordResetEntity();
+            entity.setEmail(user.getEmail());
+            entity.setOtp(code);
+            entity.setPassword(user.getPassword());
+            passwordResetRepository.save(entity);
+
+            new Thread (() -> sendEmailAsync (to, subject, body, code)).start ();
+            return true;
+        }catch (Exception e){
+            throw new RuntimeException("Có lỗi sảy ra: "+e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean activeEmailForgetPassword(PasswordResetDTO passwordResetDTO) {
+        try {
+            List<PasswordResetEntity> passwordResetEntities = passwordResetRepository.findByEmail(passwordResetDTO.getEmail());
+            passwordResetEntities.stream()
+                    .filter(passwordResetEntity -> passwordResetEntity.getOtp().equals(passwordResetDTO.getPassword()))
+                    .forEach(passwordResetEntity -> {
+                        UserEntity user = userRepository.findByEmail(passwordResetEntity.getEmail())
+                                .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng có email: "+ passwordResetEntity.getEmail()));
+                    });
+            return true;
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }

@@ -14,7 +14,7 @@ import java.util.List;
 public class LikeController {
     @Autowired
     private LikeService  likeService;
-    @GetMapping("list/post/{postId}")
+    @GetMapping("/list/post/{postId}")
     public ResponseEntity<?> ListLikeByPost(@PathVariable Long postId) {
         try {
             List<LikeDTO> likeDTOS = likeService.getLikesByPost(postId);

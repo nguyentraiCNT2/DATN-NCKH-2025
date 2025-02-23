@@ -456,7 +456,6 @@ public class PostServiceImpl implements PostService {
         List<PostEntity> postEntities = postRepository.findByUserOrderByCreatedAtDesc(user);
         List<PostDTO> list = new ArrayList<>();
         postEntities.stream()
-                .filter(postEntity -> postEntity.getGroupId().isDeleted() != true)
                 .filter(postEntity -> !postEntity.isDeleted())
                 .forEach(postEntity -> {
                     PostDTO postDTO = modelMapper.map(postEntity, PostDTO.class);
@@ -542,6 +541,36 @@ public class PostServiceImpl implements PostService {
         try {
             PostEntity post = postRepository.findByPostId(id).orElseThrow(() -> new RuntimeException("Không tìm thầy bài viết"));
             return modelMapper.map(post, PostDTO.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<PostDTO> getAllOrderByTotalLikeDesc() {
+        try {
+            List<PostDTO> list = new ArrayList<>();
+            List<PostEntity> postEntities = postRepository.findByAllOrderByTotalLikeDesc();
+            postEntities.forEach(postEntity -> {
+                PostDTO postDTO = modelMapper.map(postEntity, PostDTO.class);
+                list.add(postDTO);
+            });
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<PostDTO> getAllOrderByTotalCommentDesc() {
+        try {
+            List<PostDTO> list = new ArrayList<>();
+            List<PostEntity> postEntities = postRepository.findByAllOrderByTotalCommentDesc();
+            postEntities.forEach(postEntity -> {
+                PostDTO postDTO = modelMapper.map(postEntity, PostDTO.class);
+                list.add(postDTO);
+            });
+            return list;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

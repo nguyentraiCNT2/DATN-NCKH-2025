@@ -26,4 +26,22 @@ public class AdminPostController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @GetMapping("/get-all-order-by-total-like")
+    public ResponseEntity<?> getAllByTotalLike() {
+        try {
+            List<PostDTO> list = postService.getAllOrderByTotalLikeDesc();
+            return ResponseEntity.ok(list);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    @GetMapping("/get-all-order-by-total-comment")
+    public ResponseEntity<?> getAllByTotalComment() {
+        try {
+            List<PostDTO> list = postService.getAllOrderByTotalCommentDesc();
+            return ResponseEntity.ok(list);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

@@ -25,4 +25,6 @@ public interface PostService {
     List<PostImagesDTO> getPostImages(Long id);
     List<PostVideoDTO> getPostVideos(Long id);
     PostDTO getById(Long id);
+    List<PostDTO> getAllOrderByTotalLikeDesc();
+    List<PostDTO> getAllOrderByTotalCommentDesc();
 }

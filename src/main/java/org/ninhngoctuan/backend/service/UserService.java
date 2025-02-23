@@ -13,6 +13,9 @@ public interface UserService {
     boolean activeEmail(EmailActiveDTO emailActiveDTO);
     UserDTO info(String username);
     UserDTO foGetPasword(String username);
+    boolean sendEmailForgetPassword(UserDTO userDTO);
+    boolean reSendEmailForgetPassword(String email);
+    boolean activeEmailForgetPassword(PasswordResetDTO passwordResetDTO);
     boolean resetPassword(String email,String newPassword, String confirmPassword);
     UserDTO identifyPassword(PasswordResetDTO passwordResetDTO);
     ProfileDTO me();

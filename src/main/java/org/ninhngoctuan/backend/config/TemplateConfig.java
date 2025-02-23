@@ -108,7 +108,7 @@ public class TemplateConfig {
                             "    <div class=\"card\">\n" +
                             "        <div class=\"top-section\">\n" +
                             "            <div class=\"border\">\n" +
-                            "                Đại học Nguyễn Trãi\n" +
+                            "                NTU\n" +
                             "            </div>\n" +
                             "        </div>\n" +
                             "        <div class=\"bottom-section\">\n" +
@@ -118,7 +118,6 @@ public class TemplateConfig {
                             "            </p>\n" +
                             "            <div class=\"otp-code\">{{otp_code}}</div>\n" +
                             "\n" +
-                            "            <p class=\"expiry\">Mã này sẽ hết hạn trong 5 phút. Nếu bạn không yêu cầu, vui lòng bỏ qua email này.</p>\n" +
                             "        </div>\n" +
                             "        <div class=\"email-footer\">© 2024 Your Company. All rights reserved.</div>\n" +
                             "    </div>\n" +
@@ -232,7 +231,7 @@ public class TemplateConfig {
                             "    <div class=\"card\">\n" +
                             "        <div class=\"top-section\">\n" +
                             "            <div class=\"border\">\n" +
-                            "                Đại học Nguyễn Trãi\n" +
+                            "                NTU\n" +
                             "            </div>\n" +
                             "        </div>\n" +
                             "        <div class=\"bottom-section\">\n" +
@@ -242,7 +241,6 @@ public class TemplateConfig {
                             "            </p>\n" +
                             "            <div class=\"otp-code\">{{otp_code}}</div>\n" +
                             "\n" +
-                            "            <p class=\"expiry\">Mã này sẽ hết hạn trong 5 phút. Nếu bạn không yêu cầu, vui lòng bỏ qua email này.</p>\n" +
                             "        </div>\n" +
                             "        <div class=\"email-footer\">© 2024 Your Company. All rights reserved.</div>\n" +
                             "    </div>\n" +
