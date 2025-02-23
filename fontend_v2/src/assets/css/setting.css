@@ -118,6 +118,9 @@ font-weight: bold;
 
 }
 @media screen and (max-width: 768px) {
+    .sidebar-profile-name{
+        display: none;
+    }
     .setting-action-name{
         display: none;
     }

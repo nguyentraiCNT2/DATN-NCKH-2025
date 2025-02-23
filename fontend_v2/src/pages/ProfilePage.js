@@ -158,7 +158,6 @@ const ProfilePage = () => {
                 <button onClick={() => handleContactPostAction('list-contact')}>Giới thiệu</button>
             </div>
 
-
             <div class="post-area">
                 {actionModel === 'list-post' && (
                     <>

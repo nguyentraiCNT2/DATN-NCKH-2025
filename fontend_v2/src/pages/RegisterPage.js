@@ -73,7 +73,7 @@ const RegisterPage = () => {
     };
 
     const handleResendEmail = async (e) => {
-        e.preventDefault();
+
         try {
             const response = await axios.post(
                 `http://localhost:8080/auth/resendEmail?email=${email}`,
@@ -98,7 +98,7 @@ const RegisterPage = () => {
         <div>
             <div className="login-container">
                 <div className="login-bg">
-                    <img src="/img/NTU.png" alt="" className="login-bg-img" />
+                    <img src="https://naict.tttt.nghean.gov.vn/uploads/news/2024/02/anhbaimangxh.jpg" alt="" className="login-bg-img" />
                 </div>
                 <div className="login-from-group">
                     <div className="logo-title">
@@ -137,7 +137,7 @@ const RegisterPage = () => {
                                 placeholder="Nhập mã 6 số"
                                 value={otp}
                                 onChange={(e) => setOtp(e.target.value)} />
-                            <button class="resend-button" onClick={() => handleResendEmail()}>Gửi lại </button>
+                            <a class="resend-button" onClick={() => handleResendEmail()}>Gửi lại </a>
                         </div>
                         <input type='submit' class="verification-button" value="Xác nhận" />
                     </form>

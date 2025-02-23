@@ -1,10 +1,12 @@
-import '../../assets/css/setting.css';
-import UpdateProfileComponent from '../../components/Setting/Profile/UpdateProfileComponent';
-import SecurityProfile from '../../components/Setting/Profile/SecurityProfile';
-import BlockList from '../../components/Setting/Profile/BlockList';
-import React, { useState } from 'react';
 import axios from 'axios';
+import React, { useState } from 'react';
+import '../../assets/css/setting.css';
+import BlockList from '../../components/Setting/Profile/BlockList';
+import SecurityProfile from '../../components/Setting/Profile/SecurityProfile';
+import UpdateProfileComponent from '../../components/Setting/Profile/UpdateProfileComponent';
+import { UserProfileFuntions } from '../../auth/UserProfile';
 const SettingPage = () => {
+ const {userData} = UserProfileFuntions();
     const token = localStorage.getItem('token');
     const [actionSettingMenu, setActionSettingMenu] = useState('info');
     const handleChangeSettingMenu = (type) => {
@@ -26,6 +28,14 @@ const SettingPage = () => {
             console.error("Error logging out:", error);
         }
     };
+    const handleacion = (link) => {
+        if(link === '/list-friend'){
+            window.location.href = '/list-friend';
+        }else{
+            window.location.href = '/profile';
+        }
+
+    }
     return (
         <div className="setting-container">
             <div className="setting-menu">
@@ -34,6 +44,10 @@ const SettingPage = () => {
                     <p style={{ textAlign: 'left', padding: '10px' }}>
                         Quản lý các cài đặt tài khoản và trải nghiệm kết nối trên nền tảng của chúng tôi, giúp bạn dễ dàng sử dụng và đồng bộ hóa các tính năng trong ứng dụng mạng xã hội dành cho sinh viên Nguyễn Trãi.</p>
                 </div>
+                <div class="sidebar-profile" onClick={() => handleacion('/profile')}>
+                        <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Avatar" class="avatar-img" width="40px" />
+                        <strong class="sidebar-profile-name">{userData?.user?.fullName}</strong>
+                    </div>
                 <div className="setting-menu-item" onClick={() => handleChangeSettingMenu('info')}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M400-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM80-160v-112q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-8 18-13.5 37.5T404-360h-4q-71 0-127.5 18T180-306q-9 5-14.5 14t-5.5 20v32h252q6 21 16 41.5t22 38.5H80Zm560 40-12-60q-12-5-22.5-10.5T584-204l-58 18-40-68 46-40q-2-14-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628-460l12-60h80l12 60q12 5 22.5 11t21.5 15l58-20 40 70-46 40q2 12 2 25t-2 25l46 40-40 68-58-18q-11 8-21.5 13.5T732-180l-12 60h-80Zm40-120q33 0 56.5-23.5T760-320q0-33-23.5-56.5T680-400q-33 0-56.5 23.5T600-320q0 33 23.5 56.5T680-240ZM400-560q33 0 56.5-23.5T480-640q0-33-23.5-56.5T400-720q-33 0-56.5 23.5T320-640q0 33 23.5 56.5T400-560Zm0-80Zm12 400Z" /></svg>
                     <p className='setting-action-name'>Thông tin cá nhân</p>

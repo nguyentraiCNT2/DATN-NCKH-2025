@@ -112,7 +112,7 @@ const Header = () => {
             <header class="mobile-main-header">
                 <div class="mobile-top-header">
                     <div class="mobile-logo-title">
-                        <img src="img/snapedit_1726661445269.png" alt="mobile logo" class="mobile-logo" />
+                        <img src="/img/snapedit_1726661445269.png" alt="mobile logo" class="mobile-logo" />
                         <p class="mobile-title">Connectia</p>
                     </div>
                     <div class="mobile-searchbar-chat">

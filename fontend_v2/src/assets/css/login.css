@@ -6,6 +6,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #fff;
 }
 .mobile-login-container{
     display: none;
@@ -13,7 +14,7 @@ body {
 .login-bg {
     position: relative;
     width: 50%;
-    height: 97vh; /* Chiều cao toàn bộ màn hình */
+    height:100vh; /* Chiều cao toàn bộ màn hình */
     overflow: hidden;
 }
 

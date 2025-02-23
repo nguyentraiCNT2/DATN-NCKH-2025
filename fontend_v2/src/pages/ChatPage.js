@@ -152,7 +152,6 @@ const ChatPage = () => {
             <div class="chat-container">
                 <div class="chat-body">
                     <aside class="chat-list">
-                        <h2>Đoạn chat</h2>
                         {/* <div class="chat-search">
                             <input type="text" class="chat-search-input" placeholder="Tìm kiếm đoạn chat" />
                             <button class="chat-search-submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px"

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import "./../styles/AdminPostContent.css";
 import axios from "axios";
-function AdminPostContent() {
+import React, { useEffect, useState } from "react";
+import "./../styles/AdminPostContent.css";
+function AdminListPostByCommentContent() {
     // Dữ liệu mẫu về bài viết
     const [posts, setPosts] = useState([]);
     const token = localStorage.getItem('token');
     const fetchAllPost = async () => {
         try {
-            const url = 'http://localhost:8080/admin/posts/get-all'; // Hiển thị tất cả
+            const url = 'http://localhost:8080/admin/posts/get-all-order-by-total-comment'; // Hiển thị tất cả
 
             const response = await axios.get(url, {
                 headers: {
@@ -118,6 +118,9 @@ function AdminPostContent() {
         if (!url) return;
         window.open(url, "_blank"); // Mở tab mới
     };
+    const linkpage = (url) =>{
+        window.location.href = url;
+    }
     const formatLikes = (likes) => {
         if (likes >= 1_000_000_000) {
           return (likes / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
@@ -157,7 +160,7 @@ function AdminPostContent() {
                     value={search.time}
                     onChange={handleSearchChange}
                 />
-                <select
+                {/* <select
                     name="hidden"
                     value={search.hidden}
                     onChange={handleSearchChange}
@@ -165,7 +168,7 @@ function AdminPostContent() {
                     <option value="all">All</option>
                     <option value="true">Hidden</option>
                     <option value="false">Visible</option>
-                </select>
+                </select> */}
 
             </div>
 
@@ -181,7 +184,6 @@ function AdminPostContent() {
                         <th>Group</th>
                         <th>Time</th>
                         <th>view</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -190,7 +192,7 @@ function AdminPostContent() {
                             <td>{indexOfFirstPost + index + 1}</td>
                             <td>{post.content}</td>
                             <td>{post?.user?.fullName}</td>
-                            <td>{formatLikes(post.totalLike)} lượt thích</td>
+                            <td> {formatLikes(post.totalLike)} lượt thích</td>
                             <td>{formatLikes(post?.totalComment ? post?.totalComment : 0)} bình luận</td>
                             <td>{post?.groupId?.name}</td>
                             <td>{formatTime(post?.createdAt)}</td>
@@ -198,9 +200,9 @@ function AdminPostContent() {
                                 <button className="hide-btn" onClick={() => openNewPage(`http://localhost:3000/post/${post?.postId}`)}>
                                     xem
                                 </button>
-
                             </td>
-                            <td>
+                           
+                            {/* <td>
                                 {post?.deleted === true ? (
 
                                     <button
@@ -218,7 +220,7 @@ function AdminPostContent() {
                                     </button>
                                 )}
 
-                            </td>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>
@@ -261,4 +263,4 @@ function AdminPostContent() {
     );
 }
 
-export default AdminPostContent;
+export default AdminListPostByCommentContent;

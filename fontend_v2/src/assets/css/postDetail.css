@@ -1,86 +1,100 @@
 body {
-    background: #fbfbfb;
-    font-family: Arial, sans-serif;
-  }
-  .post-detail-content{
-    display: flex;
-    height: 90vh;
-    justify-content: center;
-  }
-  .post-detail-img{
+  background: #fbfbfb;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-    width: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-color: rgba(0, 0, 0, 0.337); /* Màu đen với 50% độ trong suốt */
-  }
-  .main-post{
-    width: 80%;
-    padding: 20px;
-    height: 82vh;
-    align-items: center;
-    justify-content: center;
-  }
-  .list-second-post{
-    width: 15%;
-    height: 79vh;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    padding: 10px 20px;
-    margin-top: 20px;
+/* Desktop styles */
+.post-detail-content {
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+}
 
-    border-left:1px solid #fff ;
-  }
-  .main-post-img{
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-    
-  }
-  .second-post-img{
-    width: 100%;
-    border-radius: 8px;
-  }
-  .main-post-video{
-    width: 100%;
-  }
-  .second-post-video{
-    width: 100%;
-    border-radius: 8px;
-  }
-.detail-info{
+.post-detail-img {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.337);
+}
+
+.main-post {
+  width: 80%;
+  padding: 20px;
+  height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-second-post {
+  width: 15%;
+  height: 79vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-left: 1px solid #fff;
+}
+
+.main-post-img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.second-post-img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.main-post-video {
+  width: 100%;
+}
+
+.second-post-video {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.detail-info {
   display: flex;
   gap: 1rem;
 }
-.post-detail-info{
-  width: 30%;
-  padding: 10px 10px;
-}
-.detail-info-user{
 
- width: 50%;
-  
+.post-detail-info {
+  width: 30%;
+  padding: 10px;
 }
-.detail-avatar-img{
+
+.detail-info-user {
+  width: 50%;
+}
+
+.detail-avatar-img {
   border-radius: 50%;
   height: 40px;
   object-fit: cover;
 }
-.detail-content-text{
+
+.detail-content-text {
   width: 90%;
   height: auto;
   max-height: 30vh;
-  padding: 10px 10px;
+  padding: 10px;
 }
-.post-detail-like-comment{
+
+.post-detail-like-comment {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 10px;
+  padding: 10px;
 }
-.post-detail-actions{
+
+.post-detail-actions {
   width: 100%;
   display: flex;
   height: 40px;
@@ -91,44 +105,48 @@ body {
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
 }
-.detail-action-item{
+
+.detail-action-item {
   padding: 5px 10px;
-display: flex;
-gap: 1rem;
+  display: flex;
+  gap: 1rem;
   align-items: center;
-  justify-content: space-between;
-  
 }
-.detail-list-comment{
+
+.detail-list-comment {
   padding: 10px 20px;
   width: 90%;
   max-height: 50vh;
   overflow-y: auto;
+}
 
-}
-.comment-info{
+.comment-info {
   width: 100%;
-  padding: 10px 10px;
+  padding: 10px;
 }
-.comment-info-user{
+
+.comment-info-user {
   display: flex;
   gap: 1rem;
 }
-.comment-content{
+
+.comment-content {
   width: 80%;
   border-radius: 20px;
   padding: 10px 15px;
   background: #ddd;
   max-width: 90%;
   font-size: 14px;
-  word-wrap: break-word; /* Hỗ trợ xuống dòng khi từ quá dài */
+  word-wrap: break-word;
 }
-.comment-time{
+
+.comment-time {
   width: 90%;
   padding-left: 15%;
   padding-top: 10px;
 }
-.create-comment-group{
+
+.create-comment-group {
   width: 90%;
   display: flex;
   gap: 1rem;
@@ -136,7 +154,8 @@ gap: 1rem;
   align-items: center;
   justify-content: center;
 }
-.comment-input{
+
+.comment-input {
   width: 70%;
   height: 40px;
   padding: 5px 10px;
@@ -144,10 +163,83 @@ gap: 1rem;
   border-radius: 20px;
   background: #ddd;
 }
-.comment-input:focus{
+
+.comment-input:focus {
   outline: none;
 }
-.comment-send-button{
+
+.comment-send-button {
   border: none;
   background: none;
+}
+
+/* Responsive styles cho màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+  .post-detail-content {
+    flex-direction: column;
+    height: auto;
+  }
+  .post-detail-img,
+  .post-detail-info {
+    width: 100%;
+  }
+  .post-detail-img {
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .main-post {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  /* Chuyển list-second-post thành thanh scroll ngang */
+  .list-second-post {
+    width: 100%;
+    max-height: 10vh;
+    display: flex;
+    overflow-x: scroll;
+    padding: 10px;
+    margin-top: 0.5rem;
+    border-left: none;
+    border-top: 1px solid #fff;
+  }
+  .list-second-post .second-post {
+    width: auto;
+
+    margin-right: 10px;
+  }
+  .post-detail-info {
+    padding: 10px;
+  }
+  .detail-content-text {
+    width: 100%;
+  }
+
+  .post-detail-actions {
+    gap: 0.5rem;
+    height: auto;
+  }
+  .detail-list-comment {
+    max-height: 30vh;
+  }
+  .create-comment-group {
+    gap: 0.5rem;
+  }
+  .comment-input {
+    width: 100%;
+  }
+}
+
+/* Các điều chỉnh thêm cho màn hình rất nhỏ (ví dụ dưới 480px) */
+@media (max-width: 480px) {
+  .detail-avatar-img {
+    height: 30px;
+  }
+  .comment-input {
+    height: 35px;
+  }
+  .post-detail-actions {
+    gap: 0.5rem;
+  }
 }

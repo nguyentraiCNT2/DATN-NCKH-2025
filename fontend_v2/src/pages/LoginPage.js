@@ -49,7 +49,7 @@ const LoginPage = () => {
 
             <div class="login-container">
                 <div class="login-bg">
-                    <img src="/img/NTU.png" alt="" class="login-bg-img" />
+                    <img src="https://naict.tttt.nghean.gov.vn/uploads/news/2024/02/anhbaimangxh.jpg" alt="" class="login-bg-img" />
                 </div>
                 <div class="login-from-group">
                     <div class="logo-title">
@@ -63,7 +63,7 @@ const LoginPage = () => {
                                 <input type="password" placeholder="Mật khẩu " class="input-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 <input type="submit" value="Đăng nhập" class="submit-control" />
                                 <div class="fogotpassword">
-                                    <a href="#" class="fogotpassword-action">Quên mật khẩu</a>
+                                    <a href="/forgotpassword" class="fogotpassword-action">Quên mật khẩu</a>
                                 </div>
                                 <hr />
                                 <div class="title-register">

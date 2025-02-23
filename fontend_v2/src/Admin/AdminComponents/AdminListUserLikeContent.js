@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import "./../styles/AdminPostContent.css";
 import axios from "axios";
-function AdminPostContent() {
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./../styles/AdminPostContent.css";
+function AdminListUserLikeContent() {
+    const {id} = useParams();
     // Dữ liệu mẫu về bài viết
     const [posts, setPosts] = useState([]);
     const token = localStorage.getItem('token');
     const fetchAllPost = async () => {
         try {
-            const url = 'http://localhost:8080/admin/posts/get-all'; // Hiển thị tất cả
+            const url = `http://localhost:8080/likes/list/post/${id}`; // Hiển thị tất cả
 
             const response = await axios.get(url, {
                 headers: {
@@ -25,9 +27,7 @@ function AdminPostContent() {
     }, [token]);
     const [search, setSearch] = useState({
         user: "",
-        group: "",
         time: "",
-        hidden: "all",
     });
 
     const postsPerPage = 10; // Số bài viết hiển thị trên mỗi trang
@@ -49,18 +49,13 @@ function AdminPostContent() {
     const filteredPosts = posts.filter((post) => {
         const matchesUser =
             post?.user?.fullName.toLowerCase().includes(search.user.toLowerCase()) || search.user === "";
-        const matchesGroup =
-            post?.groupId?.name.toLowerCase().includes(search.group.toLowerCase()) || search.group === "";
         const matchesTime =
             (post?.createdAt &&
                 String(formatTime(post.createdAt)).toLowerCase().includes(search.time.toLowerCase())) ||
             search.time === "";
-        const matchesHidden =
-            search.hidden === "all" ||
-            (search.hidden === "true" ? post?.deleted === true : post?.deleted === false);
 
 
-        return matchesUser && matchesGroup && matchesTime && matchesHidden;
+        return matchesUser && matchesTime;
     });
 
     const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -145,19 +140,12 @@ function AdminPostContent() {
                 />
                 <input
                     type="text"
-                    name="group"
-                    placeholder="Search by group"
-                    value={search.group}
-                    onChange={handleSearchChange}
-                />
-                <input
-                    type="text"
                     name="time"
                     placeholder="Search by time"
                     value={search.time}
                     onChange={handleSearchChange}
                 />
-                <select
+                {/* <select
                     name="hidden"
                     value={search.hidden}
                     onChange={handleSearchChange}
@@ -165,7 +153,7 @@ function AdminPostContent() {
                     <option value="all">All</option>
                     <option value="true">Hidden</option>
                     <option value="false">Visible</option>
-                </select>
+                </select> */}
 
             </div>
 
@@ -174,33 +162,25 @@ function AdminPostContent() {
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Content</th>
                         <th>User</th>
-                        <th>Like</th>
-                        <th>Comment</th>
-                        <th>Group</th>
                         <th>Time</th>
                         <th>view</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {currentPosts.map((post, index) => (
                         <tr key={post?.postId}>
                             <td>{indexOfFirstPost + index + 1}</td>
-                            <td>{post.content}</td>
-                            <td>{post?.user?.fullName}</td>
-                            <td>{formatLikes(post.totalLike)} lượt thích</td>
-                            <td>{formatLikes(post?.totalComment ? post?.totalComment : 0)} bình luận</td>
-                            <td>{post?.groupId?.name}</td>
+                            <td onClick={() => openNewPage(`http://localhost:3000/friend/${post?.user.userId}`)}>{post?.user?.fullName}</td>
                             <td>{formatTime(post?.createdAt)}</td>
                             <td>
-                                <button className="hide-btn" onClick={() => openNewPage(`http://localhost:3000/post/${post?.postId}`)}>
+                                <button className="hide-btn" onClick={() => openNewPage(`http://localhost:3000/post/${post?.post?.postId}`)}>
                                     xem
                                 </button>
 
                             </td>
-                            <td>
+                           
+                            {/* <td>
                                 {post?.deleted === true ? (
 
                                     <button
@@ -218,7 +198,7 @@ function AdminPostContent() {
                                     </button>
                                 )}
 
-                            </td>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>
@@ -261,4 +241,4 @@ function AdminPostContent() {
     );
 }
 
-export default AdminPostContent;
+export default AdminListUserLikeContent;

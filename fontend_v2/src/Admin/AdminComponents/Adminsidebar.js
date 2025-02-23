@@ -49,6 +49,20 @@ function AdminSidebar() {
           <i class="fa-solid fa-comments"></i>Comments
           </a>
         </li>
+        <li
+          className={`admin-sidebar-item ${location.pathname === "/admin/post/like"  ? "active" : ""}`}
+        >
+          <a href="/admin/post/like" className="admin-sidebar-link">
+          <i class="fa-solid fa-thumbs-up"></i> Post By Likes
+          </a>
+        </li>
+        <li
+          className={`admin-sidebar-item ${location.pathname === "/admin/post/comment"  ? "active" : ""}`}
+        >
+          <a href="/admin/post/comment" className="admin-sidebar-link">
+          <i class="fa-regular fa-rectangle-list"></i> Post By Comments
+          </a>
+        </li>
       </ul>
     </div>
   );
