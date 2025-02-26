@@ -1,9 +1,11 @@
 package org.ninhngoctuan.backend.config;
 
 import jakarta.annotation.PostConstruct;
+import org.ninhngoctuan.backend.entity.ProfileEntity;
 import org.ninhngoctuan.backend.entity.RoleEntity;
 import org.ninhngoctuan.backend.entity.TagEntity;
 import org.ninhngoctuan.backend.entity.UserEntity;
+import org.ninhngoctuan.backend.repository.ProfileRepository;
 import org.ninhngoctuan.backend.repository.RoleRepository;
 import org.ninhngoctuan.backend.repository.TagRepository;
 import org.ninhngoctuan.backend.repository.UserRepository;
@@ -21,9 +23,16 @@ public class DataInitializer {
     private UserRepository userRepository;
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
     @PostConstruct
     public void init() {
         if (roleRepository.count() == 0) {
+
+            RoleEntity superAdminRole = new RoleEntity();
+            superAdminRole.setName("SUPER_ADMIN");
+            roleRepository.save(superAdminRole);
+
             RoleEntity adminRole = new RoleEntity();
             adminRole.setName("ADMIN");
             roleRepository.save(adminRole);
@@ -31,6 +40,8 @@ public class DataInitializer {
             RoleEntity userRole = new RoleEntity();
             userRole.setName("USER");
             roleRepository.save(userRole);
+
+
 
 
         }
@@ -47,7 +58,12 @@ public class DataInitializer {
             user.setCreatedAt(new Date());
             user.setRoleId(userRole);
             user.setUpdatedAt(new Date());
-            userRepository.save(user);
+            UserEntity saveuser =   userRepository.save(user);
+            ProfileEntity profile = new ProfileEntity();
+            profile.setUser(user);
+            profile.setEmail(saveuser.getEmail());
+            profile.setPhone(saveuser.getPhone());
+            profileRepository.save(profile);
 
         }
         if (tagRepository.count() == 0) {
