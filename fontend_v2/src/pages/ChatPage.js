@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import '../assets/css/chatPage.css';
 import ChatContent from '../components/ChatContent/ChatContent';
 const ChatPage = () => {
+    
     const [images, setImages] = useState([]);
     const [videos, setVideos] = useState([]);
     const imageInputRef = useRef(null);
@@ -11,14 +12,14 @@ const ChatPage = () => {
     const [errorRoom, setErrorRoom] = useState('');
     const userId = Number(localStorage.getItem('userId')); // Chuyển đổi userId từ chuỗi thành số
     const receiverId = localStorage.getItem('receiverId'); // Lấy `receiverId` từ localStorage
-    console.log("UserId", userId);
-    console.log("receiverIds", receiverId);
+
     const roomId = localStorage.getItem('roomId');
     const [message, setMessage] = useState('');
     const usernameMessage = localStorage.getItem('messageUser');
     const avatarMessage = localStorage.getItem('receiverAvatar');
     const [messages, setMessages] = useState([]);
     const [intervalId, setIntervalId] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
     useEffect(() => {
         fetchRooms();
         // Tạo polling (gửi request định kỳ)
@@ -83,6 +84,7 @@ const ChatPage = () => {
                 // messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
             } catch (error) {
                 // setErrorMessage(error.response?.data || 'Error sending message');
+                setErrorMessage(error.response.data )
                 console.error('Error sending message:', error);
             }
         }
@@ -199,7 +201,11 @@ const ChatPage = () => {
                             {messages.map((message, index) => (
                                 <ChatContent item={message} />
                             ))}
+                        
                             <div id="last-chat"></div>
+                        </div>
+                        <div className='error-message-container'>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
                         </div>
                         <div className="message-input-container">
                             <div className="media-preview">

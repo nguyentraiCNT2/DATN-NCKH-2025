@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import '../assets/css/login.css';
 const RegisterPage = () => {
-    const [fullName, setFullname] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -16,11 +17,13 @@ const RegisterPage = () => {
         try {
             const response = await axios.post(
                 'http://localhost:8080/auth/register',
-                {
+                {        
+                    firstName,
+                    lastName,
                     email,
-                    fullName,
-                    phone,
                     password,
+                    phone,
+            
                 },
                 {
                     headers: {
@@ -68,7 +71,7 @@ const RegisterPage = () => {
         } catch (error) {
             setErrorMessage(error.response?.data?.error || 'Kích hoạt email thất bại');
             setSuccess('');
-            console.error('Activation error:', error);
+            console.error('Activation error:', error.response?.data);
         }
     };
 
@@ -108,7 +111,8 @@ const RegisterPage = () => {
                     <div className="login-form">
                         <form className="form-login" onSubmit={handleRegister}>
                             <div className="login-form-input">
-                                <input type="text" placeholder="Họ và tên" className="input-control" value={fullName} onChange={(e) => setFullname(e.target.value)} />
+                                <input type="text" placeholder="Họ " className="input-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                                <input type="text" placeholder="Tên" className="input-control" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                                 <input type="text" placeholder="E-mail của bạn" className="input-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 <input type="text" placeholder="Số điện thoại" className="input-control" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                 <input type="password" placeholder="Mật khẩu" className="input-control" value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -161,11 +165,15 @@ const RegisterPage = () => {
                             <label htmlFor="fullname">Họ và tên</label>
                             <input
                                 type="text"
-                                placeholder="Nhập họ tên của bạn"
+                                placeholder="Nhập  tên của bạn"
                                 className="mobile-input-control"
-                                value={fullName} 
-                                onChange={(e) => setFullname(e.target.value)}
-                            />
+                                value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                            <input
+                                type="text"
+                                placeholder="Nhập họ của bạn"
+                                className="mobile-input-control"
+                                value={lastName} onChange={(e) => setLastName(e.target.value)} />
+               
                             <label htmlFor="email">E-mail</label>
                             <input
                                 type="text"

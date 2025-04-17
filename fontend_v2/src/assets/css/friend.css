@@ -202,7 +202,29 @@ body {
     max-width: 100%;
     vertical-align: middle;
 }
+.search-user-list {
+    min-height: 100px; /* Đảm bảo có không gian hiển thị thông báo */
+}
 
+.no-data-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    color: #666;
+    text-align: center;
+}
+
+.no-data-message i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #999;
+}
+
+.search-action.block-user i {
+    margin-right: 5px;
+}
 /* Media queries hiện có */
 @media screen and (max-width: 1120px) {
     .follow-action-button-name {

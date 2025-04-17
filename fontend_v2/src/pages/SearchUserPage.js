@@ -98,20 +98,39 @@ const SearchUserPage = () => {
                     </div>
                 </div>
                 <div class="friend-box">
-                    <div class="search-user-list">
-                        { friends.map(friend => (
-                                <div class="search-user-item">
-                                        <div className='search-user-info'>
-                                        <img src={friend?.profilePicture || '/img/avatar.png'} alt="" class="search-user-avatar" onClick={() => handleacion(friend?.userId)} />
-                                        <p onClick={() => handleacion(friend?.userId)}>{friend?.fullName}</p>
-                                            </div>
-                                      
-                                        <a href="#" class="search-action block-user" onClick={() => blockFriend(friend?.userId)}>Chặn</a>
-
+                    <div className="search-user-list">
+                        {friends.length > 0 ? (
+                            friends.map(friend => (
+                                <div className="search-user-item" key={friend?.userId}>
+                                    <div className='search-user-info'>
+                                        <img
+                                            src={friend?.profilePicture || '/img/avatar.png'}
+                                            alt=""
+                                            className="search-user-avatar"
+                                            onClick={() => handleacion(friend?.userId)}
+                                        />
+                                        <p onClick={() => handleacion(friend?.userId)}>
+                                            {friend?.fullName}
+                                        </p>
                                     </div>
-                            ))}
-                            
-
+                                    <a
+                                        href="#"
+                                        className="search-action block-user"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            blockFriend(friend?.userId);
+                                        }}
+                                    >
+                                        <i className="fas fa-ban"></i> Chặn
+                                    </a>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="no-data-message">
+                                <i className="fas fa-info-circle"></i>
+                                <p>Không có dữ liệu bạn bè để hiển thị</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

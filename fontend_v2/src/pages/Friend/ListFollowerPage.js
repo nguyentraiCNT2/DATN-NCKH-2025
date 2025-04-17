@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../../assets/css/friend.css';
+import NotificationMessage from '../../components/ShowNotification/NotificationMessage';
 const ListFollowerPage = () => {
   const handleAction = (id) => {
     window.location.href = `/friend/${id}`;
   };
-
+    const [showError, setShowError] = useState(false); // State để điều khiển hiển thị thông báo
   const [friends, setFriends] = useState([]);
   const [error, setError] = useState('');
   const token = localStorage.getItem('token');
@@ -31,7 +32,7 @@ const ListFollowerPage = () => {
       setFriends(updatedFriends);
     } catch (error) {
       setError('Lỗi khi lấy danh sách bạn bè');
-      console.error(error);
+      setShowError(true); // Khi có lỗi, hiển thị thông báo
     }
   };
 
@@ -45,7 +46,6 @@ const ListFollowerPage = () => {
       });
       return response.data; // Trả về trạng thái true/false
     } catch (error) {
-      console.error('Lỗi khi kiểm tra trạng thái theo dõi:', error);
       return false; // Mặc định là chưa theo dõi nếu lỗi xảy ra
     }
   };
@@ -58,11 +58,12 @@ const ListFollowerPage = () => {
           'Authorization': `Bearer ${token}`,
         },
       });
-      alert('Bạn đã theo dõi thành công!');
+      setError('Bạn đã theo dõi thành công!');
+      setShowError(true); // Khi có lỗi, hiển thị thông báo
       fetchFriends(); // Cập nhật danh sách sau khi thêm
     } catch (error) {
-      alert('Lỗi khi theo dõi');
-      console.error(error);
+      setError('Lỗi khi theo dõi');
+      setShowError(true); // Khi có lỗi, hiển thị thông báo
     }
   };
 
@@ -74,11 +75,12 @@ const ListFollowerPage = () => {
           'Authorization': `Bearer ${token}`,
         },
       });
-      alert('Bạn đã bỏ theo dõi thành công!');
+      setError('Bạn đã bỏ theo dõi thành công!');
+      setShowError(true);
       fetchFriends(); // Cập nhật danh sách sau khi hủy
     } catch (error) {
-      alert('Lỗi khi bỏ theo dõi');
-      console.error(error);
+      setError('Lỗi khi bỏ theo dõi');
+      setShowError(true);
     }
   };
   const blockFriend = async (id) => {
@@ -88,12 +90,12 @@ const ListFollowerPage = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      alert('Chặn người dùng thành công');
-      setError('');
+      setError('Chặn người dùng thành công');
+      setShowError(true);
       fetchFriends();
     } catch (error) {
-      alert('Lỗi khi chặn người dùng');
-      console.error(error);
+      setError('Lỗi khi chặn người dùng');
+      setShowError(true);
     }
   };
   useEffect(() => {
@@ -102,10 +104,25 @@ const ListFollowerPage = () => {
   const handleacion = (id) => {
     window.location.href = `/friend/${id}`;
   }
+  const handleAgree = () => {
+    setShowError(false); // Đóng thông báo khi nhấn "Đồng ý"
+  };
 
   return (
     <div>
-
+            {
+                showError &&
+                <div className="error-overlay">
+                <div className="error-modal">
+                  <div className="error-content">
+                    <p>{error}</p>
+                    <button onClick={handleAgree} className="agree-button">
+                      Đồng ý
+                    </button>
+                  </div>
+                </div>
+              </div>
+            }
       <div class="friend-container">
         <div class="friend-menu">
           <h2 class="friend-title">Người hâm mộ</h2>
@@ -142,7 +159,7 @@ const ListFollowerPage = () => {
         </div>
         <div class="friend-box">
           <div class="friend-list">
-            {
+          {friends.length > 0 ? (
               friends.map(friend => (
                 <div class="friend-item">
                   <div class="friend-imgs">
@@ -173,7 +190,15 @@ const ListFollowerPage = () => {
                     <a href="#" class="follow-action block-user" onClick={() => blockFriend(friend?.user?.userId)}><i class="fa-solid fa-ban"></i>  <p className='follow-action-button-name'>Chặn người dùng</p></a>
                   </div>
                 </div>
-              ))}
+               ))
+              ) : (
+                  <div className="search-user-list">
+                  <div className="no-data-message">
+                      <i className="fas fa-info-circle"></i>
+                      <p>Không có dữ liệu bạn bè để hiển thị</p>
+                  </div>
+                  </div>
+              )}
 
           </div>
         </div>

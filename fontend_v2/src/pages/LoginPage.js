@@ -35,15 +35,13 @@ const LoginPage = () => {
                 else{
                     window.location.href = '/';
                 }
-            
-
             }
         } catch (error) {
-            alert(error.response.data.error)
-            console.error('Login error:', error);
+            setErrorMessage(error.response.data.error);
         }
     };
 
+    
     return (
         <div>
 
@@ -58,6 +56,7 @@ const LoginPage = () => {
                     </div>
                     <div class="login-form" >
                         <form action="" method="post" class="form-login" onSubmit={handleLogin}>
+                            {errorMessage && <p className="error-message">{errorMessage}</p>}
                             <div class="login-form-input">
                                 <input type="text" placeholder="E-mail của bạn" class="input-control" value={username} onChange={(e) => setUsername(e.target.value)} />
                                 <input type="password" placeholder="Mật khẩu " class="input-control" value={password} onChange={(e) => setPassword(e.target.value)} />

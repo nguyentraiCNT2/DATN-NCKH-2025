@@ -165,7 +165,7 @@ const ListGroupPage = () => {
                                 }
                             </>
                         ) : (
-                            <p className="no-groups-message">Bạn chưa theo dõi nhóm nào</p>
+                           null
                         )}
                     </div>
 
@@ -183,7 +183,12 @@ const ListGroupPage = () => {
                                     }
                                 </>
                             ) : (
-                                <p className="no-groups-message">Không có bài viết nào</p>
+                                <div className="search-user-list">
+                                <div className="no-data-message">
+                                    <i className="fas fa-info-circle"></i>
+                                    <p>Bạn phải tham gia nhóm để xem bài viết mới</p>
+                                </div>
+                                </div>
                             )}
                         </div>
                     </div>
