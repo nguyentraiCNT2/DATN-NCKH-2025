@@ -16,8 +16,8 @@ import java.util.UUID;
 @Service
 public class FirebaseStorageService {
 
-    private static final String SUPABASE_URL = "https://xpmqijusgaglgiwoqliw.supabase.co";
-    private static final String SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwbXFpanVzZ2FnbGdpd29xbGl3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczODUxNTc3OCwiZXhwIjoyMDU0MDkxNzc4fQ.UC3gXJUgiurdwC2QEs812_adOu7Y-3ssujOCT7GDnIU";  // Thay bằng Service Role API Key
+    private static final String SUPABASE_URL = "https://vuuzayrxibgfdzbbxovw.supabase.co";
+    private static final String SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1dXpheXJ4aWJnZmR6YmJ4b3Z3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MTU4NjA5MCwiZXhwIjoyMDU3MTYyMDkwfQ.4K5Ii-82ujMqwwXjQ3rwv86Wu69npj8WScsOtA-hPmw";  // Thay bằng Service Role API Key
     private static final String BUCKET_NAME = "file_uploads";  // Tên bucket của bạn
 
     private final OkHttpClient client = new OkHttpClient();

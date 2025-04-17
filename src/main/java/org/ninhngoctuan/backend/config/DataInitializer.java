@@ -82,7 +82,5 @@ public class DataInitializer {
                 tagRepository.save(tag);
             }
         }
-
-
     }
 }

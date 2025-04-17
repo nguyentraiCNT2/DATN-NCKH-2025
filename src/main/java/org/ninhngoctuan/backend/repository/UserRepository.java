@@ -34,4 +34,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     );
 
     List<UserEntity> findByFullNameLike(String fullName);
+
+
+
 }

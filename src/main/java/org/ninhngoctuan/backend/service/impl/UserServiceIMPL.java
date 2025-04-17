@@ -2,6 +2,7 @@ package org.ninhngoctuan.backend.service.impl;
 
 import jakarta.mail.internet.MimeMessage;
 import org.modelmapper.ModelMapper;
+import org.ninhngoctuan.backend.Requests.RegisterRequest;
 import org.ninhngoctuan.backend.config.PasswordValidator;
 import org.ninhngoctuan.backend.config.RandomId;
 import org.ninhngoctuan.backend.config.SendCodeByEmail;
@@ -24,6 +25,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,6 +39,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceIMPL implements UserService {
+    private final PasswordEncoder passwordEncoder;
     @Value("${images.dir}")
     private String imagesDir;
     private final JavaMailSender mailSender;
@@ -49,7 +52,7 @@ public class UserServiceIMPL implements UserService {
     private FriendsRepository friendsRepository;
     private final ProfileRepository profileRepository;
 
-    public UserServiceIMPL(JavaMailSender mailSender, FriendsRepository friendsRepository, FirebaseStorageService firebaseStorageService, PasswordResetRepository passwordResetRepository, EmailActiveRepository emailActiveRepository,  RoleRepository roleRepository, ModelMapper modelMapper, UserRepository userRepository, ProfileRepository profileRepository) {
+    public UserServiceIMPL(JavaMailSender mailSender, FriendsRepository friendsRepository, FirebaseStorageService firebaseStorageService, PasswordResetRepository passwordResetRepository, EmailActiveRepository emailActiveRepository, RoleRepository roleRepository, ModelMapper modelMapper, UserRepository userRepository, ProfileRepository profileRepository, PasswordEncoder passwordEncoder) {
         this.mailSender = mailSender;
         this.friendsRepository = friendsRepository;
         this.firebaseStorageService = firebaseStorageService;
@@ -59,35 +62,37 @@ public class UserServiceIMPL implements UserService {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public UserDTO register(UserDTO userDTO) {
+    public UserDTO register(RegisterRequest registerRequest) {
         try {
-            if (userDTO.getEmail() == null || userDTO.getEmail().equals(""))
+            if (registerRequest.getEmail() == null || registerRequest.getEmail().equals(""))
                 throw new RuntimeException("Email không thể để trống");
-            if (userDTO.getPassword() == null || userDTO.getPassword().equals(""))
+            if (registerRequest.getPassword() == null || registerRequest.getPassword().equals(""))
                 throw new RuntimeException("Mật khẩu không thể để trống");
-            if (userDTO.getPassword().length()< 6)
+            if (registerRequest.getPassword().length()< 6)
                 throw new RuntimeException("Mật khẩu có tối thiểu 6 ký tự");
-            if (userDTO.getPassword().length()> 255)
+            if (registerRequest.getPassword().length()> 255)
                 throw new RuntimeException("Mật khẩu có tối đa 255 ký tự");
-            if (userDTO.getPassword().contains(" "))
+            if (registerRequest.getPassword().contains(" "))
                 throw new RuntimeException("Mật khẩu không thể chứa khoản trắng");
-            if (!PasswordValidator.isValidPassword(userDTO.getPassword()))
+            if (!PasswordValidator.isValidPassword(registerRequest.getPassword()))
                 throw  new RuntimeException("Mật khẩu phải chứa chữ hoa, chữ thường và số");
-            if (userDTO.getFullName() == null || userDTO.getFullName().equals(""))
-                throw new RuntimeException("Họ tên không thể để trống");
-            boolean checkEmail = userRepository.existsByEmail(userDTO.getEmail());
+            boolean checkEmail = userRepository.existsByEmail(registerRequest.getEmail());
             if (checkEmail)
                 throw new RuntimeException("Email này đã được sử dụng");
-            RoleEntity role = roleRepository.findById(2L).orElseThrow(() -> new RuntimeException("Không có quyền hạn nào có id là: "+2));
+            RoleEntity role = roleRepository.findById(3L).orElseThrow(() -> new RuntimeException("Không có quyền hạn nào có id là: "+2));
             Date currentDate = new Date(System.currentTimeMillis());
 
-            UserEntity user = modelMapper.map(userDTO, UserEntity.class);
-            String hashPassword =  BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+            UserEntity user = new UserEntity();
+            String hashPassword =  BCrypt.hashpw(registerRequest.getPassword(), BCrypt.gensalt());
             user.setCreatedAt(currentDate);
             user.setPassword(hashPassword);
+            user.setFullName(registerRequest.getFirstName() + " " + registerRequest.getLastName());
+            user.setEmail(registerRequest.getEmail());
+            user.setPhone(registerRequest.getPhone());
             user.setActive(true);
             user.setEmailActive(false);
             user.setUpdatedAt(currentDate);
@@ -95,8 +100,10 @@ public class UserServiceIMPL implements UserService {
             UserEntity save_entity = userRepository.save(user);
             ProfileEntity profile = new ProfileEntity();
             profile.setUser(user);
-            profile.setEmail(userDTO.getEmail());
-            profile.setPhone(userDTO.getPhone());
+            profile.setEmail(registerRequest.getEmail());
+            profile.setFirstName(registerRequest.getFirstName());
+            profile.setLastName(registerRequest.getLastName());
+            profile.setPhone(registerRequest.getPhone());
             profileRepository.save(profile);
             UserDTO dto = modelMapper.map(save_entity,UserDTO.class);
             sendEmail(dto);
@@ -630,9 +637,6 @@ public class UserServiceIMPL implements UserService {
             UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
             // Lấy danh sách bạn bè
             List<FriendEntity> friendEntities = friendsRepository.findByUser(user);
-
-
-
             // Lọc những người dùng không phải là bản thân và không phải là bạn bè
             userEntities.stream()
                     .filter(userEntity -> !Objects.equals(user.getUserId(), userEntity.getUserId())) // Không phải bản thân

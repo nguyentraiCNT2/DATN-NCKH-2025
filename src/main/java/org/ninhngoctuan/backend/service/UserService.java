@@ -1,5 +1,6 @@
 package org.ninhngoctuan.backend.service;
 
+import org.ninhngoctuan.backend.Requests.RegisterRequest;
 import org.ninhngoctuan.backend.dto.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
@@ -7,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface UserService {
-    UserDTO register(UserDTO userDTO);
+    UserDTO register(RegisterRequest registerRequest);
     boolean sendEmail(UserDTO userDTO);
     boolean reSendEmail(String email);
     boolean activeEmail(EmailActiveDTO emailActiveDTO);

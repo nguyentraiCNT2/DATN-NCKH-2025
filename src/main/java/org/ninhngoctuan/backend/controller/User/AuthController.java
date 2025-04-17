@@ -2,6 +2,7 @@ package org.ninhngoctuan.backend.controller.User;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.ninhngoctuan.backend.Requests.RegisterRequest;
 import org.ninhngoctuan.backend.context.RequestContext;
 import org.ninhngoctuan.backend.controller.output.AuthStatus;
 import org.ninhngoctuan.backend.dto.EmailActiveDTO;
@@ -41,7 +42,7 @@ public class AuthController {
     @Autowired
     private LoginSessionService loginSessionService;
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO dto){
+    public ResponseEntity<?> register(@RequestBody RegisterRequest dto){
         try {
             UserDTO userDTO =  userService.register(dto);
             userDTO.setPassword(null);
