@@ -57,6 +57,18 @@ public class MessageController {
             }
 
         }
+    @PostMapping("/send-audio")
+    public ResponseEntity<?> sendAudio(
+            @RequestParam("receiverId") Long receiverId,
+            @RequestPart("audio") MultipartFile audio) {
+            try {
+                MessageDTO result = messageService.sendAudio(receiverId, audio);
+                return ResponseEntity.ok(result);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            }
+
+    }
 
     // Lấy tin nhắn giữa hai người dùng
     @GetMapping("/between/{roomid}")
@@ -130,6 +142,15 @@ public class MessageController {
         try {
             List<MessageVideosDTO> messageVideosDTOS = messageService.getVideoBetweenMessages(messageId);
             return ResponseEntity.status(HttpStatus.OK).body(messageVideosDTOS);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
+        }
+    }
+    @GetMapping("/{messageId}/audio")
+    public ResponseEntity<?> getAudioByPost(@PathVariable Long messageId) {
+        try {
+            List<MessageAudiosDTO> audioBetweenMessages = messageService.getAudioBetweenMessages(messageId);
+            return ResponseEntity.status(HttpStatus.OK).body(audioBetweenMessages);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
         }

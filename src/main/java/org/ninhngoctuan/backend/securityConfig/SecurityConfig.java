@@ -52,7 +52,7 @@ public class SecurityConfig {
                                 "/post/getall","/post/getbyuser","/post/getbyfollow","/post/create",
                                 "/post/images/","/post/video/","/post/update/","/post/delete",
                                 "/tag/getall","/tag/create","/tag/delete/","/tag/update/",
-                                "/home/**").hasRole("USER")
+                                "/home/**","/theme/**").hasRole("USER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/superadmin/**").hasRole("SUPER_ADMIN")
                         .anyRequest().authenticated()

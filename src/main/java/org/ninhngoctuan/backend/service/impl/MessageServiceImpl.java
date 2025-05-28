@@ -2,10 +2,7 @@ package org.ninhngoctuan.backend.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.ninhngoctuan.backend.context.RequestContext;
-import org.ninhngoctuan.backend.dto.MessageDTO;
-import org.ninhngoctuan.backend.dto.MessageImagesDTO;
-import org.ninhngoctuan.backend.dto.MessageVideosDTO;
-import org.ninhngoctuan.backend.dto.RoomDTO;
+import org.ninhngoctuan.backend.dto.*;
 import org.ninhngoctuan.backend.entity.*;
 import org.ninhngoctuan.backend.repository.*;
 import org.ninhngoctuan.backend.service.FirebaseStorageService;
@@ -32,6 +29,8 @@ public class MessageServiceImpl implements MessageService {
     private String imagesDir;
     @Value("${videos.dir}")
     private String videosDir;
+    @Value("${audios.dir}")
+    private String audiosDir;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -54,6 +53,11 @@ public class MessageServiceImpl implements MessageService {
     private NotificationRepository notificationRepository;
     @Autowired
     private FirebaseStorageService firebaseStorageService;
+    @Autowired
+    private AudiosRepository audiosRepository;
+    @Autowired
+    private MessageAudiosRepository messageAudiosRepository;
+
     @Override
     public MessageDTO sendMessage(MessageDTO message, List<MultipartFile> images, List<MultipartFile> videos) {
         try {
@@ -223,6 +227,17 @@ public class MessageServiceImpl implements MessageService {
         return list;
     }
 
+    @Override
+    public List<MessageAudiosDTO> getAudioBetweenMessages(Long id) {
+        List<MessageAudiosDTO> list = new ArrayList<>();
+        MessageEntity entity = messageRepository.findByMessageId(id)
+                .orElseThrow(() -> new RuntimeException("Không có tin nhắn này "));
+        List<MessageAudiosEntity> messageAudiosEntities = messageAudiosRepository.findByMessageId(entity.getMessageId());
+        for (MessageAudiosEntity messageAudiosEntity : messageAudiosEntities) {
+            list.add(modelMapper.map(messageAudiosEntity, MessageAudiosDTO.class));
+        }
+        return list;
+    }
 
     @Override
     public RoomDTO getRoomFriend(Long id) {
@@ -248,6 +263,99 @@ public class MessageServiceImpl implements MessageService {
             return modelMapper.map(room, RoomDTO.class);
         }catch (Exception e) {
             throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public MessageDTO sendAudio(Long receiverId, MultipartFile audio) {
+        try {
+            String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+            UserEntity sender = userRepository.findByEmail(authEmail)
+                    .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
+            UserEntity receiver = userRepository.findByUserId(receiverId)
+                    .orElseThrow(() -> new RuntimeException("Không tìm thấy người nhận"));
+
+            // Kiểm tra trạng thái chặn
+            List<FriendEntity> friend1 = friendsRepository.findByUser(sender);
+            for (FriendEntity friend : friend1) {
+                if (friend.getFriend().getUserId().equals(receiver.getUserId()) && friend.getStatus().equalsIgnoreCase("block")) {
+                    throw new RuntimeException("Bạn đã chặn người này, hãy bỏ chặn để có thể nhắn tin");
+                }
+            }
+            List<FriendEntity> friend31 = friendsRepository.findByUser(receiver);
+            for (FriendEntity friend : friend31) {
+                if (friend.getFriend().getUserId().equals(sender.getUserId()) && friend.getStatus().equalsIgnoreCase("block")) {
+                    throw new RuntimeException("Bạn đã bị chặn không thể nhắn tin");
+                }
+            }
+            List<FriendEntity> friend2 = friendsRepository.findByFriend(receiver);
+            for (FriendEntity friend : friend2) {
+                if (friend.getUser().getUserId().equals(sender.getUserId()) && friend.getStatus().equalsIgnoreCase("block")) {
+                    throw new RuntimeException("Bạn đã bị chặn không thể nhắn tin");
+                }
+            }
+            List<FriendEntity> friendEntities = friendsRepository.findByFriend(sender);
+            for (FriendEntity friend : friendEntities) {
+                if (friend.getUser().getUserId().equals(receiver.getUserId()) && friend.getStatus().equalsIgnoreCase("block")) {
+                    throw new RuntimeException("Bạn đã chặn người này, hãy bỏ chặn để có thể nhắn tin");
+                }
+            }
+            // Tìm hoặc tạo phòng chat
+            RoomEntity room = roomRepository.findByMember1AndMember2OrMember1AndMember2(sender, receiver, receiver, sender)
+                    .stream()
+                    .filter(r -> (r.getMember1().equals(sender) && r.getMember2().equals(receiver)) ||
+                            (r.getMember1().equals(receiver) && r.getMember2().equals(sender)))
+                    .findFirst()
+                    .orElseGet(() -> {
+                        RoomEntity newRoom = new RoomEntity();
+                        newRoom.setMember1(sender);
+                        newRoom.setMember2(receiver);
+                        newRoom.setTheme("xanh");
+                        newRoom.setThemeCore("blue");
+                        return roomRepository.save(newRoom);
+                    });
+
+            // Tạo tin nhắn mới (không có nội dung văn bản)
+            MessageEntity messageEntity = new MessageEntity();
+            messageEntity.setSender(sender);
+            messageEntity.setReceiver(receiver);
+            messageEntity.setRoom(room);
+            messageEntity.setCreatedAt(new Date());
+            MessageEntity savedMessage = messageRepository.save(messageEntity);
+
+            // Tạo thông báo
+            NotificationEntity notificationEntity = new NotificationEntity();
+            notificationEntity.setContent("Bạn có một tin nhắn âm thanh mới");
+            notificationEntity.setUser(sender);
+            notificationEntity.setCreatedAt(new Date());
+            notificationEntity.setType("MESSAGE");
+            notificationEntity.setReadStatus(false);
+            notificationRepository.save(notificationEntity);
+
+            // Xử lý file âm thanh
+            if (audio != null && !audio.isEmpty()) {
+                Path uploadPathAudios = Paths.get(audiosDir);
+                if (!Files.exists(uploadPathAudios)) {
+                    Files.createDirectories(uploadPathAudios);
+                }
+                String audioFileName = firebaseStorageService.uploadFile(audio);
+                AudiosEntity audiosEntity = new AudiosEntity();
+                audiosEntity.setUrl(audioFileName);
+                audiosEntity.setCreateAt(new Date());
+                audiosEntity.setUpdateAt( new Date());
+                AudiosEntity savedAudio = audiosRepository.save(audiosEntity);
+
+                MessageAudiosEntity messageAudiosEntity = new MessageAudiosEntity();
+                messageAudiosEntity.setAudio(savedAudio);
+                messageAudiosEntity.setMessage(savedMessage);
+                messageAudiosRepository.save(messageAudiosEntity);
+            } else {
+                throw new RuntimeException("Không có file âm thanh được gửi");
+            }
+
+            return modelMapper.map(savedMessage, MessageDTO.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

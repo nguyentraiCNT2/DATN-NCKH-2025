@@ -1,9 +1,6 @@
 package org.ninhngoctuan.backend.service;
 
-import org.ninhngoctuan.backend.dto.MessageDTO;
-import org.ninhngoctuan.backend.dto.MessageImagesDTO;
-import org.ninhngoctuan.backend.dto.MessageVideosDTO;
-import org.ninhngoctuan.backend.dto.RoomDTO;
+import org.ninhngoctuan.backend.dto.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -21,4 +18,7 @@ public interface MessageService {
 
     RoomDTO getRoomFriend(Long id);
 
+    MessageDTO sendAudio(Long receiverId, MultipartFile audio);
+
+    List<MessageAudiosDTO> getAudioBetweenMessages(Long id);
 }

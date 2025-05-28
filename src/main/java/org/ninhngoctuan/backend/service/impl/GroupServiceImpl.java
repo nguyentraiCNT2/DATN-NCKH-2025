@@ -59,9 +59,7 @@ public class GroupServiceImpl implements GroupService {
                     .forEach(groupMemberEntity -> {
                         dtos.add(modelMapper.map(groupMemberEntity.getGroup(), GroupDTO.class));
                     });
-            for (GroupMemberEntity groupMemberEntity : groupMemberEntities) {
-                dtos.add(modelMapper.map(groupMemberEntity.getGroup(), GroupDTO.class));
-            }
+
             return dtos;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
