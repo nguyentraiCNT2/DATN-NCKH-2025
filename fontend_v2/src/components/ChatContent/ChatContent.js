@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { ro } from 'date-fns/locale';
+import { useEffect, useState } from 'react';
 
 const ChatContent = ({ item }) => {
   const token = localStorage.getItem('token');
@@ -7,11 +8,32 @@ const ChatContent = ({ item }) => {
   const receiverId = localStorage.getItem('receiverId'); // Lấy receiverId từ localStorage
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
-  
+  const [audioList, setAudioList] = useState([]);
   // State Gallery
   const [galleryVisible, setGalleryVisible] = useState(false);
   const [galleryType, setGalleryType] = useState(''); // 'image' hoặc 'video'
   const [currentIndex, setCurrentIndex] = useState(0);
+    const [themes, setThemes] = useState([]); // Danh sách themes
+    const [selectedTheme, setSelectedTheme] = useState(null); // Theme hiện tại của phòng
+    const roomId = localStorage.getItem('roomId');
+    const [roomDetail, setRoomDetail] = useState(null);
+    // Lấy theme hiện tại của phòng
+    const fetchRoomTheme = async () => {
+        if (!roomId) return;
+        try {
+            const response = await axios.get(`http://localhost:8080/theme/room-detail/${roomId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            setRoomDetail(response.data);
+                setSelectedTheme(response.data.thememeId);
+                console.log('themeData',response.data.thememeId);
+        } catch (error) {
+            console.error('Error fetching room theme:', error);
+        }
+    };
+
 
   const fetchImagesForMessage = async () => {
     try {
@@ -21,6 +43,19 @@ const ChatContent = ({ item }) => {
         }
       });
       setImages(response.data);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
+  };
+
+  const fetchAudioForMessage = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/messages/${item.messageId}/audio`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setAudioList(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
     }
@@ -40,10 +75,12 @@ const ChatContent = ({ item }) => {
   };
 
   useEffect(() => {
+    fetchRoomTheme()
     fetchImagesForMessage();
     fetchVideosForMessage();
+    fetchAudioForMessage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item.messageId, token]);
+  }, [item.messageId, token, roomId]);
 
   // Hàm mở Gallery modal
   const openGallery = (index, type) => {
@@ -81,24 +118,41 @@ const ChatContent = ({ item }) => {
 
   return (
     <>
-      <div className={`message ${item.sender.userId !== userId ? 'left' : 'right'}`}>
-        {item.content}
-      </div>
+<div
+  className={`message ${item.sender.userId !== userId ? 'left' : 'right'}`}
+  style={{
+    backgroundColor:
+      item.sender.userId === userId
+        ? (selectedTheme?.color ? selectedTheme.color : 'rgba(0, 132, 255, 0.95)') 
+        : '#ddd' ,
+        display: item?.content ? item.content : 'none',
+  }}
+ >
+  {item.content}
+</div>
       <div className={`message video-img-list ${item.sender.userId !== userId ? 'left' : 'right'}`}>
         <div className='list-message-video'>
+          {audioList.map((itemAudio, i) => (
+            <audio
+              key={i}
+              src={itemAudio.audio.url}
+              controls
+              className="message-audio"
+            />
+          ))}
           {images.map((itemImage, i) => (
-            <img 
-              key={i} 
-              src={`${itemImage.imagesEntity.url}`} 
-              alt="message-img" 
+            <img
+              key={i}
+              src={`${itemImage.imagesEntity.url}`}
+              alt="message-img"
               className="message-image"
               onClick={() => openGallery(i, 'image')}
             />
           ))}
           {videos.map((itemVideo, i) => (
-            <div 
-              key={i} 
-              className="video-wrapper" 
+            <div
+              key={i}
+              className="video-wrapper"
               onClick={() => openGallery(i, 'video')}
             >
               <video
@@ -106,9 +160,9 @@ const ChatContent = ({ item }) => {
                 controls
                 onClick={(e) => e.stopPropagation()}
               >
-                <source 
-                  src={`${itemVideo.video.url}`} 
-                  type="video/mp4" 
+                <source
+                  src={`${itemVideo.video.url}`}
+                  type="video/mp4"
                 />
                 Your browser does not support the video tag.
               </video>
@@ -125,16 +179,16 @@ const ChatContent = ({ item }) => {
             <button className="gallery-prev" onClick={prevGallery}><i class="fa-solid fa-caret-left"></i></button>
             <div className="gallery-main-content">
               {galleryType === 'image' ? (
-                <img 
-                  src={images[currentIndex].imagesEntity.url} 
-                  alt={`Gallery ${currentIndex}`} 
-                  className="gallery-main" 
+                <img
+                  src={images[currentIndex].imagesEntity.url}
+                  alt={`Gallery ${currentIndex}`}
+                  className="gallery-main"
                 />
               ) : (
                 <video controls className="gallery-main">
-                  <source 
-                    src={videos[currentIndex].video.url} 
-                    type="video/mp4" 
+                  <source
+                    src={videos[currentIndex].video.url}
+                    type="video/mp4"
                   />
                   Your browser does not support the video tag.
                 </video>
@@ -144,27 +198,27 @@ const ChatContent = ({ item }) => {
             <div className="gallery-thumbnails">
               {galleryType === 'image'
                 ? images.map((img, idx) => (
-                    <img 
-                      key={idx} 
-                      src={img.imagesEntity.url} 
-                      alt={`Thumbnail ${idx}`} 
-                      className={`gallery-thumb ${idx === currentIndex ? 'active' : ''}`}
-                      onClick={() => setCurrentIndex(idx)}
-                    />
-                  ))
+                  <img
+                    key={idx}
+                    src={img.imagesEntity.url}
+                    alt={`Thumbnail ${idx}`}
+                    className={`gallery-thumb ${idx === currentIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentIndex(idx)}
+                  />
+                ))
                 : videos.map((vd, idx) => (
-                    <video 
-                      key={idx} 
-                      className={`gallery-thumb ${idx === currentIndex ? 'active' : ''}`} 
-                      onClick={() => setCurrentIndex(idx)}
-                      muted
-                    >
-                      <source 
-                        src={vd.video.url} 
-                        type="video/mp4" 
-                      />
-                    </video>
-                  ))
+                  <video
+                    key={idx}
+                    className={`gallery-thumb ${idx === currentIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentIndex(idx)}
+                    muted
+                  >
+                    <source
+                      src={vd.video.url}
+                      type="video/mp4"
+                    />
+                  </video>
+                ))
               }
             </div>
           </div>

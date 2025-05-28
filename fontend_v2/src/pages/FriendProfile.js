@@ -338,7 +338,7 @@ const FriendProfilePage = () => {
 
                 {actionModel === 'report' && (
                     <div className='list-member'>
-                        <strong >Cài đặt nhóm</strong>
+                        <strong >Báo cáo tài khoản</strong>
                         <div className='group-setting-input-groups' >
                             <label className='group-setting-label'>Lý do</label>
                             <input type="text"

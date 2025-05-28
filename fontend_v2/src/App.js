@@ -34,6 +34,7 @@ import RegisterPage from './pages/RegisterPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import SearchUserPage from './pages/SearchUserPage';
 import SettingPage from './pages/Setting/SettingPage';
+import AdminThemeList from './Admin/AdminThemeList';
 const Layout = ({ children }) => {
   const location = useLocation();
 
@@ -81,6 +82,7 @@ function App() {
             <Route path="/admin/group" element={<AdminGroupList />} />
             <Route path="/admin/report" element={<AdminReportList />} />
             <Route path="/admin/post/comment" element={<AdminListPostByComment />} />
+            <Route path="/admin/theme" element={<AdminThemeList />} />
             <Route path="/admin/post/like" element={<AdminLikeList />} />
             <Route path="/admin/post/like/:id" element={<AdminLikeListByPost />} />
             <Route path="/admin/comment" element={<AdminCommentList />} />

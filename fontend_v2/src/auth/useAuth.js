@@ -17,7 +17,7 @@ export const useAuth = () => {
             'Authorization': `Bearer ${token}` // Thêm token vào header
           }
         });
-        console.log('Response from /api/auth/status:', response.data); // Ghi lại dữ liệu phản hồi
+
         setIsAuthenticated(response.data.authenticated);
         setUserRole(response.data.role);
       } catch (error) {

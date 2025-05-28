@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import  "./../styles/AdminSidebar.css";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./../styles/AdminSidebar.css";
 function AdminSidebar() {
   const [activeMenu, setActiveMenu] = useState("home");
   const location = useLocation();
@@ -33,6 +33,13 @@ function AdminSidebar() {
         >
           <a href="/admin/group" className="admin-sidebar-link">
             <i className="admin-sidebar-icon fas fa-users"></i> Groups
+          </a>
+        </li>
+          <li
+          className={`admin-sidebar-item ${location.pathname === "/admin/theme" ? "active" : ""}`}
+        >
+          <a href="/admin/theme" className="admin-sidebar-link">
+            <i class="fas fa-paint-brush"></i> themes
           </a>
         </li>
         <li

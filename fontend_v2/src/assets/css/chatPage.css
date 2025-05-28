@@ -31,11 +31,10 @@ body {
 .chat-search-input {
     width: 100%;
     padding: 10px 0;
-    padding-left: 50px ;
+    padding-left: 50px;
     border: none;
     background: #d9d9d9;
     border-radius: 30px;
-
 }
 
 .chat-search-input:focus {
@@ -53,9 +52,9 @@ body {
 
 .chat-list {
     width: 20%;
-    height: 100vh;
+    height: 91vh;
     padding: 10px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-right: 1px solid #ccc;
 }
 
@@ -71,7 +70,7 @@ body {
     padding: 10px;
     border-radius: 10px;
 }
-.room-item:hover{
+.room-item:hover {
     background: #ddd;
 }
 
@@ -88,7 +87,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 60%;
-    height: 100vh;
+    height: 91vh;
+    transition: background-color 0.3s ease, background-image 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
 }
 
 .chat-header {
@@ -120,8 +120,9 @@ body {
     max-height: 100vh;
     overflow-y: auto;
     display: flex;
-    flex-direction: column; /* Đảm bảo các tin nhắn hiển thị theo chiều dọc */
-    background: #fff;
+    flex-direction: column;
+    /* background: rgba(255, 255, 255, 0.85); Nền trong suốt để hiển thị theme */
+    backdrop-filter: blur(2px); /* Hiệu ứng mờ nhẹ */
 }
 
 .message {
@@ -129,24 +130,22 @@ body {
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
-    word-wrap: break-word; /* Đảm bảo nội dung dài không tràn ra ngoài */
+    word-wrap: break-word;
 }
 
 /* Tin nhắn của người nhận (bên trái) */
 .message.left {
-    background-color: #f1f1f1;
-    align-self: flex-start; /* Đặt tin nhắn ở phía trái */
+    background-color: rgba(241, 241, 241, 0.95); /* Tăng độ trong suốt */
+    align-self: flex-start;
     text-align: left;
 }
 
 /* Tin nhắn của bản thân (bên phải) */
 .message.right {
-    background-color: #0084ff;
     color: #fff;
-    align-self: flex-end; /* Đặt tin nhắn ở phía phải */
+    align-self: flex-end;
     text-align: right;
 }
-
 
 .chat-footer {
     display: flex;
@@ -168,90 +167,210 @@ body {
     border-radius: 20px;
     font-size: 16px;
 }
-.chat-input:focus{
+.chat-input:focus {
     outline: none;
 }
-.icon{
+.icon {
     border: none;
     background: none;
     padding: 5px 10px;
     border-radius: 10px;
 }
-.icon:hover{
+.icon:hover {
     background: #ddd;
 }
 .user-options {
     width: 20%;
+    height: 91vh;
     padding: 10px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-left: 1px solid #ccc;
 }
 
+/* CSS cho khung ghi âm */
+.recording-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
+.recording-content {
+    background: linear-gradient(135deg, #ffffff, #e0e7ff);
+    width: 320px;
+    height: 320px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.wave-animation {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    position: absolute;
+    bottom: 80%;
+    align-items: flex-end;
+}
+
+.wave-bar {
+    width: 8px;
+    height: 50px;
+    background: linear-gradient(to top, #3b82f6, #1e40af);
+    border-radius: 4px;
+    transform-origin: bottom;
+    transition: transform 0.1s ease;
+}
+.recording-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e40af;
+    margin: 10px 0;
+    animation: pulse-text 1.5s infinite;
+}
+
+.recording-time {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e40af;
+    margin: 10px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.recording-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.stop-recording-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background 0.2s;
+    animation: pulse-btn 1.5s infinite;
+}
+
+.stop-recording-btn:hover {
+    background: #b91c1c;
+    transform: scale(1.1);
+}
+
+.cancel-recording-btn {
+    background: #6b7280;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.cancel-recording-btn:hover {
+    background: #4b5563;
+    transform: scale(1.1);
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes pulse-btn {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
 
 .settings-dropdown {
-    
     margin-top: 20px;
 }
-.template-select{
+.template-select {
     width: 100%;
-    padding: 10px 20px ;
+    padding: 10px 20px;
     border: none;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
+    background-color: #f5f5f5;
+    cursor: pointer;
 }
-.template-select:hover{
+.template-select:hover {
     background: #ddd;
 }
-.template-select:focus{
+.template-select:focus {
     outline: none;
+    background: #fff;
+    border: 1px solid #007bff;
 }
-.chat-avatar{
+.chat-avatar {
     margin-left: 30%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
 }
-.acton-options{
-
+.acton-options {
     width: 100%;
     display: flex;
     gap: 1rem;
 }
-.acton-options-one{
+.acton-options-one {
     position: relative;
-    padding: 5px 5px ;
+    padding: 5px 5px;
     border-radius: 10px;
 }
-.acton-options-one:hover{
+.acton-options-one:hover {
     background: #ddd;
 }
-.action-icon{
+.action-icon {
     width: 30%;
     position: relative;
     left: 40%;
-
 }
-.message-input-container{
+.message-input-container {
     width: 100%;
-    border-top: 1px solid #ddd ;
-    border-bottom: 1px solid #ddd ;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
-.media-preview{
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-gap: 1rem;
+.media-preview {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
-.media-item-send{
+.media-item-send {
     width: 100px;
     height: auto;
     position: relative;
-
 }
-.remove-img{
+.remove-img {
     position: absolute;
     top: 0;
     right: 0;
@@ -259,19 +378,18 @@ gap: 1rem;
     background: #fff;
     padding: 1px 2px;
     border-radius: 50%;
-    
 }
-.preview-image{
+.preview-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
-.preview-video{
+.preview-video {
     width: 100%;
-    height: auto; 
+    height: auto;
     border-radius: 5px;
 }
-.remove-video{
+.remove-video {
     position: absolute;
     top: 0;
     right: 0;
@@ -279,28 +397,26 @@ gap: 1rem;
     background: #fff;
     border-radius: 50%;
 }
-.video-img-list{
+.video-img-list {
     background: none !important;
 }
-.message-image{
+.message-image {
     width: 30%;
     border-radius: 10px;
 }
-.video-wrapper{
+.video-wrapper {
     width: 30%;
 }
-.message-video{
+.message-video {
     width: 100%;
     border-radius: 10px;
 }
-.list-message-video{
+.list-message-video {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    
     align-items: center;
-
 }
 /* Modal Gallery Full Screen */
 .gallery-modal {
@@ -309,24 +425,20 @@ gap: 1rem;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Nền đen tuyệt đối */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
-  
-  /* Khung chứa nội dung gallery */
-  .gallery-content {
+}
+.gallery-content {
     position: relative;
     width: 90%;
     max-width: 800px;
     margin: auto;
     text-align: center;
-  }
-  
-  /* Nút đóng modal */
-  .gallery-close {
+}
+.gallery-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -336,13 +448,11 @@ gap: 1rem;
     font-size: 28px;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.5);
-    padding: 10px 15px ;
+    padding: 10px 15px;
     border-radius: 50%;
-  }
-  
-  /* Nút điều hướng trái - phải */
-  .gallery-prev,
-  .gallery-next {
+}
+.gallery-prev,
+.gallery-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -354,38 +464,34 @@ gap: 1rem;
     padding: 10px;
     z-index: 2;
     border-radius: 10px;
-  }
-  .gallery-prev {
+}
+.gallery-prev {
     left: 10px;
-  }
-  .gallery-next {
+}
+.gallery-next {
     right: 10px;
-  }
-  
-  /* Nội dung chính của gallery (ảnh hoặc video) */
-  .gallery-main-content {
+}
+.gallery-main-content {
     width: 100%;
     max-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .gallery-main-content img,
-  .gallery-main-content video {
+}
+.gallery-main-content img,
+.gallery-main-content video {
     max-width: 100%;
     max-height: 80vh;
     border-radius: 10px;
-  }
-  
-  /* Danh sách thumbnail bên dưới */
-  .gallery-thumbnails {
+}
+.gallery-thumbnails {
     margin-top: 15px;
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  .gallery-thumb {
+}
+.gallery-thumb {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -393,49 +499,59 @@ gap: 1rem;
     opacity: 0.7;
     border: 2px solid transparent;
     border-radius: 10px;
-  }
-  .gallery-thumb.active {
+}
+.gallery-thumb.active {
     opacity: 1;
     border-color: #fff;
-  }
-  .error-message-container{
+}
+.error-message-container {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  /* Responsive cho modal gallery */
-  @media screen and (max-width: 480px) {
+}
+.error-message {
+    color: #ef4444;
+    text-align: center;
+    padding: 10px;
+}
+/* Responsive cho modal gallery */
+@media screen and (max-width: 480px) {
     .gallery-prev,
     .gallery-next {
-      font-size: 28px;
-      padding: 8px;
+        font-size: 28px;
+        padding: 8px;
     }
     .gallery-close {
-      font-size: 24px;
+        font-size: 24px;
     }
     .gallery-thumb {
-      width: 50px;
-      height: 50px;
+        width: 50px;
+        height: 50px;
     }
-  }
-  
+}
 @media screen and (max-width: 1024px) {
-    .room-chat-name{
+    .room-chat-name {
         display: none;
     }
 }
 @media screen and (max-width: 900px) {
-    .acton-options{
+    .acton-options {
         align-items: center;
         gap: 3rem;
     }
-    .chat-action-options-name{
+    .chat-action-options-name {
         display: none;
     }
 }
 @media screen and (max-width: 600px) {
-    .user-options{
+    .user-options {
         display: none;
+    }
+    .chat-list {
+        width: 30%;
+    }
+    .chat-window {
+        width: 70%;
     }
 }
