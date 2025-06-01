@@ -77,7 +77,6 @@ public class GroupServiceImpl implements GroupService {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-
     }
 
     @Override

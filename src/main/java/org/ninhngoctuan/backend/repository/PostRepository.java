@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
     Optional<PostEntity> findByPostId(Long id);
 
-    @Query("SELECT p FROM PostEntity p ORDER BY function('RAND')")
+    @Query("SELECT p FROM PostEntity p WHERE p.isDeleted = false ORDER BY function('RAND')")
     List<PostEntity> findAllRandom();
 
     @Query("SELECT p FROM PostEntity p WHERE p.groupId.groupId = :groupId AND p.isDeleted = false ORDER BY p.createdAt DESC")
