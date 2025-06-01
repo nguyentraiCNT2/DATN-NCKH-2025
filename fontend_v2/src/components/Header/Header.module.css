@@ -91,6 +91,8 @@ body {
   .avatar-img {
     border-radius: 50%;
     cursor: pointer;
+    border: none !important;
+    
   }
   
   .avatar-option {

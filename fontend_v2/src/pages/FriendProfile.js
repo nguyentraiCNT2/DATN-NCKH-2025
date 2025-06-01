@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/css/profile.css';
 import PostCard from '../components/PostCard/PostCard';
@@ -8,12 +8,15 @@ const FriendProfilePage = () => {
     const [error, setError] = useState('');
     const [userData, setUserData] = useState({});
     const [postsData, setPostsData] = useState([]);
+        const [RelationShips, setRelationShips] = useState([]);
     const [reason, setReason] = useState('');
+        const [errorMessage, setErrorMessage] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [showModalPassword, setShowModalPassword] = useState(false);
     const [errorPost, setErrorPost] = useState(''); // Lưu thông báo lỗi
     const [profilePictureFile, setProfilePictureFile] = useState(null);
     const [coverPictureFile, setCoverPictureFile] = useState(null);
+        const [actionRelationShipModel, setActionRelationShipModel] = useState('info-relationship');
     const [selectProfilepicture, setSelectProfilepicture] = useState('');
     const [checkfriend, setCheckFriend] = useState(false);
     const userId = Number(localStorage.getItem('userId')); // Chuyển đổi userId từ chuỗi thành số
@@ -139,6 +142,7 @@ const FriendProfilePage = () => {
         fetchUserData();
         fetchPosts();
         fetchCheckFriend();
+        fetchRelationShips();
     }, [id]);
     const handleContactPostAction = (text) => {
         setActionModel(text);
@@ -183,6 +187,23 @@ const FriendProfilePage = () => {
             alert("Có lỗi xảy ra khi báo cáo tài khoản.");
         }
     };
+
+    const fetchRelationShips = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/relations/user/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
+            setRelationShips(response.data);
+        } catch (error) {
+            setErrorMessage(error.response?.data || 'Có lỗi xảy ra khi lấy dữ liệu');
+        }
+    };
+
+        const handleRelationShipAction = (text) => {
+        setActionRelationShipModel(text);
+    }
     return (
         <div>
             <div class="profile-info-contaiter">
@@ -192,7 +213,7 @@ const FriendProfilePage = () => {
                 <div class="profile-info">
                     <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Profile Picture" />
                     <div class="profile-detail">
-                        <h2 class="profile-name">{userData.user?.fullName}</h2>
+                        <h2 class="profile-name">{userData.user?.fullName}  {userData?.nickName ? `( ${userData?.nickName} )` : ''}</h2>
                     </div>
                 </div>
                 <div class="profile-options">
@@ -222,25 +243,55 @@ const FriendProfilePage = () => {
 
                 <button onClick={() => handleContactPostAction('list-post')}>Bài viết</button>
                 <button onClick={() => handleContactPostAction('list-contact')}>Giới thiệu</button>
+                <button onClick={() => handleContactPostAction('list-relationship')}>Kết nối</button>
                 <button onClick={() => handleContactPostAction('report')}>Báo cáo</button>
             </div>
 
 
             <div class="post-area">
+                
+                {actionModel === 'list-relationship' && (
+                    <div className='contact-options'>
+          
+                        <div className='contact-content'>
+
+                                <div className="relationship-container">
+                                    <h3 className="relationship-title">Danh sách mối quan hệ</h3>
+                                    <div className="relationship-list">
+                                        {RelationShips.map((item) => (
+                                            <div key={item.id} className="relationship-card">
+                                                <img
+                                                    src={item?.userDTO?.profilePicture ? `${item.userDTO?.profilePicture}` : '/img/avatar.png'}
+                                                    alt={item?.userDTO?.fullName || 'Avatar'}
+                                                    className="relationship-avatar"
+                                                />
+                                                <h3 className="relationship-name">{item?.userDTO?.fullName}</h3>
+                                                <div className="relationship-type">
+                                                    <p>{item?.name}</p>
+                                                </div>
+                                                   
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+    
+                        </div>
+                    </div>
+                )}
                 {actionModel === 'list-post' && (
                     <>
                         <div class="profile-contact">
                             <h3>Giới thiệu</h3>
                             <p className="contact-info">
-                                Giới tinh: {userData?.gender ? userData.gender : 'Không có giới tính để hiển thị'}
+                            {userData?.description ? userData.description : 'Không có mô tả để hiển thị'}
                             </p>
-                            <p className="contact-info">
+                            {/* <p className="contact-info">
                                 Sinh nhật: {userData?.birthday ? formatBirthday(userData.birthday) : 'Không có ngày sinh để hiển thị'}
                             </p>
                             <p className="contact-info">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m798-322-62-62q44-41 69-97t25-119q0-63-25-118t-69-96l62-64q56 53 89 125t33 153q0 81-33 153t-89 125ZM670-450l-64-64q18-17 29-38.5t11-47.5q0-26-11-47.5T606-686l64-64q32 29 50 67.5t18 82.5q0 44-18 82.5T670-450Zm-310 10q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-120v-112q0-33 17-62t47-44q51-26 115-44t141-18q77 0 141 18t115 44q30 15 47 44t17 62v112H40Zm80-80h480v-32q0-11-5.5-20T580-266q-36-18-92.5-36T360-320q-71 0-127.5 18T140-266q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-600q0-33-23.5-56.5T360-680q-33 0-56.5 23.5T280-600q0 33 23.5 56.5T360-520Zm0-80Zm0 400Z" /></svg>
                                 {userData?.description ? userData.description : 'Không có mô tả bản thân để hiển thị'}
-                            </p>
+                            </p> */}
 
                         </div>
                         <div class="profile-content">

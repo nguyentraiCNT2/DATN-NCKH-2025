@@ -55,7 +55,7 @@ const ChatPage = () => {
                 },
             });
             setRoomDetail(response.data);
-                setSelectedTheme(response.data.thememeId);
+            setSelectedTheme(response.data.thememeId);
         } catch (error) {
             console.error('Error fetching room theme:', error);
         }
@@ -70,6 +70,7 @@ const ChatPage = () => {
                 },
             });
             fetchRoomTheme();
+            window.location.reload();
         } catch (error) {
             console.error('Error changing room theme:', error);
             setErrorMessage(error.response?.data || 'Lỗi khi thay đổi theme');
@@ -179,11 +180,13 @@ const ChatPage = () => {
     };
 
     const handleImageChange = (e) => {
-        setImages(Array.from(e.target.files));
+        const newImages = Array.from(e.target.files);
+        setImages((prevImages) => [...prevImages, ...newImages]); // Gộp file mới vào danh sách cũ
     };
 
     const handleVideoChange = (e) => {
-        setVideos(Array.from(e.target.files));
+        const newVideos = Array.from(e.target.files);
+        setVideos((prevVideos) => [...prevVideos, ...newVideos]); // Gộp file mới vào danh sách cũ
     };
 
     const handleRemoveImage = (index) => {
@@ -442,7 +445,7 @@ const ChatPage = () => {
                             </div>
                         </div>
                         <footer className="chat-footer">
-                            <button className="icon" onClick={handleVideoClick} >
+                            <button className="icon" onClick={handleVideoClick}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="24px"
@@ -587,7 +590,7 @@ const ChatPage = () => {
                                     <option 
                                     key={theme.id} 
                                     value={theme.id} 
-                                   selected={roomDetail?.thememeId?.id === theme.id}>
+                                    selected={roomDetail?.thememeId?.id === theme.id}>
                                         {theme.name}
                                     </option>
                                 ))}

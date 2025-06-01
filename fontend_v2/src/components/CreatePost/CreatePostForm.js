@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useParams } from "react-router-dom";
 import { UserProfileFuntions } from '../../auth/UserProfile';
+
 const CreatePostForm = () => {
     const { id } = useParams(); // Lấy giá trị id từ URL
-    const {userData} = UserProfileFuntions();
+    const { userData } = UserProfileFuntions();
     const location = useLocation();
     const [content, setContent] = useState('');
     const [tagId, setTagId] = useState(0);
@@ -18,6 +19,7 @@ const CreatePostForm = () => {
     const [loading, setLoading] = useState(false);
     const imageInputRef = useRef(null);
     const videoInputRef = useRef(null);
+
     const uploadVideoInChunks = async (videoFile) => {
         const chunkSize = 1024 * 1024 * 5; // 5MB mỗi phần
         let start = 0;
@@ -45,20 +47,19 @@ const CreatePostForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); // Bật trạng thái loading
-       
-          
+
         const formData = new FormData();
         formData.append('content', content);
         if (tagId !== 0) formData.append('tagId', tagId);
         if (location.pathname.startsWith("/group/")) formData.append('groupId', id);
         // Append multiple images
         Array.from(images).forEach((image) => {
-            formData.append('images', image); // Ensure field name matches what backend expects
+            formData.append('images', image);
         });
 
         // Append multiple videos
         Array.from(videos).forEach((video) => {
-            formData.append('videos', video); // Ensure field name matches what backend expects
+            formData.append('videos', video);
         });
 
         try {
@@ -78,9 +79,7 @@ const CreatePostForm = () => {
                 setShowStatusForm(false);
                 setShowStatusList(false);
                 setLoading(false); // Tắt trạng thái loading
-
-                    window.location.reload();
-
+                window.location.reload();
             }
         } catch (error) {
             setLoading(false); // Tắt trạng thái loading
@@ -91,9 +90,11 @@ const CreatePostForm = () => {
             }
         }
     };
+
     useEffect(() => {
         fetchTags();
     }, []);
+
     const fetchTags = async () => {
         try {
             const response = await axios.get('http://localhost:8080/home/tag/get-all', {
@@ -105,14 +106,16 @@ const CreatePostForm = () => {
         } catch (error) {
             console.error('tag error:', error);
         }
+    };
 
-    }
     const handleImageClick = () => {
-        imageInputRef.current.click(); // Kích hoạt input ảnh khi nhấn vào icon
+        imageInputRef.current.value = null; // Reset input
+        imageInputRef.current.click();
     };
 
     const handleVideoClick = () => {
-        videoInputRef.current.click(); // Kích hoạt input video khi nhấn vào icon
+        videoInputRef.current.value = null; // Reset input
+        videoInputRef.current.click();
     };
 
     const handleStatusClick = (id) => {
@@ -129,53 +132,43 @@ const CreatePostForm = () => {
         setShowStatusList(false);
     };
 
+    const handleRemoveImage = (index) => {
+        setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    };
+
+    const handleRemoveVideo = (index) => {
+        setVideos((prevVideos) => prevVideos.filter((_, i) => i !== index));
+    };
+
     return (
-        <div >
+        <div>
             {loading && (
                 <div className="loading-overlay">
-                    <div class="loader">
-                        <div class="load-item bar1"></div>
-                        <div class="load-item bar2"></div>
-                        <div class="load-item bar3"></div>
-                        <div class="load-item bar4"></div>
-                        <div class="load-item bar5"></div>
-                        <div class="load-item bar6"></div>
-                        <div class="load-item bar7"></div>
-                        <div class="load-item bar8"></div>
-                        <div class="load-item bar9"></div>
-                        <div class="load-item bar10"></div>
-                        <div class="load-item bar11"></div>
-                        <div class="load-item bar12"></div>
+                    <div className="loader">
+                        <div className="load-item bar1"></div>
+                        <div className="load-item bar2"></div>
+                        <div className="load-item bar3"></div>
+                        <div className="load-item bar4"></div>
+                        <div className="load-item bar5"></div>
+                        <div className="load-item bar6"></div>
+                        <div className="load-item bar7"></div>
+                        <div className="load-item bar8"></div>
+                        <div className="load-item bar9"></div>
+                        <div className="load-item bar10"></div>
+                        <div className="load-item bar11"></div>
+                        <div className="load-item bar12"></div>
                     </div>
                 </div>
             )}
             <form onSubmit={handleSubmit}>
-
-
-                <div class="post-by">
-                    <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Avatar" class="avatar-img" width="40px" />
-                    <input type="text" class="post-input" placeholder="Bạn đang nghĩ gì?"
+                <div className="post-by">
+                    <img src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'} alt="Avatar" className="avatar-img" width="40px" />
+                    <input type="text" className="post-input" placeholder="Bạn đang nghĩ gì?"
                         value={content}
                         onChange={(e) => setContent(e.target.value)} />
                 </div>
-                <div class="actions">
-                    <span class="action-item" onClick={handleVideoClick}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                            width="24px" fill="#5f6368">
-                            <path
-                                d="m160-800 80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h120q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800Zm0 240v320h640v-320H160Zm0 0v320-320Z" />
-                        </svg>
-                        <input
-                            type="file"
-                            ref={videoInputRef}
-                            style={{ display: 'none' }}
-                            onChange={(e) => setVideos(e.target.files)}
-                            accept="video/*"
-                            multiple
-                        />
-                        <p class="action-item-name">Video</p>
-                    </span>
-                    <span class="action-item" onClick={handleImageClick}>
+                <div className="actions">
+                    <span className="action-item" onClick={handleImageClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                             width="24px" fill="#5f6368">
                             <path
@@ -185,59 +178,97 @@ const CreatePostForm = () => {
                             type="file"
                             ref={imageInputRef}
                             style={{ display: 'none' }}
-                            onChange={(e) => setImages(e.target.files)}
+                            onChange={(e) => setImages((prevImages) => [...prevImages, ...Array.from(e.target.files)])}
                             accept="image/*"
                             multiple
                         />
-                        <p class="action-item-name">Ảnh</p>
+                        <p className="action-item-name">Ảnh</p>
                     </span>
-                    <div class='tag-list'>
+                    <span className="action-item" onClick={handleVideoClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                             width="24px" fill="#5f6368">
                             <path
-                                d="M480-260q68 0 123.5-38.5T684-400H276q25 63 80.5 101.5T480-260ZM312-520l44-42 42 42 42-42-84-86-86 86 42 42Zm250 0 42-42 44 42 42-42-86-86-84 86 42 42ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z" />
+                                d="m160-800 80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h120q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800Zm0 240v320h640v-320H160Zm0 0v320-320Z" />
                         </svg>
-                        <select class="action-item-select" value={tagId} // Gắn giá trị tagId hiện tại
+                        <input
+                            type="file"
+                            ref={videoInputRef}
+                            style={{ display: 'none' }}
+                            onChange={(e) => setVideos((prevVideos) => [...prevVideos, ...Array.from(e.target.files)])}
+                            accept="video/*"
+                            multiple
+                        />
+                        <p className="action-item-name">Video</p>
+                    </span>
+                    <div className='tag-list'>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                            width="24px" fill="#5f6368">
+                            <path
+                                d="M480-260q68 0 123.5-38.5T684-400H276q25 63 80.5 101.5T480-260ZM312-520l44-42 42 42 42-42-84-86-86 86 42 42Zm250 0l42-42 44 42 42-42-86-86-84 86 42 42ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z" />
+                        </svg>
+                        <select className="action-item-select" value={tagId}
                             onChange={(e) => handleStatusClick(Number(e.target.value))} >
                             <option>
-                                <span class="action-item"><p class="action-item-name">Cảm xúc</p>
-                                </span></option>
+                                <span className="action-item"><p className="action-item-name">Cảm xúc</p></span>
+                            </option>
                             {tagsList.map((item) => (
                                 <option key={item.tagId} value={item.tagId}>{item.name}</option>
                             ))}
                         </select>
                     </div>
-
-
-
                 </div>
 
                 {/* Hiển thị ảnh và video đã chọn */}
                 <div className="media-previews">
                     {Array.from(images).map((image, index) => (
-                        <img key={index} src={URL.createObjectURL(image)} className='media-previews-img' alt={`Selected ${index}`} />
+                        <div key={index} className="media-item-send">
+                            <img src={URL.createObjectURL(image)} className='media-previews-img' alt={`Selected ${index}`} />
+                            <div className="remove-img">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    onClick={() => handleRemoveImage(index)}
+                                    height="24px"
+                                    viewBox="0 -960 960 960"
+                                    width="24px"
+                                    fill="#000000"
+                                >
+                                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                                </svg>
+                            </div>
+                        </div>
                     ))}
                     {Array.from(videos).map((video, index) => (
-                        <video key={index} controls className='media-previews-img' >
-                            <source src={URL.createObjectURL(video)} type={video.type} />
-                            Your browser does not support the video tag.
-                        </video>
+                        <div key={index} className="media-item-send">
+                            <video controls className='media-previews-img'>
+                                <source src={URL.createObjectURL(video)} type={video.type} />
+                                Your browser does not support the video tag.
+                            </video>
+                            <div className="remove-video">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    onClick={() => handleRemoveVideo(index)}
+                                    height="24px"
+                                    viewBox="0 -960 960 960"
+                                    width="24px"
+                                    fill="#000000"
+                                >
+                                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                                </svg>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
                 <div className='button-create-post-group'>
-
                     <button type="submit" className="mt-3 create-post-button">
                         Tạo bài đăng
                     </button>
-
-                    <button type="button"  className="mt-3 float-right clear-post-button" onClick={() => handleClear()}>Hủy</button>
+                    <button type="button" className="mt-3 float-right clear-post-button" onClick={() => handleClear()}>
+                        Hủy
+                    </button>
                 </div>
-
             </form>
-
         </div>
-
     );
 };
 
