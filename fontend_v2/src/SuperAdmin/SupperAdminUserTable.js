@@ -228,9 +228,9 @@ const SuperAdminUserTable = () => {
                    </div>
                    <div className="modal-body">
                        <select className="role-select" value={newRole} onChange={(e) => setNewRole(e.target.value)}>
-                           <option value="2" >USER</option>
-                           <option value="1" >ADMIN</option>
-                           <option value="3" >SUPER ADMIN</option>
+                           <option value="3" >USER</option>
+                           <option value="2" >ADMIN</option>
+                           <option value="1" >SUPER ADMIN</option>
                        </select>
                    </div>
                        <button className="save-btn" onClick={() => handleUpdateRole()}>Lưu</button>

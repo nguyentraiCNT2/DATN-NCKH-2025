@@ -69,6 +69,7 @@ body {
   font-size: 20px;
   padding: 10px 20px;
   border-radius: 10px;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-link:hover {
@@ -116,7 +117,7 @@ body {
   color: #333;
   text-decoration: none;
   font-size: 14px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .avatar-option a:hover {
@@ -128,6 +129,10 @@ body {
   /* Hiển thị tùy chọn khi hover */
 }
 
+  .active{
+    background-color: #ddd;
+  
+  }
 @media screen and (max-width: 1300px) {}
 
 @media screen and (max-width: 1024px) {}

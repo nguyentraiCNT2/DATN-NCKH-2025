@@ -31,7 +31,13 @@ background: linear-gradient(to bottom, black, white);
     border-radius: 20px;
 
 }
-
+.profile-actions{
+  background: #fff;
+  padding: 5px;
+}
+.profile-active{
+  background: #ddd;
+}
 .profile-info {
     position: absolute;
     top: 72%;

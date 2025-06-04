@@ -18,6 +18,7 @@ display: flex;
     border-radius: 20px;
     font-weight: bold;
     font-size: 18px;
+    margin-top: 10px;
 }
 .setting-menu-item:hover{
     background: #ddd;

@@ -226,9 +226,6 @@ const PostCard = ({ post }) => {
                 <i class="fa-solid fa-ellipsis"></i>
               </div>
             )}
-
-
-
             {showDeleteAction && (
               <div className='post-action-delete' >
                 <button className='post-action-delete-button' onClick={() => handleHidenPost(post?.postId)}>xóa bỏ</button>
@@ -302,62 +299,86 @@ const PostCard = ({ post }) => {
       </div>
       {showShareModal && (
         <div className="share-modal">
-          <div className="share-modal-content">
-            <h3 className="share-modal-title">Chia sẻ bài viết</h3>
-            <ul className="share-options">
-              <li className="share-option">
-                <a
-                  className="share-option-link"
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src='https://phuongwanh.com/wp-content/uploads/2021/08/Lich-su-hinh-thanh-thay-doi-logo-facebook-16.png' width='50px' />
-                  Facebook
-                </a>
-              </li>
-              <li className="share-option">
-                <a
-                  className="share-option-link"
-                  href={`https://t.me/share/url?url=${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/512px-Telegram_2019_Logo.svg.png' width='25px' />
-
-                  Telegram
-                </a>
-              </li>
-
-              <li className="share-option">
-                <a
-                  className="share-option-link"
-                  href={`https://www.messenger.com/`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Facebook_Messenger_logo_2020.svg/2048px-Facebook_Messenger_logo_2020.svg.png' width='20px' />
-
-                  Messenger
-                </a>
-              </li>
-              <li
-                className="share-option copy-link-option"
-                onClick={handleCopyLink}
-              >
-                <img src='https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-cartoon-link-icon-download-image_1196815.jpg' width='30px' />
-
-                Sao chép liên kết
-              </li>
-            </ul>
-            <button
-              className="close-modal-button"
-              onClick={() => setShowShareModal(false)}
+      <div className="share-modal-content">
+        <h3 className="share-modal-title">Chia sẻ bài viết</h3>
+        <ul className="share-options">
+          <li className="share-option">
+            <a
+              className="share-option-link"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Đóng
-            </button>
-          </div>
-        </div>
+              <img
+                src="https://phuongwanh.com/wp-content/uploads/2021/08/Lich-su-hinh-thanh-thay-doi-logo-facebook-16.png"
+                width="40px"
+                alt="Facebook"
+              />
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li className="share-option">
+            <a
+              className="share-option-link"
+              href={`https://www.messenger.com/t/?link=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Facebook_Messenger_logo_2020.svg/2048px-Facebook_Messenger_logo_2020.svg.png"
+                width="40px"
+                alt="Messenger"
+              />
+              <span>Messenger</span>
+            </a>
+          </li>
+          <li className="share-option">
+            <a
+              className="share-option-link"
+              href={`https://x.com/share?url=${encodeURIComponent(shareUrl)}&text=Chia sẻ bài viết từ ứng dụng của tôi!`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/1200px-X_icon_2.svg.png"
+                width="40px"
+                alt="X"
+              />
+              <span>X</span>
+            </a>
+          </li>
+          <li className="share-option">
+            <a
+              className="share-option-link"
+              href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=Chia sẻ bài viết từ ứng dụng của tôi!`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/512px-Telegram_2019_Logo.svg.png"
+                width="40px"
+                alt="Telegram"
+              />
+              <span>Telegram</span>
+            </a>
+          </li>
+          <li className="share-option copy-link-option" onClick={handleCopyLink}>
+            <img
+              src="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-cartoon-link-icon-download-image_1196815.jpg"
+              width="40px"
+              alt="Sao chép liên kết"
+            />
+            <span>Sao chép liên kết</span>
+          </li>
+        </ul>
+        <button
+          className="close-modal-button"
+          onClick={() => setShowShareModal(false)}
+        >
+          Đóng
+        </button>
+      </div>
+    </div>
       )}
 
     </div>

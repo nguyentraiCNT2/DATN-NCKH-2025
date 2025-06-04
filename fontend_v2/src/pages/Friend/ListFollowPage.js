@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../../assets/css/friend.css';
+import { useLocation, Link } from 'react-router-dom';
 import NotificationMessage from '../../components/ShowNotification/NotificationMessage';
 const ListFollowPage = () => {
     const handleacion = (id) => {
         window.location.href = `/friend/${id}`;
     }
     const [showError, setShowError] = useState(false); // State để điều khiển hiển thị thông báo
-
+      const location = useLocation(); // Lấy thông tin đường dẫn hiện tại
+    const currentPath = location.pathname; // Đường dẫn hiện tại, ví dụ: '/', '/follow-post'
     const [friendId, setFriendId] = useState('');
     const [friends, setFriends] = useState([]);
     const [error, setError] = useState('');
@@ -66,7 +68,12 @@ const ListFollowPage = () => {
     const handleAgree = () => {
         setShowError(false); // Đóng thông báo khi nhấn "Đồng ý"
       };
-    
+      // Hàm kiểm tra xem link có active không
+    const isActive = (href) => {
+        // Bỏ fragment (nếu có, ví dụ: /message#last-chat)
+        const hrefPath = href.split('#')[0];
+        return hrefPath === currentPath ? 'friend-actions active' : 'friend-actions';
+    };
     return (
         <div>
             {
@@ -85,7 +92,7 @@ const ListFollowPage = () => {
             <div class="friend-container">
                 <div class="friend-menu">
                     <h2 class="friend-title">Theo giõi</h2>
-                    <a href='/list-friend' class="friend-actions">
+                    <a href='/list-friend'  className={isActive('/list-friend')}>
                         <div class="friend-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                 fill="#000000">
@@ -95,7 +102,7 @@ const ListFollowPage = () => {
                         </div>
                         <p class="friend-action">Trang chủ</p>
                     </a>
-                    <a href="/list-follow" class="friend-actions">
+                    <a href="/list-follow" className={isActive('/list-follow')}>
                         <div class="friend-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                 fill="#000000">
@@ -105,7 +112,7 @@ const ListFollowPage = () => {
                         </div>
                         <p class="friend-action">Follow</p>
                     </a>
-                    <a href="/list-follower" class="friend-actions">
+                    <a href="/list-follower"  className={isActive('/list-follower')}>
                         <div class="friend-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                 fill="#000000">

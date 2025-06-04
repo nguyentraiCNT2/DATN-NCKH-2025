@@ -30,7 +30,7 @@ function AdminHeader() {
 console.log('admin role test',userData?.user?.roleId.name);
   return (
     <div className="admin-header">
-      <h2>Admin Dashboard</h2>
+      <h2></h2>
       <div className="admin-header-user" onMouseEnter={toggleMenu} onMouseLeave={toggleMenu}>
         <img
         src={userData?.user?.profilePicture ? `${userData.user?.profilePicture}` : '/img/avatar.png'}
@@ -40,12 +40,12 @@ console.log('admin role test',userData?.user?.roleId.name);
         {isMenuVisible && (
           <div className="admin-user-menu">
             <ul>
-              <li onClick={() => handleacion(`/profile`)}>Profile</li>
-              <li onClick={() => handleacion(`/`)}>User Settings</li>
+              <li onClick={() => handleacion(`/profile`)}>Trang cá nhân</li>
+              <li onClick={() => handleacion(`/`)}>Trang người dùng</li>
               {userData?.user?.roleId?.name === "SUPER_ADMIN" && (
-                   <li onClick={() => handleacion(`/supper/admin`)}>Super Admin Settings</li>
+                   <li onClick={() => handleacion(`/supper/admin`)}>Trang quản lý cấp cao</li>
               )}
-              <li  onClick={() => handleLogOut()} >Logout</li>
+              <li  onClick={() => handleLogOut()} >Đăng xuất</li>
             </ul>
           </div>
         )}

@@ -8,21 +8,37 @@ import FollowerList from "../components/FollowerList/FollowerList";
 import axios from 'axios';
 import { UserProfileFuntions } from '../auth/UserProfile';
 const FollowPage = () => {
-    const {userData} = UserProfileFuntions();
+    const { userData } = UserProfileFuntions();
     const [postList, setPostList] = useState([]);
-        const [errorMessage, setErrorMessage] = useState('');
-        const token = localStorage.getItem('token');
-        
-    const fetchPostList = async () => {
+    const [errorMessage, setErrorMessage] = useState('');
+    const token = localStorage.getItem('token');
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+    const fetchPostList = async (currentPage) => {
+        if (!token || isLoading || !hasMore) return;
+
+        setIsLoading(true);
         try {
             const response = await axios.get('http://localhost:8080/post/getbyfollow', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
+                params: { page: currentPage, size: 10 },
+                headers: { Authorization: `Bearer ${token}` },
             });
-            setPostList(response.data);
+            const newPosts = response.data.content || [];
+
+            setPostList((prev) => {
+                // Lọc bài viết chưa có trong danh sách hiện tại
+                const existingIds = new Set(prev.map(post => post.postId));
+                const filteredNewPosts = newPosts.filter(post => !existingIds.has(post.postId));
+                return [...prev, ...filteredNewPosts];
+            });
+
+            setHasMore(currentPage < response.data.totalPages);
         } catch (error) {
             setErrorMessage(error.response?.data?.error || 'Có lỗi xảy ra khi lấy dữ liệu');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -63,17 +79,17 @@ const FollowPage = () => {
                         <CreatePostForm />
                     </div>
                     <div class="list-post">
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-            {postList.length > 0 ? (
-                <ul>
-                    {postList.map((item) => (
-                               <PostCard post={item} />
-                    ))}
-                </ul>
-            ) : (
-                <p className="no-groups-message">Không có bài viết nào</p>
-            )}
-                 
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        {postList.length > 0 ? (
+                            <ul>
+                                {postList.map((item) => (
+                                    <PostCard post={item} />
+                                ))}
+                            </ul>
+                        ) : (
+                            <p className="no-groups-message">Không có bài viết nào</p>
+                        )}
+
 
                     </div>
                 </div>
@@ -81,7 +97,7 @@ const FollowPage = () => {
 
                 <div class="right-bar">
                     <strong class="right-bar-title">Theo giõi</strong>
-                  <FollowerList />
+                    <FollowerList />
                 </div>
             </div>
 
