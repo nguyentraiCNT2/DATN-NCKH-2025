@@ -2,6 +2,9 @@ package org.ninhngoctuan.backend.controller.User;
 
 import org.ninhngoctuan.backend.dto.*;
 import org.ninhngoctuan.backend.service.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -88,9 +91,11 @@ public class HomeController {
         }
     }
     @GetMapping("/post/getbyfollow")
-    public ResponseEntity<?> getbyfollow(){
+    public ResponseEntity<?> getbyfollow(@RequestParam(value = "page", defaultValue = "1") int page,
+                                         @RequestParam(value = "size", defaultValue = "10") int size){
         try {
-            List<PostDTO> list = postService.getPostByFriend();
+            Pageable pageable = PageRequest.of(page - 1, size);
+            Page<PostDTO> list = postService.getPostByFriend(pageable);
 
             return ResponseEntity.status(HttpStatus.OK).body(list);
         }catch (Exception e){
@@ -99,10 +104,11 @@ public class HomeController {
         }
     }
     @GetMapping("/post/get-all")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> getAll(@RequestParam(value = "page", defaultValue = "1") int page,
+                                    @RequestParam(value = "size", defaultValue = "10") int size){
         try {
-
-            List<PostDTO> list = postService.getAllPostDesc();
+            Pageable pageable = PageRequest.of(page - 1, size);
+            Page<PostDTO> list = postService.getAllPostDesc(pageable);
 
             return ResponseEntity.status(HttpStatus.OK).body(list);
         }catch (Exception e){

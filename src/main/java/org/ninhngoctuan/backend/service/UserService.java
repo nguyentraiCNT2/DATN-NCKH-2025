@@ -36,6 +36,7 @@ public interface UserService {
     List<UserDTO> filterUsers(String fullName, String email, String phone, boolean isActive, boolean isEmailActive, Pageable pageable);
     List<UserDTO> getAll(Pageable pageable);
     List<UserDTO> getAll();
+    List<UserDTO> getAllPage(Pageable pageable);
     List<UserDTO> getAllSupperAdmin();
     List<UserDTO> getByName(String fullname);
     void lockUser(Long id);

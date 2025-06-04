@@ -202,9 +202,14 @@
             }
         }
         @GetMapping("/getall/people")
-        public ResponseEntity<?> getAll (){
+        public ResponseEntity<?> getAllPage (@RequestParam(value = "page", defaultValue = "1") int page,
+                                             @RequestParam(value = "limit", defaultValue = "10") int limit){
             try {
-               List<UserDTO> result =  userService.getAll();
+                UserOutPut result = new UserOutPut();
+                result.setPage(page);
+                Pageable pageable =  PageRequest.of(page - 1, limit);
+                result.setListResult(userService.getAllPage(pageable));
+                result.setTotalPage((int) Math.ceil((double) (userService.totalItem()) / limit));
                 return ResponseEntity.status(HttpStatus.OK).body(result);
             }catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

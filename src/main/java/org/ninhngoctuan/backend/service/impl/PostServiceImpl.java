@@ -9,6 +9,9 @@ import org.ninhngoctuan.backend.service.FirebaseStorageService;
 import org.ninhngoctuan.backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -320,47 +323,37 @@ public class PostServiceImpl implements PostService {
     public Path getByFilename(String filename) {
         return  Paths.get(imagesDir).resolve(filename);
     }
-
     @Override
-    public List<PostDTO> getAllPostDesc() {
+    public Page<PostDTO> getAllPostDesc(Pageable pageable) {
         String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepository.findByEmail(authEmail)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
 
-        // Lấy danh sách toàn bộ bài viết (chưa bị xóa)
-        List<PostEntity> allPosts = postRepository.findAllRandom();
+        // Lấy toàn bộ bài viết
+        List<PostEntity> allPosts = postRepository.findAllRandom(pageable); // Giả sử đã sắp xếp
 
-        // Lấy danh sách bạn bè mà người dùng đang theo dõi
-        List<FriendEntity> followingFriends = friendsRepository.findByUser(user).stream()
-                .filter(friend -> "active".equals(friend.getStatus()))
-                .collect(Collectors.toList());
-
-        // Lọc danh sách bài viết dựa trên điều kiện
-        return allPosts.stream()
+        // Lọc và map sang DTO
+        List<PostDTO> filteredPosts = allPosts.stream()
                 .filter(post -> {
                     UserEntity postOwner = post.getUser();
 
-                    // Kiểm tra nếu bài viết thuộc về chính người dùng
-                    if (postOwner.equals(user)) {
-                        return true;
-                    }
+                    // Không bị block bởi mình
+                    FriendEntity reciprocalFriendship = friendsRepository.findByUserAndFriend(user, postOwner);
+                    boolean isBlockedByMe = reciprocalFriendship != null && "block".equals(reciprocalFriendship.getStatus());
 
-                    // Kiểm tra nếu người dùng đang theo dõi chủ bài viết
-                    boolean isFollowing = followingFriends.stream()
-                            .anyMatch(friend -> friend.getFriend().equals(postOwner));
+                    // Không bị block bởi họ
+                    FriendEntity blockedByPostOwner = friendsRepository.findByUserAndFriend(postOwner, user);
+                    boolean isBlockedByPostOwner = blockedByPostOwner != null && "block".equals(blockedByPostOwner.getStatus());
 
-
-                    // Kiểm tra mối quan hệ đối ứng (họ có theo dõi lại mình không)
-                    FriendEntity reciprocalFriendship = friendsRepository.findByUserAndFriend(postOwner, user);
-                    boolean isNotBlockedByMe = reciprocalFriendship == null || "active".equals(reciprocalFriendship.getStatus());
-
-                    // Kiểm tra nếu người dùng không bị block hoặc không block người kia
-                    return isNotBlockedByMe ;
+                    // Hiển thị bài viết nếu không bị block bởi mình và không bị block bởi họ
+                    return !isBlockedByMe && !isBlockedByPostOwner;
                 })
                 .map(post -> modelMapper.map(post, PostDTO.class))
                 .collect(Collectors.toList());
-    }
 
+        // Tạo Page<PostDTO> từ kết quả lọc
+        return new PageImpl<>(filteredPosts, pageable, filteredPosts.size());
+    }
     @Override
     public List<PostDTO> getAllPostByGroupId(Long groupId) {
         String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -466,7 +459,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDTO> getPostByFriend() {
+    public Page<PostDTO> getPostByFriend(Pageable pageable) {
         String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
 
@@ -501,7 +494,7 @@ public class PostServiceImpl implements PostService {
                     }
                 });
 
-        return postList;
+        return new PageImpl<>(postList, pageable, postList.size());
     }
 
     @Override

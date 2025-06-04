@@ -610,6 +610,41 @@ public class UserServiceIMPL implements UserService {
     }
 
     @Override
+    public List<UserDTO> getAllPage(Pageable pageable) {
+        try {
+            List<UserDTO> list = new ArrayList<>();
+
+            // Lấy danh sách tất cả người dùng
+            List<UserEntity> userEntities = userRepository.findAll(pageable).getContent();
+            if (userEntities.size() == 0)
+                throw new RuntimeException("Không có người dùng nào");
+
+            // Lấy người dùng hiện tại
+            String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+            UserEntity user = userRepository.findByEmail(authEmail).orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng này"));
+
+
+            // Lấy danh sách bạn bè
+            List<FriendEntity> friendEntities = friendsRepository.findByUser(user);
+
+            // Tạo Set chứa userId của bạn bè để kiểm tra nhanh
+            Set<Long> friendIds = friendEntities.stream()
+                    .map(friendEntity -> friendEntity.getFriend().getUserId())
+                    .collect(Collectors.toSet());
+
+            // Lọc những người dùng không phải là bản thân và không phải là bạn bè
+            userEntities.stream()
+                    .filter(userEntity -> !Objects.equals(user.getUserId(), userEntity.getUserId())) // Không phải bản thân
+                    .filter(userEntity -> !friendIds.contains(userEntity.getUserId())) // Không phải bạn bè
+                    .forEach(userEntity -> list.add(modelMapper.map(userEntity, UserDTO.class)));
+
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
     public List<UserDTO> getAllSupperAdmin() {
         try {
             String authEmail = SecurityContextHolder.getContext().getAuthentication().getName();

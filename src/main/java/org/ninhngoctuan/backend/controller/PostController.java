@@ -8,6 +8,9 @@ import org.ninhngoctuan.backend.service.PostService;
 import org.ninhngoctuan.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -149,10 +152,11 @@ public class PostController {
     }
 
     @GetMapping("/getall")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> getAll(@RequestParam(value = "page", defaultValue = "1") int page,
+                                    @RequestParam(value = "size", defaultValue = "10") int size){
         try {
-
-            List<PostDTO> list = postService.getAllPostDesc();
+            Pageable pageable = PageRequest.of(page - 1, size);
+            Page<PostDTO> list = postService.getAllPostDesc(pageable);
 
             return ResponseEntity.status(HttpStatus.OK).body(list);
         }catch (Exception e){
@@ -207,9 +211,11 @@ public class PostController {
         }
     }
     @GetMapping("/getbyfollow")
-    public ResponseEntity<?> getbyfollow(){
+    public ResponseEntity<?> getbyfollow(@RequestParam(value = "page", defaultValue = "1") int page,
+                                         @RequestParam(value = "size", defaultValue = "10") int size){
         try {
-            List<PostDTO> list = postService.getPostByFriend();
+            Pageable pageable = PageRequest.of(page - 1, size);
+            Page<PostDTO> list = postService.getPostByFriend(pageable);
 
             return ResponseEntity.status(HttpStatus.OK).body(list);
         }catch (Exception e){

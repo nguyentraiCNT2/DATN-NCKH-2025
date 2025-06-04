@@ -17,7 +17,8 @@ public class FriendController {
     @Autowired
     private FriendService friendService;
     @GetMapping("/list")
-    public ResponseEntity<?> getFriend(){
+    public ResponseEntity<?> getFriend(@RequestParam(value = "page", defaultValue = "1") int page,
+                                       @RequestParam(value = "limit", defaultValue = "10") int limit){
         try {
             List<FriendDTO> list =  friendService.getFriends();
             return new ResponseEntity<>(list, HttpStatus.OK);

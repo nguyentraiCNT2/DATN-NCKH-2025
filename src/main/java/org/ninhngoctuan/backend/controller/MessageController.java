@@ -30,8 +30,7 @@ public class MessageController {
     private String videosDir;
     @Autowired
     private MessageService messageService;
-    @Autowired
-    private CustomWebSocketHandler customWebSocketHandler;
+
         // Gửi tin nhắn mới
         @PostMapping("/send")
         public ResponseEntity<?> sendMessage(  @RequestParam(value = "content",required = false) String content,
@@ -48,8 +47,6 @@ public class MessageController {
                 // Gửi tin nhắn qua WebSocket
 //                messagingTemplate.convertAndSend("/topic/room/" + savedMessage.getRoom().getId(), savedMessage);
 
-                // Gửi tin nhắn qua WebSocket bằng CustomWebSocketHandler
-                customWebSocketHandler.broadcastMessage(savedMessage);  // Giả sử bạn sẽ gửi qua tất cả các kết nối WebSocket
 
                 return ResponseEntity.ok(savedMessage);
             }catch (Exception e) {

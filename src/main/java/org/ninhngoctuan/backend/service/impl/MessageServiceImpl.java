@@ -1,5 +1,6 @@
 package org.ninhngoctuan.backend.service.impl;
 
+import com.corundumstudio.socketio.SocketIOServer;
 import org.modelmapper.ModelMapper;
 import org.ninhngoctuan.backend.context.RequestContext;
 import org.ninhngoctuan.backend.dto.*;
@@ -57,6 +58,8 @@ public class MessageServiceImpl implements MessageService {
     private AudiosRepository audiosRepository;
     @Autowired
     private MessageAudiosRepository messageAudiosRepository;
+    @Autowired
+    private SocketIOServer socketIOServer;
 
     @Override
     public MessageDTO sendMessage(MessageDTO message, List<MultipartFile> images, List<MultipartFile> videos) {
@@ -166,7 +169,11 @@ public class MessageServiceImpl implements MessageService {
                     }
                 }
             }
-            return modelMapper.map(savedMessage, MessageDTO.class);
+            MessageDTO messageDTO = modelMapper.map(savedMessage, MessageDTO.class);
+            // Gửi tin nhắn qua WebSocket
+            socketIOServer.getRoomOperations(String.valueOf(room.getId())).sendEvent("newMessage", messageDTO);
+
+            return messageDTO;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -352,8 +359,10 @@ public class MessageServiceImpl implements MessageService {
             } else {
                 throw new RuntimeException("Không có file âm thanh được gửi");
             }
-
-            return modelMapper.map(savedMessage, MessageDTO.class);
+            MessageDTO messageDTO = modelMapper.map(savedMessage, MessageDTO.class);
+            // Gửi tin nhắn qua WebSocket
+            socketIOServer.getRoomOperations(String.valueOf(room.getId())).sendEvent("newMessage", messageDTO);
+            return messageDTO;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
