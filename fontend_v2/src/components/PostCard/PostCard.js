@@ -1,12 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
+import io from 'socket.io-client';
 
 const PostCard = ({ post }) => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(post.totalLike);
-  
+      const socketRef = useRef(null);
   // State để quản lý số lượng ảnh và video hiển thị
   const [showAllImages, setShowAllImages] = useState(false);
   const [showAllVideos, setShowAllVideos] = useState(false);
@@ -14,10 +15,48 @@ const PostCard = ({ post }) => {
   // Hàm toggle để hiển thị hoặc ẩn các ảnh, video còn lại
   const toggleImages = () => setShowAllImages(!showAllImages);
   const toggleVideos = () => setShowAllVideos(!showAllVideos);
+      const token = localStorage.getItem('token');
+
   const getToken = () => {
     return localStorage.getItem('token') || '';
   };
   const [showDeleteAction, setShowDeleteAction] = useState(false);
+
+  
+    // // Kết nối WebSocket
+    // useEffect(() => {
+    //     if (!token || !userId) {
+    //         console.error("Missing token or userId in localStorage", { token, userId });
+    //         return;
+    //     }
+
+    //     const socket = io("http://localhost:8081", {
+    //         query: { token, userId },
+    //         transports: ["websocket"],
+    //         withCredentials: true,
+    //         reconnection: true,
+    //         reconnectionAttempts: 5,
+    //         reconnectionDelay: 1000,
+    //     });
+    //     socketRef.current = socket;
+
+    //     socket.on("connect", () => {
+    //         console.log("PostCard WebSocket connected, socketId:", socket.id, "userId:", userId);
+    //         socket.emit("subscribeNotifications");
+    //         console.log(`PostCard emitted subscribeNotifications for user ${userId}`);
+    //     });
+
+    //     socket.on("connect_error", (error) => {
+    //         console.error("PostCard WebSocket connection error:", error.message);
+    //     });
+
+    //     return () => {
+    //         console.log("Disconnecting PostCard WebSocket");
+    //         socket.disconnect();
+    //     };
+    // }, [token, userId]);
+
+
   const fetchLikesList = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/likes/list/post/${post.postId}`, {
@@ -77,6 +116,7 @@ const PostCard = ({ post }) => {
       });
       await fetchLikesList();
       await fetchLikes();
+       
     } catch (error) {
       console.error("Error liking the post:", error);
     }

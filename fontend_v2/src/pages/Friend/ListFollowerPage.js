@@ -192,6 +192,7 @@ const ListFollowerPage = () => {
                         className="follow-action"
                         onClick={() => addFriend(friend?.user?.userId)}
                       >
+                            <i className="fa-solid fa-user-plus"></i>{' '}
                    <p className='follow-action-button-name'>Theo giõi</p>
                       </a>
                     )}

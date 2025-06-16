@@ -1185,7 +1185,7 @@ max-height: 75vh;
     }
     .profile-banner img {
         width: 100%;
-        height: auto;
+        height: 30vh;
         border-radius: 0;
     }
     /* Chuyển các phần thông tin về trạng thái static, xếp dọc */
